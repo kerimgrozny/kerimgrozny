@@ -30,5 +30,6 @@
 		<img class="img-responsive" src="images/serviceImages/videoediting.jpg" alt="Фотомонтаж">
 	</div>
 </div><!--content row end-->
+<h1>This is the change made on Rahman's PC just a note</h1>
 
 <?php include("../includes/layouts/footer.php"); ?>
