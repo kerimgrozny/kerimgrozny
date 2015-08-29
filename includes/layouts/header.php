@@ -11,22 +11,19 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" id="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="index.php" id="logoText">KerimGrozny</a>
     </div>
-		<div class="hidden-xs">
-			
-		</div>
     <div class="collapse navbar-collapse" style="text-align: center" id="myNavbar">
       <ul class="nav navbar-nav" style="display: inline-block; float: none; vertical-align: top;">
-        <li><a href="index.php">Home</a></li>
+        <li><a href="index.php">Главная</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Услуги<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -42,7 +39,6 @@
       <ul class="nav navbar-nav navbar-right" id="userTab">
         <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Логин</a></li>
         <li><a href="registration.php"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
-        <li><a href="users.php"><span class="glyphicon glyphicon-user"></span> users</a></li>
       </ul>
     </div>
   </div>
