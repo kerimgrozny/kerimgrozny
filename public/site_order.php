@@ -3,8 +3,9 @@
         <h1>Заполните форму пожалуйста</h1>
         <div class="col-xs-12 col-md-6">
             <form class="form-horizontal" role="form">
+
                 <div class="form-group">
-                    <label class="control-label col-sm-2">Сайт:</label>
+                    <label class="control-label col-sm-4">Сайт:</label>
                     <div class="col-sm-4">
                         <select class="form-control" name="SiteType">
                             <option value="4900">Сайт визитка</option>
@@ -15,19 +16,31 @@
                         </select>
                     </div>
                 </div>
+
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="pwd">Password:</label>
+                    <label class="control-label col-sm-4">О вашем проекте:</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                        <textarea class="form-control" name="AboutProject">
+                        </textarea>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                            <label><input type="checkbox"> Remember me</label>
-                        </div>
+
+                <div class="form-inline">
+                    <label class="control-label col-sm-4" for="pwd">Как связаться с вами:</label>
+                    <div class="col-sm-6">
+                        Телефон: <input type="radio" class="form-control" name="contact">
+                        Email: <input type="radio" class="form-control" name="contact">
+                        Skype: <input type="radio" class="form-control" name="contact">
                     </div>
                 </div>
+
+                <div class="form-inline">
+                    <label class="control-label col-sm-4" for="pwd">Тел, Email или Скайп:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="ContactData">
+                    </div>
+                </div>
+                
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-default">Submit</button>
