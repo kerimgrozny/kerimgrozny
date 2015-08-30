@@ -1,5 +1,6 @@
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
+<script type="text/javascript" src="caption-transition-builder-controller.min.js"></script>
 <div class="row"><!--content row start-->
 	<h1>Создание сайта</h1>
 	<div class="col-xs-12 col-md-6">
