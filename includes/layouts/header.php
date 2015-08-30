@@ -33,7 +33,7 @@
             <li><a href="#">Веб темы</a></li>
           </ul>
         </li>
-        <li><a href="downloads.html">Загрузки</a></li>
+        <li><a href="downloads.php">Загрузки</a></li>
         <li><a href="#">Видеоуроки</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" id="userTab">
