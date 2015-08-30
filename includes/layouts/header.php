@@ -48,7 +48,7 @@
   </div>
 </nav>
 
-<div class="container" id="content"><!--content container start-->
+<div class="container-fluid" id="content"><!--content container start-->
 
 
 

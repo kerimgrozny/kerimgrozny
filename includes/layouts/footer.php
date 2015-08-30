@@ -1,4 +1,3 @@
-
 </div><!--content container end-->
 <div class="container-fluid" id="footer"><!--content container start-->
 	<div class="row">
