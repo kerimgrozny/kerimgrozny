@@ -2,8 +2,23 @@ body{
 	background-color: lightgray;
 }
 
+.navbar-inverse .navbar-brand {
+	color: white;
+}
+
 #navigation{
 	margin: 0px auto;
+	background-color: #00796B;
+	color: aliceblue;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: lightgray;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+	color: #000000;
+	background-color: #ffffff;
 }
 
 .navbar-nav>li>a {
