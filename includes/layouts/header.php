@@ -27,14 +27,16 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Услуги<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="site_order.php">Заказать сайт</a></li>
+            <li><a href="#">Создание сайта</a></li>
             <li><a href="#">Фотомонтаж</a></li>
             <li><a href="#">Видеомонтаж</a></li>
-            <li><a href="#">Веб темы</a></li>
+            <li><a href="#">Прошивка Android И PC</a></li><br>
+            <li><a href="order.php">Заказать услугу</a></li>
           </ul>
         </li>
         <li><a href="downloads.php">Загрузки</a></li>
         <li><a href="#">Видеоуроки</a></li>
+        <li><a href="#">Форум</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" id="userTab">
         <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Логин</a></li>
