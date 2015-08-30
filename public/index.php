@@ -122,7 +122,7 @@
 			</div>
 			<div style="position: absolute; width: 480px; height: 120px; top: 30px; left: 30px; padding: 5px;
 				text-align: left; line-height: 60px; text-transform: uppercase; font-size: 50px;
-					color: #FFFFFF;">KerimGrozny
+					color: #FFFFFF;">Создание сайта
 			</div>
 			<div style="position: absolute; width: 480px; height: 120px; top: 300px; left: 30px; padding: 5px;
 				text-align: left; line-height: 36px; font-size: 30px;
@@ -135,24 +135,24 @@
 			<img u="image" src="img/1920/purple.jpg" />
 			<div style="position: absolute; width: 480px; height: 120px; top: 30px; left: 30px; padding: 5px;
 				text-align: left; line-height: 60px; text-transform: uppercase; font-size: 50px;
-					color: #FFFFFF;">Touch Swipe Slider
+					color: #FFFFFF;">Фото и Видео услуги
 			</div>
 			<div style="position: absolute; width: 480px; height: 120px; top: 300px; left: 30px; padding: 5px;
 				text-align: left; line-height: 36px; font-size: 30px;
 					color: #FFFFFF;">
-				Build your slider with anything, includes image, content, text, html, photo, picture
+				Превратим ваши цифровые фотографии и видео в настоящую реальность
 			</div>
 		</div>
 		<div>
 			<img u="image" src="img/1920/blue.jpg" />
 			<div style="position: absolute; width: 480px; height: 120px; top: 30px; left: 30px; padding: 5px;
 				text-align: left; line-height: 60px; text-transform: uppercase; font-size: 50px;
-					color: #FFFFFF;">Touch Swipe Slider
+					color: #FFFFFF;">Удаленный помощник
 			</div>
 			<div style="position: absolute; width: 480px; height: 120px; top: 300px; left: 30px; padding: 5px;
 				text-align: left; line-height: 36px; font-size: 30px;
 					color: #FFFFFF;">
-				Build your slider with anything, includes image, content, text, html, photo, picture
+				Новый путь к установке всевозможных програм и фирмваре
 			</div>
 		</div>
 	</div>
