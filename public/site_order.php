@@ -9,10 +9,10 @@
                     <div class="col-sm-4">
                         <select class="form-control" name="SiteType">
                             <option value="4900">Сайт визитка</option>
-                            <option value="volvo">Информационный сайт</option>
-                            <option value="saab">Промо-сайт</option>
-                            <option value="mercedes">Корпоративный сайт</option>
-                            <option value="audi">Интернет-магазин</option>
+                            <option value="8000">Информационный сайт</option>
+                            <option value="12000">Промо-сайт</option>
+                            <option value="16000">Корпоративный сайт</option>
+                            <option value="25000">Интернет-магазин</option>
                         </select>
                     </div>
                 </div>
@@ -28,9 +28,9 @@
                 <div class="form-inline">
                     <label class="control-label col-sm-4" for="pwd">Как связаться с вами:</label>
                     <div class="col-sm-6">
-                        Телефон: <input type="radio" class="form-control" name="contact">
-                        Email: <input type="radio" class="form-control" name="contact">
-                        Skype: <input type="radio" class="form-control" name="contact">
+                        Телефон: <input type="radio" class="form-control" name="Contact" value="Telephone">
+                        Email: <input type="radio" class="form-control" name="Contact" value="Email">
+                        Skype: <input type="radio" class="form-control" name="Contact" value="Skype">
                     </div>
                 </div>
 
@@ -40,10 +40,18 @@
                         <input type="text" class="form-control" name="ContactData">
                     </div>
                 </div>
-                
+
+                <div class="form-inline">
+                    <label class="control-label col-sm-4">Когда вам нужен:</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" name="Date">
+                    </div>
+                </div>
+
+
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Submit</button>
+                    <div class="col-sm-offset-4 col-sm-8">
+                        <button type="submit" class="btn btn-primary">Потвердить</button>
                     </div>
                 </div>
             </form>
