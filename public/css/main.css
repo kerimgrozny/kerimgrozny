@@ -13,7 +13,7 @@ body{
 }
 
 .navbar-inverse .navbar-nav>li>a {
-	color: lightgray;
+	color: #E6E6E6;
 }
 
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
@@ -27,6 +27,7 @@ body{
 
 #content{
 	background-color: #ffffff;
+	border: 1px solid #00796B;
 	margin: 0 auto;
 }
 
