@@ -38,7 +38,7 @@
           </ul>
         </li>
         <li><a href="downloads.php">Загрузки</a></li>
-        <li><a href="#">Контакты</a></li>
+        <li><a href="contact.php">Контакты</a></li>
         <li><a href="blog.php">Блог</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" id="userTab">
