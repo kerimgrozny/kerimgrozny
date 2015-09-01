@@ -30,7 +30,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Услуги<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Создание сайта</a></li>
+            <li><a href="website.php">Создание сайта</a></li>
             <li><a href="#">Фотомонтаж</a></li>
             <li><a href="#">Видеомонтаж</a></li>
             <li><a href="#">Прошивка Android И PC</a></li><br>
@@ -38,8 +38,8 @@
           </ul>
         </li>
         <li><a href="downloads.php">Загрузки</a></li>
-        <li><a href="#">Видеоуроки</a></li>
-        <li><a href="#">Форум</a></li>
+        <li><a href="#">Контакты</a></li>
+        <li><a href="blog.php">Блог</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" id="userTab">
         <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Логин</a></li>
@@ -49,7 +49,7 @@
   </div>
 </nav>
 
-<div class="container-fluid" id="content"><!--content container start-->
+
 
 
 

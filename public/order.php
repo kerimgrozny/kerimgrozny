@@ -1,4 +1,6 @@
 <?php include("../includes/layouts/header.php"); ?>
+<div class="container" id="content"><!--content container start-->
+
     <div class="row" xmlns="http://www.w3.org/1999/html">
         <h1>Оформите свой заказ</h1>
 
@@ -15,4 +17,5 @@
 
     </div>
 
+</div>
 <?php include("../includes/layouts/footer.php"); ?>
