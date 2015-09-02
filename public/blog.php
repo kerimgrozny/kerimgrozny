@@ -4,28 +4,40 @@
 <div class="container" id="content" xmlns="http://www.w3.org/1999/html"><!--content container start-->
     <div class="row"><!--content row start-->
         <h1>Блог</h1>
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-md-3">
             <ul>
-                <?php $result = find_blog_subjects(); ?>
                 <?php
-                    while($subject = mysqli_fetch_assoc($result)){
-                ?><li><a href="blog.php"><?php echo $subject['SubjectName']; ?></a>
-                    <ul>
-                        <?php $result = find_blog_pages_for_subject($subject['SubjectID']); ?>
-                    <?php
-                        while($page = mysqli_fetch_assoc($result)){
-                    ?><li><a href="blog.php"><?php echo $page['Name']; ?></a>
-                    </ul>
-                    <?php
+                    $query  = "SELECT * FROM blog_subject ";
+                    $query .= "WHERE Visible = 1";
+                    $subject = mysqli_query($connection, $query);
+                ?>
+                <?php
+                    while($subject = mysqli_fetch_assoc($subject)) {
+                        ?>
+                        <li>
+                            <?php echo $subject["SubjectName"]; ?>
+                            <?php
+                                $query = "SELECT * FROM blog_page ";
+                                $query .= "WHERE Visible = 1 AND BelongsTo = {$subject["BelongsTo"]}";
+                                $page = mysqli_query($connection, $query);
+                            ?>
+                                <ul>
+                                <?php
+                                    while ($page = mysqli_fetch_assoc($page)) {
+                                    ?>
+                                        <li><?php echo $page["Name"];   ?></li>;
+                                <?php
+                                    }
+                                ?>
+                                </ul>
+                        </li>
+                <?php
                     }
-                  ?>
-                  </li>
+                ?>
             </ul>
-        <?php } ?>
         </div>
-    </div>
-    <div class="row"><!--content row start-->
-        <div class="col-xs-12 col-md-6">
+
+        <div class="col-xs-12 col-md-9">
             <p>Это лента всегда будет обновлятся новой информацией</p>
         </div>
     </div>

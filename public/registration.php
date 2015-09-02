@@ -2,8 +2,8 @@
 <?php include("../includes/layouts/header.php"); ?>
 <div class="container" id="content"><!--content container start-->
     <div class="row"><!--content row start-->
-        <div class="col-xs-12">
-            <h1>Регистрация</h1>
+        <h1>Регистрация</h1>
+        <div class="col-xs-12 col-lg-6">
             <form class="form-group" action="registration.php" method="POST" role="form">
 
                 <div class="form-inline">
@@ -43,28 +43,21 @@
                     </div>
                 </div>
                 <div class="form-inline">
-                    <label class="control-label col-sm-2">Пол:</label>
+                    <label class="control-label col-sm-12">Пол:</label>
                     <div class="col-sm-10">
                         Муж: <input type="radio" class="form-control" name="Gender" value="Муж">
                         Жен: <input type="radio" class="form-control" name="Gender" value="Жен">
                     </div>
                 </div>
                 <div class="form-inline">
-                    <label class="control-label col-sm-2">Телефон:</label>
+                    <label class="control-label col-sm-4">Телефон:</label>
                     <div class="col-sm-10">
                         <input type="tel" class="form-control" name="Telephone" placeholder="Номер телефона">
                     </div>
                 </div>
                 <div class="form-inline">
-                    <label class="control-label col-sm-2">Биография:</label>
-                    <div class="col-sm-10">
-                        <input type="tel" class="form-control" name="Bio" placeholder="Немного о себе..">
-                    </div>
-                </div>
-
-                <div class="form-inline">
                     <div class="col-sm-12">
-                        <input type="submit" class="form-control" name="submit" value="Потвердить">
+                        <input type="submit" class="form-control" name="submit" value="Потвердить"><hr>
                     </div>
                 </div>
             </form>
@@ -89,6 +82,9 @@
                     }
                 }
             ?>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+            <img class="img-responsive" src="images/serviceImages/grozny.jpg">
         </div>
     </div><!--content row end-->
 </div>

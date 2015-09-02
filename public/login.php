@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-inline">
                     <div class="col-sm-12">
-                        <input type="submit" class="form-control" value="Войти">
+                        <input type="submit" class="form-control" value="Войти"><hr>
                     </div>
                 </div>
             </form>

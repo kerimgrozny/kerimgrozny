@@ -1,17 +1,7 @@
 <?php include("../includes/layouts/header.php"); ?>
 <div class="container" id="content"><!--content container start-->
     <div class="row"><!--content row start-->
-        <div class="col-xs-12">
-            <h1>Строение веб проекта</h1>
-            <p>Прежле всего план проекта играем значительную роль в любой веб приложении
-            у нас специальная подготовка к дизайну и последовательная инструкция к
-            создании более интерактивных и динамических веб приложений</p>
-        </div>
-
-        <div class="col-xs-12">
-            <img class="img-responsive" src="images/serviceImages/website.jpg" alt="Создание вебсайта"><hr>
-        </div>
-
+        <h1>Профессиональный видеомонтаж</h1>
         <div class="col-xs-12">
             <h1>Нам важен каждый шаг</h1>
             <ul style="font-size: 1.2em;">

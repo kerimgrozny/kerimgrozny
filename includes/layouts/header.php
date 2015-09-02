@@ -32,7 +32,7 @@
           <ul class="dropdown-menu">
             <li><a href="website.php">Создание сайта</a></li>
             <li><a href="#">Фотомонтаж</a></li>
-            <li><a href="#">Видеомонтаж</a></li>
+            <li><a href="videoediting.php">Видеомонтаж</a></li>
             <li><a href="#">Прошивка Android И PC</a></li><br>
             <li><a href="order.php">Заказать услугу</a></li>
           </ul>
