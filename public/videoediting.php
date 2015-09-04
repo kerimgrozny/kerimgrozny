@@ -1,16 +1,16 @@
 <?php include("../includes/layouts/header.php"); ?>
 <div class="container" id="content"><!--content container start-->
     <div class="row"><!--content row start-->
-        <h1>Профессиональный видеомонтаж</h1>
+
+        <h1 class="text-primary">Видеомонтаж</h1>
         <div class="col-xs-12">
-            <h1>Нам важен каждый шаг</h1>
-            <ul style="font-size: 1.2em;">
-                <li>Создаем уникальные дизайны для Ваших сайтов</li>
-                <li>Консультации по телефону и E-mail 7 дней в неделю</li>
-                <li>Изменяем дизайн сайта по вашему желанию</li>
-                <li>Работаем "под ключ"</li>
-                <li>Обеспечиваем надежность и безопасность Вашего сайта</li>
-            </ul>
+            <p>Монтажеры владеют знаниями о крупностях и режиссерской оси, о правилах монтажа по фазе, темпу и направлению движения, по центру внимания, по цвету и свету. Проходят тестирование на наличие таких необходимых качеств, как чувство темпа и ритма, хороший вкус, понимание композиции кадра и внимание к деталям, способность к кропотливому труду и обладание творческим мышлением.</p>
+        </div>
+
+        <div class="col-xs-12 col-lg-6">
+            <img class="img-responsive img-right" src="images/serviceImages/videoediting.jpg">
+        </div>
+        <div class="col-xs-12 col-lg-6">
             <a href="order.php"><button type="button" class="btn btn-info">Перейти к заказу</button></a><hr>
         </div>
 

@@ -123,12 +123,12 @@
 				</div>
 				<div style="position: absolute; width: 480px; height: 120px; top: 30px; left: 30px; padding: 5px;
 					text-align: left; line-height: 60px; text-transform: uppercase; font-size: 50px;
-						color: #FFFFFF;">Создание сайта
+						color: #FFFFFF;">Web Development
 				</div>
 				<div style="position: absolute; width: 480px; height: 120px; top: 300px; left: 30px; padding: 5px;
 					text-align: left; line-height: 36px; font-size: 30px;
 						color: #FFFFFF;">
-					Мы сделаем ваш мир ярче и откроем новые возможности для вас
+					Разработка профессиональных сайтов и дизайна
 					<!--Build your slider with anything, includes image, content, text, html, photo, picture-->
 				</div>
 			</div>
@@ -141,7 +141,7 @@
 				<div style="position: absolute; width: 480px; height: 120px; top: 300px; left: 30px; padding: 5px;
 					text-align: left; line-height: 36px; font-size: 30px;
 						color: #FFFFFF;">
-					Превратим ваши цифровые фотографии и видео в настоящую реальность
+					Качественный видеомонтаж любого стиля
 				</div>
 			</div>
 			<div>
@@ -153,7 +153,7 @@
 				<div style="position: absolute; width: 480px; height: 120px; top: 300px; left: 30px; padding: 5px;
 					text-align: left; line-height: 36px; font-size: 30px;
 						color: #FFFFFF;">
-					Новый путь к установке всевозможных програм и фирмваре
+					Прошивка и обновление версии Андройда удаленным доступом
 				</div>
 			</div>
 		</div>
