@@ -5,7 +5,7 @@
     <div class="row"><!--content row start-->
         <h1>Блог</h1>
         <div class="col-xs-2 col-lg-2 bg-success">
-            <h3 class="pull-center"></h3>
+            <h3 class="pull-center">Темы</h3>
             <ul>
                 <?php
                     $query  = "SELECT * ";
@@ -17,27 +17,16 @@
                 <li>
                     <?php echo $subject['Name']; ?>
                 </li>
-                    <?php
+                <?php
                 }
                 ?>
-
+            </ul>
             </div>
             <div class="col-xs-10 col-lg-10 bg-info">
-                <h3 class="pull-center"></h3>
-                <?php
-                $query  = "SELECT * ";
-                $query .= "FROM blog_page ";
-                $query .= "WHERE Visible = 1 ";
-                $query .= "AND SubjectID = {$subject['SubjectID']}";
-                $page_set = mysqli_query($connection, $query);
-                ?>
-                <?php
-                    while($page = mysqli_fetch_assoc($page_set)) { ?>
-                        <p><?php echo $page['Content']; ?></p>
-                        <?php
-                    }
-                ?>
-            </ul>
+                <h3 class="pull-center">Дискуссия</h3>
+                <?php echo$subject['SubjectID'] ?>
+
+
         </div>
         <div class="col-xs-12 col-md-9">
 
