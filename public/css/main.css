@@ -27,7 +27,6 @@ body{
 
 #content{
 	background-color: #ffffff;
-	border: 1px solid #00796B;
 	margin: 0 auto;
 }
 
@@ -36,6 +35,12 @@ body{
 	height: 50px;
 	background-color: #00796B;
 	color: #ffffff;
+}
+
+#footer p{
+	margin-top: 10px;
+	font-family: Arial;
+	font-size: 1.2em;
 }
 
 #logoText{

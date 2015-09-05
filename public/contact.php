@@ -1,8 +1,10 @@
+<?php session_start() ?>
+<?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 <div class="container" id="content"><!--content container start-->
     <div class="row"><!--content row start-->
         <h1>Свяжитесь</h1>
-        <div class="col-xs-12 col-lg-6">
+        <div class="col-xs-12 col-lg-6 bg-info"><hr>
             <form class="form-horizontal" role="form" method="post" action="index.php">
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">Имя</label>
@@ -38,10 +40,14 @@
                         <! Will be used to display an alert to the user>
                     </div>
                 </div>
-            </form>
+            </form><hr>
         </div>
+
 		<div class="col-xs-12 col-lg-6">
-			<a href="facebook.ru">Facebook</a>
+            <a href="https://www.facebook.com/kerim.timirbulatov"><img src="images/icons/fb.png"></a> &nbsp &nbsp &nbsp
+            <a href="facebook.ru"><img src="images/icons/odnoklassniki.png"></a> &nbsp &nbsp &nbsp
+            <a href="facebook.ru"><img src="images/icons/youtube.png"></a> &nbsp &nbsp &nbsp
+            <a href="facebook.ru"><img src="images/icons/google+.png"></a>
 		</div>
     </div>
 </div>

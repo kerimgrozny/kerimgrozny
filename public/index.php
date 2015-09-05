@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 <div class="container-fluid" id="content"><!--content container start-->

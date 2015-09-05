@@ -3,3 +3,22 @@
     font-family: Arial;
     padding-left: 5px;
 }
+
+#footer img{
+    margin-top: 10px;
+    width: 25px;
+    display: inline;
+    float: right;
+}
+
+#register_note {
+    margin: 25px 0px;
+    float: right;
+    padding: 0px;
+}
+#register_note a {
+    color: cornflowerblue;
+}
+
+chartreuse
+

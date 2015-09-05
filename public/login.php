@@ -1,9 +1,12 @@
+<?php session_start() ?>
+<?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 <div class="container" id="content"><!--content container start-->
     <div class="row"><!--content row start-->
-        <div class="col-xs-12">
-        <h1>Логин</h1>
-            <form class="form-group" action="register.php" method="POST" role="form">
+        <h1 class="text-primary">Логин</h1>
+        <div class="col-xs-12 col-lg-6">
+            <h3>Войдите в систему.</h3>
+            <form class="form-group" action="login.php" method="POST" role="form">
                 <div class="form-inline">
                     <label class="control-label col-sm-2">Логин:</label>
                     <div class="col-sm-10">
@@ -18,11 +21,48 @@
                 </div>
                 <div class="form-inline">
                     <div class="col-sm-12">
-                        <input type="submit" class="form-control" value="Войти"><hr>
+                        <input type="submit" class="form-control" name="submit" value="Войти">
+                        <p id="register_note">Еще не зарегистрированы? <a href="registration.php">Регистрация</a> бесплатная</p>
                     </div>
                 </div>
             </form>
+            <?php
+                if(isset($_POST["submit"])) {
+                    $Login = mysqli_real_escape_string($connection, $_POST["Login"]);
+                    $Password = mysqli_real_escape_string($connection, $_POST["Password"]);
+
+                    $query  = "SELECT * FROM user ";
+                    $query .= "WHERE Login = '{$Login}' ";
+                    $query .= "AND Password = '{$Password}' ";
+                    $LoginCheck = mysqli_query($connection, $query);
+
+                    if(mysqli_affected_rows($connection) > 0){
+                        $_SESSION["User"] = $Login;
+                        header('Location:index.php');
+                    }else{
+                        echo "<p class='text-center text-danger'>Неверный логин или пароль.</p>";
+                    }
+                }
+            ?>
         </div>
+
+        <div class="col-xs-12 col-lg-6">
+            <h3>Когда в системе вы сможете:</h3>
+            <ul>
+                <li>Коментировать в страницах</li>
+                <li>Найти пользователей</li>
+                <li>Общаться с друзьями</li>
+                <li>Заказывать услуги</li>
+                <li>Общаться в блогах</li>
+                <li>Создать посты, и многое др</li>
+            </ul><hr>
+        </div>
+
+        <div class="col-xs-12 col-lg-12">
+            <h3></h3>
+            <img class="img-responsive" src="images/serviceImages/groznylogin.jpg"> <hr>
+        </div>
+
     </div>
 </div>
 <?php include("../includes/layouts/footer.php"); ?>
