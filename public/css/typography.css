@@ -20,13 +20,12 @@
     color: cornflowerblue;
 }
 
-#blogSideBar, #blogSideBar a{
-    background-color: #336699;
-    color: #FFFFFF;
+#blogSideBar{
+    border: 1px solid #336699;
 }
 
 #blog_page{
-    background-color: #FFF0D1
+    border: 1px solid #336699;
 }
 
 
@@ -35,10 +34,10 @@
 }
 
 #blogTable{
-    border: 1px solid #336699;
+    margin: 25px 0;
 }
 
 #blogAddForm{
-    margin: 10px 0;
+    margin: 20px 0;
 }
 
