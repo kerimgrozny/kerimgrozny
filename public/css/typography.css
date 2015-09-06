@@ -20,5 +20,25 @@
     color: cornflowerblue;
 }
 
-chartreuse
+#blogSideBar, #blogSideBar a{
+    background-color: #336699;
+    color: #FFFFFF;
+}
+
+#blog_page{
+    background-color: #FFF0D1
+}
+
+
+#blogTable td{
+    padding: 10px;
+}
+
+#blogTable{
+    border: 1px solid #336699;
+}
+
+#blogAddForm{
+    margin: 10px 0;
+}
 

@@ -1,4 +1,7 @@
 <?php
-    // Finds all subjects for blog page
-
+    function escape_str($text){
+        global $connection;
+        mysqli_real_escape_string($connection, $text);
+        return $text;
+    }
 ?>
