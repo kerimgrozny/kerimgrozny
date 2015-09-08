@@ -5,7 +5,7 @@
         $query  = "SELECT * ";
         $query .= "FROM blog_subject ";
         $subject_set = mysqli_query($connection, $query);
-        return $subject_set;
+        return $subject_set;   
     }
 
     function find_pages_for_subject($SubjectID){

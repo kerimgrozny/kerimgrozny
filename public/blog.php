@@ -2,23 +2,22 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
-<div class="container" id="blog_container"><!--content container start-->
+
+<div class="container" id="blogContainer"><!--content container start-->
     <div class="row">
-        <h1 class="text-primary">Булог</h1>
-        <div class="col-xs-2 col-lg-2" id="blogSideBar">
-            <h3 class="pull-center">Темы</h3>
+        <h1>Блог</h1>
+        <div class="col-xs-12 col-lg-2" id="blogSideBar">
+            <h3>Темы</h3>
             <ul>
                 <?php $subject_set = find_all_subjects();
-                while($subject = mysqli_fetch_assoc($subject_set)) { ?>
-                    <li>
-                        <a href="blog.php?subject=<?php echo urldecode($subject['ID']); ?>"><?php echo $subject['Name']; ?></a>
-                    </li>
+                    while($subject = mysqli_fetch_assoc($subject_set)) { ?>
+                        <li><a href="blog.php?subject=<?php echo urldecode($subject['ID']); ?>"><?php echo $subject['Name']; ?></a></li>
                 <?php } ?>
             </ul>
         </div>
 
-        <div class="col-xs-10 col-lg-10" id="blog_page">
-            <h3>Обсуждении</h3>
+        <div class="col-xs-12 col-lg-10" id="blog_page">
+            <h3>Обсуждении</h3><hr>
             <table id="blogTable">
             <?php
                 if(isset($_GET["subject"])){
@@ -27,49 +26,44 @@
                     while($page = mysqli_fetch_assoc($page_set)) {
                         echo "<tr><td>ИД поста: </td><td>" . $page["ID"]."</td></tr>";
                         echo "<tr><td>Сообщение: </td><td>" . $page["Content"]."</td></tr>";
-                        echo "<tr><td>Написал(а): </td><td>" . $page["CreatedBy"]."</td></tr>";
                         echo "<tr><td>Дата: </td><td>" . $page["CreatedDate"]."</td></tr>";
                     }
                 }
             ?>
-            </table>
-        </div>
+            </table><hr>
+        </div>     
     </div>
-    <div class="row"><!--content row start-->
 
-        <div class="col-xs-2 col-lg-2">
-            <a href="#">+ Добавить</a>
-        </div>
-
-        <div class="col-xs-10 col-lg-10">
+    <div class="row" id="blogCommentRow">
+        <div class="col-xs-12 col-lg-10"  id="blogCommentForm">
             <form class="form-inline" action="blog.php" role="form" id="blogAddForm" method="POST">
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <textarea cols="50" rows="10" class="form-control" name="Message"></textarea>
+                        <textarea cols="100" rows="10" class="form-control" name="Message"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-10">
-                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="submit" class="btn btn-basic">Добавит</button>
                     </div>
                 </div>
             </form>
-        </div>
-        <?php
-            if(isset($_POST["submit"])){
-                $Message = $_POST["Message"];
 
-                $query  = "INSERT INTO blog_page ";
-                $query .= "(Content) VALUES ( ";
-                $query .= "$Message) ";
-                $query .= "WHERE SubjectID = {$_GET["subject"]}";
-                $result = mysqli_query($connection, $result);
+            <?php             
+                if(isset($_POST["submit"])){
+                    $Message = $_POST["Message"];
 
-                if(mysqli_affected_rows($connection) > 0){
-                    echo "Ваш пост добавлен";
+                    $query  = "INSERT INTO blog_page ";
+                    $query .= "(Content, SubjectID) ";
+                    $query .= "VALUES ('{$Message}', {$subject_id} )";
+                    $result = mysqli_query($connection, $query);
+
+                    if(mysqli_affected_rows($connection) > 0){
+                        echo "Ваш пост добавлен";
+                    }
                 }
-            }
-        ?>
+            ?>
+        </div>
     </div>
 
 </div>

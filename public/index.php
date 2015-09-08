@@ -111,7 +111,7 @@
 				<div u="caption" t="NO" t3="RTT|2" r3="137.5%" du3="3000" d3="500" style="position: absolute; width: 445px; height: 300px; top: 100px; left: 600px;">
 					<img src="img/new-site/c-phone.png" style="position: absolute; width: 445px; height: 300px; top: 0px; left: 0px;" />
 					<img u="caption" t="CLIP|LR" du="4000" t2="NO" src="img/new-site/c-jssor-slider.png" style="position: absolute; width: 102px; height: 78px; top: 70px; left: 130px;" />
-					<img u="caption" t="ZMF|10" t2="NO" src="img/new-site/c-text.png" style="position: absolute; width: 80px; height: 53px; top: 153px; left: 163px;" />
+					<!--<img u="caption" t="ZMF|10" t2="NO" src="img/new-site/c-text.png" style="position: absolute; width: 80px; height: 53px; top: 153px; left: 163px;" />-->
 					<img u="caption" t="RTT|10" t2="NO" src="img/new-site/c-fruit.png" style="position: absolute; width: 140px; height: 90px; top: 60px; left: 220px;" />
 					<img u="caption" t="T" du="4000" t2="NO" src="img/new-site/c-navigator.png" style="position: absolute; width: 200px; height: 155px; top: 57px; left: 121px;" />
 				</div>
