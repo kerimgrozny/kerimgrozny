@@ -1,7 +1,8 @@
 <?php session_start() ?>
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
-<div class="container" id="content"><!--content container start-->
+
+<div class="container" id="loginContent"><!--content container start-->
     <div class="row"><!--content row start-->
         <h1 class="text-primary">Логин</h1>
         <div class="col-xs-12 col-lg-6">

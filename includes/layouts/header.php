@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/typography.css">
   <link rel="stylesheet" href="css/slideshow.css">
+  <link rel="stylesheet" href="css/simple-sidebar.css">
 
 
 </head>
