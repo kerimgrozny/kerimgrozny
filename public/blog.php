@@ -9,10 +9,10 @@
         <div class="col-xs-12 col-lg-2" id="blogSideBar">
             <h3>Темы</h3>
             <ul>
-                <?php $subject_set = find_all_subjects();
-                    while($subject = mysqli_fetch_assoc($subject_set)) { ?>
-                        <li><a href="blog.php?subject=<?php echo urldecode($subject['ID']); ?>"><?php echo $subject['Name']; ?></a></li>
-                <?php } ?>
+                <?php 
+                    $subject_set = find_all_subjects();
+                    echo navigation($subject_set);
+                ?>
             </ul>
         </div>
 
