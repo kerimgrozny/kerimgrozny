@@ -21,13 +21,26 @@
 }
 
 #blogSideBar{
-    border: 1px solid black;    
+    border: 0px solid black;
 }
 
 
 #blog_page{
-    border: 1px solid black;    
+    border: 0px solid black;    
 }
+
+#blogTable{
+	border: 1px #DDDDDD solid;
+}
+
+#blogTable tr td{
+	padding: 10px;
+}
+
+td + td{
+	background-color:#CADAEB;
+}
+
 
 #blogCommentForm{
     float: right;
@@ -36,4 +49,8 @@
 
 #blogCommentRow{
     background-color: cornflowerblue;
+}
+
+.form-inline {
+    padding: 0 10px;
 }

@@ -1,10 +1,15 @@
-<?php session_start() ?>
+<?php include("../includes/session.php"); ?>
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 <div class="container" id="contactContent"><!--content container start-->
     <div class="row"><!--content row start-->
         <h1>Свяжитесь</h1>
-        <div class="col-xs-12 col-lg-6 bg-info"><hr>
+        <?php
+			if(!isset($_SESSION["User"])){
+				echo "Чтобы оправить сообшение, вы должны быть в системе.";
+			}
+		?>
+        <div class="col-xs-12 col-lg-6"><hr>
             <form class="form-horizontal" role="form" method="post" action="index.php">
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">Имя</label>

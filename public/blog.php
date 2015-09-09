@@ -8,18 +8,16 @@
         <h1>Блог</h1>
         <div class="col-xs-12 col-lg-2" id="blogSideBar">
             <h3>Темы</h3>
-            <ul>
-                <?php 
-                    $subject_set = find_all_subjects();
-                    echo navigation($subject_set);
-                ?>
-            </ul>
+            <?php $subject_set = find_all_subjects();
+                echo blogNavigation($subject_set);
+            ?>
         </div>
 
         <div class="col-xs-12 col-lg-10" id="blog_page">
             <h3>Обсуждении</h3><hr>
             <table id="blogTable">
-            <?php
+            <div id="test"></div>
+			<?php
                 if(isset($_GET["subject"])){
                     $page_set = find_pages_for_subject($_GET["subject"]);
 
@@ -27,11 +25,11 @@
                         echo "<tr><td>ИД поста: </td><td>" . $page["ID"]."</td></tr>";
                         echo "<tr><td>Сообщение: </td><td>" . $page["Content"]."</td></tr>";
                         echo "<tr><td>Дата: </td><td>" . $page["CreatedDate"]."</td></tr>";
-                    }
+                    }	
                 }
             ?>
             </table><hr>
-        </div>     
+        </div>
     </div>
 
     <div class="row" id="blogCommentRow">

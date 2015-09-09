@@ -44,8 +44,16 @@
         <li><a href="blog.php">Блог</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" id="userTab">
-        <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Логин</a></li>
-        <li><a href="registration.php"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
+      <?php
+	  	if(!isset($_SESSION["User"])) { ?>
+        	<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Логин</a></li>
+        	<li><a href="registration.php"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
+      <?php 
+		  }else{ ?>
+        	<li><a href="profile.php"><span class="glyphicon glyphicon-user"></span> Профиль</a></li>
+        	<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Выйти</a></li>
+      <?php } ?>				
+        
       </ul>
     </div>
   </div>

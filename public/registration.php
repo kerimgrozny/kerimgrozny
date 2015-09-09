@@ -1,5 +1,7 @@
+<?php include("../includes/session.php"); ?>
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
+
 <div class="container" id="content"><!--content container start-->
     <div class="row"><!--content row start-->
         <h1>Регистрация</h1>
@@ -63,22 +65,22 @@
             </form>
             <?php
                 if(isset($_POST['submit'])){
-                    $Login     = $_POST['Login'];
-                    $Password  = $_POST['Password'];
-                    $Email     = $_POST['Email'];
-                    $FirstName = $_POST['FirstName'];
-                    $LastName  = $_POST['LastName'];
-                    $DOB       = $_POST['DOB'];
+                    $Login     = mysqli_real_escape_string($connection, $_POST['Login']);
+                    $Password  = mysqli_real_escape_string($connection, $_POST['Password']);
+                    $Email     = mysqli_real_escape_string($connection, $_POST['Email']);
+                    $FirstName = mysqli_real_escape_string($connection, $_POST['FirstName']);
+                    $LastName  = mysqli_real_escape_string($connection, $_POST['LastName']);   
+					$DOB       = $_POST['DOB'];       
                     $Gender    = $_POST['Gender'];
-                    $Telephone = $_POST['Telephone'];
-                    $Bio       = $_POST['Bio'];
+                    $Telephone = mysqli_real_escape_string($connection, $_POST['Telephone']);
 
-                    $query  = "INSERT INTO user (Login, Password, Email, FirstName, LastName, DOB, Gender, Telephone, Bio) ";
-                    $query .= "VALUES ('$Login', '$Password', '$Email', '$FirstName', '$LastName', '$DOB', '$Gender', $Telephone, '$Bio')";
+                    $query  = "INSERT INTO user (Login, Password, Email, FirstName, LastName, DOB, Gender, Telephone) ";
+                    $query .= "VALUES ('$Login', '$Password', '$Email', '$FirstName', '$LastName', '$DOB', '$Gender', $Telephone)";
                     $result = mysqli_query($connection, $query);
 
                     if(mysqli_affected_rows($connection) > 0){
-                        echo "Успешно зарегистрирован";
+						$_SESSION["Msg"] = "Регистрация прошла успешно, войдите ипользуя свой логин и пароль";
+						echo $_SESSION["Msg"];
                     }
                 }
             ?>
@@ -86,6 +88,7 @@
         <div class="col-xs-12 col-lg-6">
             <img class="img-responsive" src="images/serviceImages/grozny.jpg">
         </div>
+        
     </div><!--content row end-->
 </div>
 <?php include("../includes/layouts/footer.php"); ?>

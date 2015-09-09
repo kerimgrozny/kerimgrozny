@@ -1,5 +1,4 @@
 <?php
-
     function find_all_subjects() {
         global $connection;
 
@@ -9,15 +8,19 @@
         return $subject_set;   
     }
 
-    function navigation($subject_set){
-        while($subject = mysqli_fetch_assoc($subject_set)) {
-            $output .= "<li><a href=\"blog.php?subject=";
-            $output .= urldecode($subject['ID']); 
-            $output .= ">";
-            $output .= $subject['Name'];
-            $output .= "</a></li>";               
-        } 
-        return $output;       
+    function blogNavigation($find_all_subjects) {
+        $output = "<ul>";
+            $subject_set = $find_all_subjects;
+            while($subject = mysqli_fetch_assoc($subject_set)) {
+                $output .= "<li><a href=\"blog.php?subject=";
+                $output .=  $subject["ID"];
+                $output .= "\">";
+                $output .=  $subject["Name"];
+                $output .= "</a></li>";
+            }
+        mysqli_free_result($subject_set);
+        $output .= "</ul>";
+        return $output;
     }
 
     function find_pages_for_subject($SubjectID){

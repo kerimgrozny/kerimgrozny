@@ -1,6 +1,7 @@
 <?php include("../includes/session.php"); ?>
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
+
 <div class="container" id="content"><!--content container start-->
 
     <div class="row" xmlns="http://www.w3.org/1999/html">

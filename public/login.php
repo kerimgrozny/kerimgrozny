@@ -1,4 +1,4 @@
-<?php session_start() ?>
+<?php include("../includes/session.php"); ?>
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 
@@ -7,6 +7,9 @@
         <h1 class="text-primary">Логин</h1>
         <div class="col-xs-12 col-lg-6">
             <h3>Войдите в систему.</h3>
+            	<?php if(isset($_SESSION["Msg"])){
+					showMsg();
+				}?>
             <form class="form-group" action="login.php" method="POST" role="form">
                 <div class="form-inline">
                     <label class="control-label col-sm-2">Логин:</label>
@@ -41,7 +44,8 @@
                         $_SESSION["User"] = $Login;
                         header('Location:index.php');
                     }else{
-                        echo "<p class='text-center text-danger'>Неверный логин или пароль.</p>";
+                        $_SESSION["Msg"] = "Ошибка логина ведите снова или попробуйте позже.";
+						showMsg();
                     }
                 }
             ?>

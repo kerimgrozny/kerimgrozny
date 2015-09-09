@@ -1,4 +1,4 @@
-<?php session_start() ?>
+<?php include("../includes/session.php"); ?>
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 <div class="container-fluid" id="content"><!--content container start-->
@@ -12,7 +12,6 @@
 	<script type="text/javascript" src="js/jssor.slider.js"></script>
 	<script>
 		jQuery(document).ready(function ($) {
-
 			var _CaptionTransitions = [];
 			_CaptionTransitions["L"] = { $Duration: 900, x: 0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
 			_CaptionTransitions["R"] = { $Duration: 900, x: -0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
