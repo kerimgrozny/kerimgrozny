@@ -26,12 +26,20 @@
                         echo "<tr><td>Сообщение: </td><td>" . $page["Content"]."</td></tr>";
                         echo "<tr><td>Дата: </td><td>" . $page["CreatedDate"]."</td></tr>";
                     }	
-                }
+                }else{
+					echo "<note>Выберите тему из списка</note>";
+				}
             ?>
             </table><hr>
         </div>
     </div>
-
+		<?php 
+			if(!isset($_SESSION["User"])) {
+				$_SESSION["Msg"] = "<h5>Чтобы создать или написать пост вы должны быть в системе. ";
+				$_SESSION["Msg"] .= "<a href=\"login.php\">Войти</a></h5>";
+				showMsg();
+			}
+		?>
     <div class="row" id="blogCommentRow">
         <div class="col-xs-12 col-lg-10"  id="blogCommentForm">
             <form class="form-inline" action="blog.php" role="form" id="blogAddForm" method="POST">
@@ -47,13 +55,14 @@
                 </div>
             </form>
 
-            <?php             
+            <?php
+				$SubjectID = intval($_GET['subject']);              
                 if(isset($_POST["submit"])){
                     $Message = $_POST["Message"];
 
                     $query  = "INSERT INTO blog_page ";
                     $query .= "(Content, SubjectID) ";
-                    $query .= "VALUES ('{$Message}', {$subject_id} )";
+                    $query .= "VALUES ({'$Message'}, $SubjectID)";
                     $result = mysqli_query($connection, $query);
 
                     if(mysqli_affected_rows($connection) > 0){
