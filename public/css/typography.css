@@ -37,11 +37,6 @@
 	padding: 10px;
 }
 
-td + td{
-	background-color:#CADAEB;
-}
-
-
 #blogCommentForm{
     float: right;
     margin: 25px 0;
@@ -53,4 +48,24 @@ td + td{
 
 .form-inline {
     padding: 0 10px;
+}
+
+#profileNav{
+	background-color:#5D7FAD;
+	color:#FFFFFF;
+	height: 600px;
+}
+
+#profilePage{
+	border: 1px solid grey;
+}
+
+#profileTable tr td{
+	padding: 20px;	
+}
+
+#profileSecondRow{
+	background-color: #99B2CC;
+	padding: 20px 0;
+	text-align: center;
 }
