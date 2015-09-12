@@ -63,6 +63,13 @@
                     </div>
                 </div>
             </form>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+            <img class="img-responsive" src="images/serviceImages/grozny.jpg">
+        </div>
+    </div>
+    <div class="row"><!--content row start-->
+        <div class="col-xs-12 col-lg-6">
             <?php
                 if(isset($_POST['submit'])){
                     $Login     = mysqli_real_escape_string($connection, $_POST['Login']);
@@ -70,7 +77,7 @@
                     $Email     = mysqli_real_escape_string($connection, $_POST['Email']);
                     $FirstName = mysqli_real_escape_string($connection, $_POST['FirstName']);
                     $LastName  = mysqli_real_escape_string($connection, $_POST['LastName']);   
-					$DOB       = $_POST['DOB'];       
+                    $DOB       = $_POST['DOB'];       
                     $Gender    = $_POST['Gender'];
                     $Telephone = mysqli_real_escape_string($connection, $_POST['Telephone']);
 
@@ -79,16 +86,15 @@
                     $result = mysqli_query($connection, $query);
 
                     if(mysqli_affected_rows($connection) > 0){
-						$_SESSION["Msg"] = "Регистрация прошла успешно, войдите ипользуя свой логин и пароль";
-						echo $_SESSION["Msg"];
+                        $alert = "<span class=\"text-success\">Регистрация прошла успешно, войдите ипользуя логин и пароль веденные вами. </span>";
+                        echo $alert;
+                        echo "<a href=\"login.php\"> Войти</a>";
+                        $alert = null;
                     }
                 }
             ?>
+            <hr> 
         </div>
-        <div class="col-xs-12 col-lg-6">
-            <img class="img-responsive" src="images/serviceImages/grozny.jpg">
-        </div>
-        
-    </div><!--content row end-->
+    </div>
 </div>
 <?php include("../includes/layouts/footer.php"); ?>

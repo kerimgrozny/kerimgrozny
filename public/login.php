@@ -26,8 +26,8 @@
                 <div class="form-inline">
                     <div class="col-sm-12">
                         <input type="submit" class="form-control" name="submit" value="Войти">
-                        <p id="register_note">Еще не зарегистрированы? <a href="registration.php">Регистрация</a> бесплатная</p>
                     </div>
+                        <p id="register_note">Еще не зарегистрированы? <a href="registration.php">Регистрация</a> бесплатная</p>
                 </div>
             </form>
             <?php
@@ -44,7 +44,7 @@
                         $_SESSION["User"] = $Login;
                         header('Location:index.php');
                     }else{
-                        $_SESSION["Msg"] = "Ошибка логина ведите снова или попробуйте позже.";
+                        $_SESSION["Msg"] = "<span class=\"text-danger\">Ошибка: неверный логин или пароль.</span>";
 						showMsg();
                     }
                 }

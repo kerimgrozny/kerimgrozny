@@ -1,4 +1,5 @@
 <?php require_once("../includes/session.php"); ?>
+
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
@@ -19,9 +20,10 @@
             <div id="test"></div>
 			<?php
                 if(isset($_GET["subject"])){
+                    $GLOBALS["SubjectID"] = $_GET["subject"];
                     $page_set = find_pages_for_subject($_GET["subject"]);
-
                     while($page = mysqli_fetch_assoc($page_set)) {
+                        echo "<tr><td>Пользователь: </td><td>" . $_SESSION["User"]."</td></tr>";                       
                         echo "<tr><td>ИД поста: </td><td>" . $page["ID"]."</td></tr>";
                         echo "<tr><td>Сообщение: </td><td>" . $page["Content"]."</td></tr>";
                         echo "<tr><td>Дата: </td><td>" . $page["CreatedDate"]."</td></tr>";
@@ -40,34 +42,36 @@
 				showMsg();
 			}
 		?>
+        <?php
+            // if susbmits comment without logged in redirect.
+            if(isset($_POST["submit"])){
+                loginNeeded();
+            }
+        ?>
+
     <div class="row" id="blogCommentRow">
         <div class="col-xs-12 col-lg-10"  id="blogCommentForm">
-            <form class="form-inline" action="blog.php" role="form" id="blogAddForm" method="POST">
+            <form class="form-inline" action="blog.php" role="form" id="blogAddForm" method="GET">
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <textarea cols="100" rows="10" class="form-control" name="Message"></textarea>
+                        <textarea cols="100" rows="10" class="form-control" name="Message" placeholder="Ваш пост.." required></textarea>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="col-sm-10">
-                        <button type="submit" name="submit" class="btn btn-basic">Добавит</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Добавит</button>
                     </div>
                 </div>
             </form>
 
             <?php
-				$SubjectID = intval($_GET['subject']);              
-                if(isset($_POST["submit"])){
-                    $Message = $_POST["Message"];
+                if(isset($_GET["submit"])){
+                    $Message = $_GET["Message"];
+                    $CreatedBy = $_SESSION["User"];
+                    $SubjectID = $_GET["subject"];
 
-                    $query  = "INSERT INTO blog_page ";
-                    $query .= "(Content, SubjectID) ";
-                    $query .= "VALUES ({'$Message'}, $SubjectID)";
-                    $result = mysqli_query($connection, $query);
-
-                    if(mysqli_affected_rows($connection) > 0){
-                        echo "Ваш пост добавлен";
-                    }
+                    echo $GLOBALS["SubjectID"];
                 }
             ?>
         </div>

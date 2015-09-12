@@ -43,7 +43,7 @@
 }
 
 #blogCommentRow{
-    background-color: #85A3C2;
+    background-color: # 85A3C2;
 }
 
 .form-inline {
@@ -68,4 +68,9 @@
 	background-color: #99B2CC;
 	padding: 20px 0;
 	text-align: center;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #FFFFFF;
+	background-color:#00796B
 }

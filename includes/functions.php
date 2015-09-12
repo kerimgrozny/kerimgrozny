@@ -32,4 +32,10 @@
         return $page_set;
     }
 
+    function prep_string($escaped_string){
+        global $connection;
+
+        $escaped_string = mysqli_real_escape_string($connection, $escaped_string);
+        return $escaped_string;
+    }
 ?>
