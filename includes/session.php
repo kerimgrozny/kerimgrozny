@@ -12,4 +12,8 @@
 		echo $_SESSION["Msg"];
 		$_SESSION["Msg"] = null;
     }
+	
+	function redirect_to($new_page){
+		header("Location:" . $new_page);	
+	}
 ?>
