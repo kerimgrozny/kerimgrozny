@@ -18,7 +18,8 @@
             <img class="img-responsive" src="images/serviceImages/websiteorder.jpg">
         </div>
 
-    </div>
-
+    </div><hr>
+    <?php commentsDisplay() ?>
+    <?php commentBlock(); ?>
 </div>
 <?php include("../includes/layouts/footer.php"); ?>

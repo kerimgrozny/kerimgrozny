@@ -16,7 +16,7 @@
         
         <div class="col-xs-12 col-lg-9" id="profilePage">
         	<h3>Данные профиля</h3>
-        	<table id="profileTable" class="table-hover">
+        	<table class="commonTable" class="table-hover">
 			<?php
 				$login = $_SESSION["User"];
             	$query = "SELECT * FROM user WHERE Login = '{$login}'";

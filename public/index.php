@@ -1,5 +1,6 @@
 <?php include("../includes/session.php"); ?>
 <?php require("../includes/db_connection.php"); ?>
+<?php include("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 <div class="container-fluid" id="content"><!--content container start-->
 	<div class="row">
@@ -272,48 +273,8 @@
 		</div>
 	</div><!--content row end--><hr>
 	
-	<div class="row"><!--content row start-->
-		<h1>Комментарии</h1>		
-		<div class="col-xs-12 col-lg-12">
-			<table border="1">
-			<?php
-				$query = "SELECT * FROM comment";
-				$result = mysqli_query($connection, $query);
-				
-				while($comment = mysqli_fetch_assoc($result)){
-					echo "<tr><td> ИД </td><td>" . $comment["ID"] . "</td></tr>";
-					echo "<tr><td> Тема </td><td>" . $comment["Name"] . "</td></tr>";
-					echo "<tr><td> Коментария </td><td>" . $comment["Comment"] . "</td></tr>";
-					echo "<tr><td> Сделал(а) </td><td>" . $comment["User"] . "</td></tr>";
-					echo "<tr><td> Дата </td><td>" . $comment["Date"] . "</td></tr>";
-				}
-			?>
-			</table>
-		</div>
-	</div>
-	<div class="row">
-        <div class="col-xs-12 col-lg-6">     
-            <form class="form-group" action="comment.php" method="POST" role="form">
-                <div class="form-inline">
-                    <label class="control-label col-sm-3">Тема:</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="Name" required>
-                    </div>
-                </div>
-                <div class="form-inline">
-                    <label class="control-label col-sm-3">Комментария:</label>
-                    <div class="col-sm-9">
-                        <textarea class="form-control" name="Comment" placeholder="Ваше комментария" required></textarea>
-                    </div>
-                </div>
-                <div class="form-inline">
-                    <div class="col-sm-12">
-                        <input type="submit" class="form-control" name="submit" value="Добавит"><hr>
-                    </div>
-                </div>
-            </form> 
-		</div>		
-	</div><!--content row end-->
+	<?php commentsDisplay() ?>
+    <?php commentBlock(); ?>
 </div>
 
 <?php include("../includes/layouts/footer.php"); ?>

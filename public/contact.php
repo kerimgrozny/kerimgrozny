@@ -1,6 +1,8 @@
 <?php include("../includes/session.php"); ?>
 <?php require("../includes/db_connection.php"); ?>
+<?php require("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
+
 <div class="container" id="contactContent"><!--content container start-->
     <div class="row"><!--content row start-->
         <h1>Свяжитесь</h1>
@@ -55,5 +57,9 @@
             <a href="facebook.ru"><img src="images/icons/google+.png"></a>
 		</div>
     </div>
+    
+    <?php commentsDisplay() ?>
+    <?php commentBlock(); ?>
+    
 </div>
 <?php include("../includes/layouts/footer.php"); ?>

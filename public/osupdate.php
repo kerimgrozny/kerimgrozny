@@ -49,5 +49,7 @@
             <a href="order.php"><button type="button" class="btn btn-info">Перейти к заказу</button></a><hr>
         </div>
     </div>
+    <?php commentsDisplay() ?>
+    <?php commentBlock(); ?>
 </div>
 <?php include("../includes/layouts/footer.php"); ?>

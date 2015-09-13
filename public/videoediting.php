@@ -18,5 +18,7 @@
         </div>
 
     </div>
+    <?php commentsDisplay() ?>
+    <?php commentBlock(); ?>
 </div>
 <?php include("../includes/layouts/footer.php"); ?>
