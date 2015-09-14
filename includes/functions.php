@@ -62,9 +62,7 @@
 				}
 			?>
 			</table>
-		</div>
-		
-    </div> <?php } 
+		</div> </div> <?php } 
 		
 	function commentBlock() { ?> <div class="row">
     	     

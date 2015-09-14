@@ -1,7 +1,6 @@
 <?php include("../includes/session.php"); ?>
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/functions.php"); ?>
-
 <?php
 	if(isset($_POST["submit"])){
 		if(!isset($_SESSION["User"])){

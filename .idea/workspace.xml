@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97b3493b-cca8-42f1-8a43-ad7937c45e08" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/blog_form_process.php" afterPath="$PROJECT_DIR$/public/blog_form_process.php" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\sites\kerimgrozny\includes\layouts\_notes\dwsync.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/db_connection.php" afterPath="$PROJECT_DIR$/includes/db_connection.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/functions.php" afterPath="$PROJECT_DIR$/includes/functions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.php" afterPath="$PROJECT_DIR$/public/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kerimgrozny.iws" />
@@ -41,6 +44,8 @@
             <state vertical-scroll-proportion="-3.238806">
               <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
               <folding>
+                <marker date="1442220673744" expanded="true" signature="179:647" placeholder="..." />
+                <marker date="1442220673744" expanded="true" signature="212:244" placeholder="..." />
                 <marker date="1442220673744" expanded="true" signature="382:403" placeholder="INSERT INTO ..." />
               </folding>
             </state>
@@ -50,19 +55,19 @@
       <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.4">
-              <caret line="68" column="49" selection-start-line="68" selection-start-column="49" selection-end-line="68" selection-end-column="49" />
+            <state vertical-scroll-proportion="-4.0">
+              <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
               <folding>
                 <element signature="n#find_all_subjects#0;n#!!top" expanded="false" />
                 <element signature="n#blogNavigation#0;n#!!top" expanded="false" />
                 <element signature="n#find_pages_for_subject#0;n#!!top" expanded="false" />
                 <element signature="n#prep_string#0;n#!!top" expanded="false" />
-                <element signature="e#1273#2188#0#HTML" expanded="false" />
+                <element signature="e#1273#2181#0#HTML" expanded="false" />
                 <element signature="e#1366#1401#0#HTML" expanded="true" />
                 <element signature="e#1406#2165#0#HTML" expanded="false" />
-                <element signature="e#2231#3213#0#HTML" expanded="false" />
-                <marker date="1442220706226" expanded="true" signature="902:944" placeholder="SELECT * FRO..blog_page..." />
-                <marker date="1442220706226" expanded="true" signature="1486:1507" placeholder="SELECT * FRO..comment..." />
+                <element signature="e#2224#3206#0#HTML" expanded="false" />
+                <marker date="1442251108071" expanded="true" signature="902:944" placeholder="SELECT * FRO..blog_page..." />
+                <marker date="1442251108071" expanded="true" signature="1486:1507" placeholder="SELECT * FRO..comment..." />
               </folding>
             </state>
           </provider>
@@ -307,8 +312,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12291667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -699,6 +704,8 @@
         <state vertical-scroll-proportion="-3.238806">
           <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
           <folding>
+            <marker date="1442220673744" expanded="true" signature="179:647" placeholder="..." />
+            <marker date="1442220673744" expanded="true" signature="212:244" placeholder="..." />
             <marker date="1442220673744" expanded="true" signature="382:403" placeholder="INSERT INTO ..." />
           </folding>
         </state>
@@ -717,19 +724,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.4">
-          <caret line="68" column="49" selection-start-line="68" selection-start-column="49" selection-end-line="68" selection-end-column="49" />
+        <state vertical-scroll-proportion="-4.0">
+          <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
           <folding>
             <element signature="n#find_all_subjects#0;n#!!top" expanded="false" />
             <element signature="n#blogNavigation#0;n#!!top" expanded="false" />
             <element signature="n#find_pages_for_subject#0;n#!!top" expanded="false" />
             <element signature="n#prep_string#0;n#!!top" expanded="false" />
-            <element signature="e#1273#2188#0#HTML" expanded="false" />
+            <element signature="e#1273#2181#0#HTML" expanded="false" />
             <element signature="e#1366#1401#0#HTML" expanded="true" />
             <element signature="e#1406#2165#0#HTML" expanded="false" />
-            <element signature="e#2231#3213#0#HTML" expanded="false" />
-            <marker date="1442220706226" expanded="true" signature="902:944" placeholder="SELECT * FRO..blog_page..." />
-            <marker date="1442220706226" expanded="true" signature="1486:1507" placeholder="SELECT * FRO..comment..." />
+            <element signature="e#2224#3206#0#HTML" expanded="false" />
+            <marker date="1442251108071" expanded="true" signature="902:944" placeholder="SELECT * FRO..blog_page..." />
+            <marker date="1442251108071" expanded="true" signature="1486:1507" placeholder="SELECT * FRO..comment..." />
           </folding>
         </state>
       </provider>

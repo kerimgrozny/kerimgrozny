@@ -2,7 +2,8 @@
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
-<div class="container-fluid" id="content"><!--content container start-->
+
+<div class="container-fluid" id="content"><!-- start: 1 container -->
 	<div class="row">
 
 	<!-- it works the same with all jquery version from 1.x to 2.x -->
@@ -238,9 +239,9 @@
 	</div>
 	<!-- Jssor Slider End -->
 	</div>
-</div><!--end: first contauiner -->
+</div><!-- end: first container -->
 
-<div class="container" id="content"><!--content container start-->
+<div class="container" id="content"><!-- start: 2 container -->
 	<div class="row"><!--content row start-->
 		<h1>Создание сайта</h1>
 		<div class="col-xs-12 col-md-6">
@@ -273,7 +274,6 @@
 	
 	<?php commentsDisplay() ?>
     <?php commentBlock(); ?>
-
-</div>
+</div><!-- end: 2 container --> 
 
 <?php include("../includes/layouts/footer.php"); ?>
