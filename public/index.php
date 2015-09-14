@@ -252,11 +252,9 @@
 				<li>Удобная навигация</li>
 				<li>Поддержка на любой экран</li>
 			</ul>
-			</p>
 		</div>
 		<div class="col-xs-12 col-md-6">
 			<img class="img-responsive" src="images/serviceImages/webdesign2.jpg" alt="Веб Дизайн">
-			</p>
 		</div>
 	</div><!--content row end--><hr>
 
@@ -275,6 +273,7 @@
 	
 	<?php commentsDisplay() ?>
     <?php commentBlock(); ?>
+
 </div>
 
 <?php include("../includes/layouts/footer.php"); ?>
