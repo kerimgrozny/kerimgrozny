@@ -1,9 +1,11 @@
 <?php
-    function find_all_subjects() {
+
+    function find_all_subjects(){
         global $connection;
 
         $query  = "SELECT * ";
         $query .= "FROM blog_subject ";
+
         $subject_set = mysqli_query($connection, $query);
         return $subject_set;   
     }
@@ -32,17 +34,17 @@
         return $page_set;
     }
 
-    function prep_string($escaped_string){
+    function escape_string($string){
         global $connection;
 
-        $escaped_string = mysqli_real_escape_string($connection, $escaped_string);
-        return $escaped_string;
+        $string = mysqli_real_escape_string($connection, $string);
+        return $string;
     }
 	
 	function commentsDisplay() { ?> <div class="row">
 
 		<h4><i>Оставить комментарию</i></h4>
-		<div class="col-xs-12 col-lg-12" style="background-color: peachpuff">
+		<div class="col-xs-12 col-lg-12">
 			<table class="commonTable">
 			<?php
 				global $connection;
@@ -66,7 +68,7 @@
 		
 	function commentBlock() { ?> <div class="row">
     	     
-		<div class="col-xs-12 col-lg-12" style="background-color:#9FC5FF">
+		<div class="col-xs-12 col-lg-12" style="background-color:#99D6EB">
 				<?php if(!isset($_SESSION["User"])){
 					echo "<h5><i>Вы еще не в системе, <a href=\"login.php\">войдите</a> чтобы сделать комментарии</i></h5>";
 				}

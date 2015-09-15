@@ -50,18 +50,39 @@
     padding: 0 10px;
 }
 
-#profileNav{
-	background-color:#5D7FAD;
-	color:#FFFFFF;
-	height: 600px;
+#profileNavigation{
+    background-color:#5D7FAD;
+    color:#FFFFFF;
+    height: 700px;
+    font-size: 1.2em;
+}
+#profileNavigation a, ul{
+    color: #fff;
+    list-style-type: none;
+    margin: 0 auto;
 }
 
+
 #profilePage{
-	border: 1px solid grey;
+    background-color: #C2D1E0;
+    height: 700px;
 }
 
 .commonTable tr td{
-    padding: 5px 50px;
+    padding: 5px 25px;
+}
+
+.commonTable{
+    border-radius: 25px;
+    background-color: #B2FFCC;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profileTable tr td{
+    padding: 5px 25px; 
+    font-size: 1.4em; 
 }
 
 #profileSecondRow{

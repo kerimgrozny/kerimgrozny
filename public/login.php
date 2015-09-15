@@ -1,15 +1,38 @@
 <?php include("../includes/session.php"); ?>
 <?php require("../includes/db_connection.php"); ?>
+<?php require("../includes/functions.php"); ?>
+<?php
+    if(isset($_POST["submit"])) {
+        $Login = escape_string($_POST["Login"]);
+        $Password = escape_string($_POST["Password"]);
+
+        $query  = "SELECT * FROM user ";
+        $query .= "WHERE Login = '{$Login}' ";
+        $query .= "AND Password = '{$Password}' ";
+        $loginCheck = mysqli_query($connection, $query);
+
+        if($loginCheck && mysqli_affected_rows($connection) == 1){
+            $_SESSION["User"] = $Login;
+            redirect_to("index.php");
+        }else{
+            $_SESSION["message"] = "<span class=\"text-danger\">Ошибка: неверный логин или пароль.</span>";
+        }
+    }
+?>
 <?php include("../includes/layouts/header.php"); ?>
 
 <div class="container" id="loginContent"><!--content container start-->
+
     <div class="row"><!--content row start-->
         <h1 class="text-primary">Логин</h1>
         <div class="col-xs-12 col-lg-6">
             <h3>Войдите в систему.</h3>
-            <?php if(isset($_SESSION["Msg"])){
-                showMsg();
-            }?>
+
+            <?php 
+                if(isset($_SESSION["message"])){
+                    message();
+                }
+            ?>
             <form class="form-group" action="login.php" method="POST" role="form">
                 <div class="form-inline">
                     <label class="control-label col-sm-2">Логин:</label>
@@ -30,23 +53,10 @@
                         <p id="register_note">Еще не зарегистрированы? <a href="registration.php">Регистрация</a> бесплатная</p>
                 </div>
             </form>
-            <?php
-                if(isset($_POST["submit"])) {
-                    $Login = mysqli_real_escape_string($connection, $_POST["Login"]);
-                    $Password = mysqli_real_escape_string($connection, $_POST["Password"]);
-
-                    $query  = "SELECT * FROM user ";
-                    $query .= "WHERE Login = '{$Login}' ";
-                    $query .= "AND Password = '{$Password}' ";
-                    $LoginCheck = mysqli_query($connection, $query);
-
-                    if(mysqli_affected_rows($connection) == 1){
-                        $_SESSION["User"] = $Login;
-                        redirect_to("index.php");
-                    }else{
-                        $_SESSION["Msg"] = "<span class=\"text-danger\">Ошибка: неверный логин или пароль.</span>";
-						showMsg();
-                    }
+            <?php 
+                if(isset($_SESSION["message"])){
+                    message();
+                    return; 
                 }
             ?>
         </div>

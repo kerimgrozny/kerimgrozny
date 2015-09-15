@@ -49,7 +49,7 @@
       <?php 
 		  }else{ ?>
         	<li><a href="profile.php"><span class="glyphicon glyphicon-user"></span> Профиль</a></li>
-        	<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Выйти</a></li>
+        	<li><a href="logout.php"><span class="glyphicon glyphicon-log-out onclick="confirm("Вы уверены?")"></span> Выйти</a></li>
       <?php } ?>				
         
       </ul>
