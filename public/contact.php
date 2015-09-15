@@ -15,19 +15,19 @@
             <form class="form-horizontal" role="form" method="post" action="index.php">
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">Имя</label>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <input type="text" class="form-control" id="name" name="name" value="">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <input type="email" class="form-control" id="email" name="email" value="">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="message" class="col-sm-2 control-label">Сообщение</label>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <textarea class="form-control" rows="4" name="message"></textarea>
                     </div>
                 </div>
@@ -57,9 +57,8 @@
             <a href="facebook.ru"><img src="images/icons/google+.png"></a>
 		</div>
     </div>
-    
+	
     <?php commentsDisplay() ?>
-    <?php commentBlock(); ?>
-    
+	<?php commentBlock(); ?> 
 </div>
 <?php include("../includes/layouts/footer.php"); ?>
