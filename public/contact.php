@@ -3,14 +3,10 @@
 <?php require("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 
-<div class="container" id="contactContent"><!--content container start-->
-    <div class="row"><!--content row start-->
-        <h1>Свяжитесь</h1>
-        <?php
-			if(!isset($_SESSION["User"])){
-				echo "Чтобы оправить сообшение, вы должны быть в системе.";
-			}
-		?>
+<div class="container" class="contactContainer"><!--start: contactContainer -->
+    <div class="row">
+        <h1 class="center">Свяжитесь</h1>
+
         <div class="col-xs-12 col-lg-6"><hr>
             <form class="form-horizontal" role="form" method="post" action="index.php">
                 <div class="form-group">
@@ -42,12 +38,8 @@
                         <input id="submit" name="submit" type="submit" value="Отправить" class="btn btn-primary">
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-4 col-sm-offset-2">
-                        <! Will be used to display an alert to the user>
-                    </div>
-                </div>
-            </form><hr>
+            </form>
+            <hr>
         </div>
 
 		<div class="col-xs-12 col-lg-6">

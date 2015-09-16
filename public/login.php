@@ -24,9 +24,9 @@
 <div class="container" id="loginContent"><!--content container start-->
 
     <div class="row"><!--content row start-->
-        <h1 class="text-primary">Логин</h1>
+        <h1 class="center">Логин</h1>
         <div class="col-xs-12 col-lg-6">
-            <h3>Войдите в систему.</h3>
+            <h3 class="center">Войдите в систему.</h3>
 
             <?php 
                 if(isset($_SESSION["message"])){
@@ -50,7 +50,7 @@
                     <div class="col-sm-12">
                         <input type="submit" class="form-control" name="submit" value="Войти">
                     </div>
-                        <p id="register_note">Еще не зарегистрированы? <a href="registration.php">Регистрация</a> бесплатная</p>
+                        <p>Еще не зарегистрированы? <a href="registration.php">Регистрация</a> бесплатная</p>
                 </div>
             </form>
             <?php 
@@ -62,7 +62,7 @@
         </div>
 
         <div class="col-xs-12 col-lg-6">
-            <h3>Когда в системе вы сможете:</h3>
+            <h3 class="center">Когда в системе вы сможете:</h3>
             <ul>
                 <li>Коментировать в страницах</li>
                 <li>Найти пользователей</li>

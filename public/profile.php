@@ -14,10 +14,16 @@
         <div class="col-xs-12 col-lg-3" id="profileNavigation">
         	<h3>Навигация</h3>
             <ul>
-                <li><a href="profile.php">Имя Фамилия Очество</a></li>
-                <li><a href="profile.php">Возраст</a></li>
-                <li><a href="profile.php">Проживание</a></li>
-                <li><a href="profile.php">Образование</a></li>
+                <li><a href="profile.php?basic">Основные</a></li>
+                <li><a href="profile.php?account">Аккаунт</a></li>
+                <hr>
+                <li><a href="profile.php">Круг</a></li>
+                <li><a href="profile.php">Интересы</a></li>
+                <li><a href="profile.php">Посты</a></li>
+                <hr>
+                <div class="avatar">
+                 
+                </div>
             </ul>
         </div>
         
@@ -31,16 +37,24 @@
             	$query = "SELECT * FROM user WHERE Login = '{$login}'";
 				$result = mysqli_query($connection, $query);
 				
-				while($user = mysqli_fetch_assoc($result)) {
-					echo "<tr><td> Мой ID: </td><td>" . $user["ID"] . "<td/></tr>";
-					echo "<tr><td> Логин: </td><td>" . $user["Login"] . "<td/></tr>";
-					echo "<tr><td> Пароль: </td><td>" . $user["Password"] . "<td/></tr>";
-					echo "<tr><td> Имя: </td><td>" . $user["FirstName"] . "<td/></tr>";
-					echo "<tr><td> Фамилия: </td><td>" . $user["LastName"] . "<td/></tr>";
-					echo "<tr><td> Дата рождение: </td><td>" . $user["DOB"] . "<td/></tr>";
-					echo "<tr><td> Пол: </td><td>" . $user["Gender"] . "<td/></tr>";
-					echo "<tr><td> Дата: регистрация </td><td>" . $user["RegDate"] . "<td/></tr>";
-				}
+				if(isset($_GET["basic"])) {
+                    while($user = mysqli_fetch_assoc($result)) {                  
+    					echo "<tr><td> Фамилия: </td><td>" . $user["LastName"] . "<td/></tr>";
+    					echo "<tr><td> Имя: </td><td>" . $user["FirstName"] . "<td/></tr>";
+    					echo "<tr><td> Дата рождение: </td><td>" . $user["DOB"] . "<td/></tr>";
+    					echo "<tr><td> Пол: </td><td>" . $user["Gender"] . "<td/></tr>";
+    					echo "<tr><td> Дата: регистрация </td><td>" . $user["RegDate"] . "<td/></tr>";
+				    }
+                }elseif(isset($_GET["account"])) {
+                    while($user = mysqli_fetch_assoc($result)) {                  
+                        echo "<tr><td> Мой ID: </td><td>" . $user["ID"] . "<td/></tr>";
+                        echo "<tr><td> Логин: </td><td>" . $user["Login"] . "<td/></tr>";
+                        echo "<tr><td> Пароль: </td><td>" . $user["Password"] . "<td/></tr>";
+                    }
+                }else{
+                    echo "<h5>Выберите из меню</h5>";
+                }
+
             ?>
             </table>  	
        

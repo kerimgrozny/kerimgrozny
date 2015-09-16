@@ -43,7 +43,7 @@
 	
 	function commentsDisplay() { ?> <div class="row">
 
-		<h4><i>Оставить комментарию</i></h4>
+		<h4 class="center"><i>Оставить комментарию</i></h4>
 		<div class="col-xs-12 col-lg-12">
 			<table class="commonTable">
 			<?php
@@ -70,7 +70,7 @@
     	     
 		<div class="col-xs-12 col-lg-12" style="background-color:#99D6EB">
 				<?php if(!isset($_SESSION["User"])){
-					echo "<h5><i>Вы еще не в системе, <a href=\"login.php\">войдите</a> чтобы сделать комментарии</i></h5>";
+					echo "<h5 class=\"center\"><i>Вы еще не в системе, <a href=\"login.php\">войдите</a> чтобы сделать комментарии</i></h5>";
 				}
 				?>
 			<form class="form-group" action="comment.php" method="POST" role="form">

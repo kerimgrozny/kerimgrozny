@@ -5,17 +5,16 @@
 
 <div class="container" id="blogContainer"><!--start: 1 container-->
     <div class="row">
-        <h1>Блог</h1>
-
+        <h1 class="center">Блог</h1>
         <div class="col-xs-12 col-lg-2" id="blogSideBar">
-            <h3>Темы</h3>
+            <h3 class="center">Темы</h3>
             <?php $subject_set = find_all_subjects();
                 echo blogNavigation($subject_set);
             ?>
         </div>
 
         <div class="col-xs-12 col-lg-10" id="blog_page">
-            <h3>Обсуждении</h3><hr>
+            <h3 class="center">Обсуждении</h3><hr>
             <table id="blogTable">
 			<?php
                 if(isset($_GET["subject"])){
@@ -38,17 +37,11 @@
         <div class="col-xs-12 col-lg-10"  id="blogCommentForm">
                 <?php
                     if(!isset($_SESSION["User"])) {
-                        $_SESSION["Msg"] = "<h5>Чтобы создать или написать пост вы должны быть в системе. ";
-                        $_SESSION["Msg"] .= "<a href=\"login.php\">Войти</a></h5>";
-                        showMsg();
+                        $_SESSION["message"] = "<h5>Чтобы создать или написать пост вы должны быть в системе. ";
+                        $_SESSION["message"] .= "<a href=\"login.php\">Войти</a></h5>";
+                        message();
                     }
                     ?>
-                    <?php
-                    // if susbmits comment without logged in redirect.
-                    if(isset($_POST["submit"])){
-                        loginNeeded();
-                    }
-                ?>
             <form class="form-inline" action="blog_form_process.php?id=<?php urlencode($_GET['subject']); ?>" role="form" id="blogAddForm" method="POST">
                 <div class="form-group">
                     <div class="col-sm-12">
