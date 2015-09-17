@@ -18,7 +18,7 @@
         mysqli_free_result($subject_set);
     }
 
-    function blogNavigation($find_all_subjects) {
+    function subjectNavigation($find_all_subjects) {
         $output = "<ul>";
             $subject_set = $find_all_subjects;
             while($subject = mysqli_fetch_assoc($subject_set)) {
@@ -50,15 +50,8 @@
     	$query = "SELECT * FROM user";
     	$user_set = mysqli_query($connection, $query);
     	confirm_query($user_set);
-
-    	while($user = mysqli_fetch_assoc($user_set)){
-    		$output  = "<ul><li>";
-    		$output .= $user["Login"];
-    		$output .= "<li></ul>";
-
-    		return $output;
-    		mysqli_free_result($user_set);
-    	}
+    	return $user_set;
+    	mysqli_free_result($user_set);
     }
 
     function escape_string($string){

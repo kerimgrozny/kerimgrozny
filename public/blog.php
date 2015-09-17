@@ -1,3 +1,4 @@
+<title>You are on blog page.</title>
 <?php require_once("../includes/session.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
@@ -7,19 +8,33 @@
     <div class="row">
         <h1 class="center">Блог</h1>
         <div class="col-xs-12 col-lg-2" id="blogSideBar">
-            <h3 class="center">Темы</h3>
-            <?php $subject_set = find_all_subjects();
-                echo blogNavigation($subject_set);
+            <h4>Темы</h4>
+            <?php 
+                $subject_set = find_all_subjects();
+                echo subjectNavigation($subject_set);
             ?>
             <hr>
-            <h3 class="center">Пользователи</h3>
-            <?php echo find_all_users(); ?>
+            <h4>Пользователи</h4>
+            <?php 
+                $user_set = find_all_users();           
+                while($user = mysqli_fetch_assoc($user_set)){
+                    $output  = "<ul><li style=\"color: green\">";
+                    $output .= "<a href=\"blog.php?user=";
+                    $output .= $user["Login"];
+                    $output .= "\"";
+                    $output .= ">";
+                    $output .= $user["Login"];
+                    $output .= "<li></ul>";
+                    $output .= "</a>";
+                    echo $output;
+                }
+            ?>
         </div>
-
         <div class="col-xs-12 col-lg-10" id="blog_page">
-            <h3 class="center">Обсуждении</h3><hr>
+            <hr>
             <table id="blogTable">
 			<?php
+                // Fetches pages for selected subject
                 if(isset($_GET["subject"])){
                     $page_set = find_pages_for_subject($_GET["subject"]);
                     while($page = mysqli_fetch_assoc($page_set)) {
@@ -29,18 +44,36 @@
                         echo "<tr><td>Дата: </td><td>" . $page["CreatedDate"]."</td></tr>";
                     }	
                 }else{
-					echo "<note>Выберите тему из списка</note>";
+					echo "<p>Выберите из меню</p>";
 				}
+
+                // Fetches info for selected user
+                if(isset($_GET["user"])){
+                    $query = "SELECT * FROM user WHERE Login = '{$_GET["user"]}'";
+                    $userinfo = mysqli_query($connection, $query);
+
+                    while($user = mysqli_fetch_assoc($userinfo));                 
+                        echo "<tr><td> ID: </td><td>" . $user["ID"] . "</td></tr>";
+                        echo "<tr><td> Логин: </td><td>" . $user["Login"] . "</td></tr>";                        
+                        echo "<tr><td> Фамилия: </td><td>" . $user["LastName"] . "</td></tr>";
+                        echo "<tr><td> Имя: </td><td>" . $user["FirstName"] . "</td></tr>";
+                        echo "<tr><td> Дата рождение: </td><td>" . $user["DOB"] . "</td></tr>";
+                        echo "<tr><td> Пол: </td><td>" . $user["Gender"] . "</td></tr>";
+                        echo "<tr><td> Дата: регистрация </td><td>" . $user["RegDate"] . "</td></tr>";
+                }                
             ?>
             </table><hr>
         </div>
     </div>
 
     <div class="row" id="blogCommentRow">
+        <div class="col-xs-12 col-lg-2">
+            
+        </div>
         <div class="col-xs-12 col-lg-10"  id="blogCommentForm">
                 <?php
                     if(!isset($_SESSION["User"])) {
-                        $_SESSION["message"] = "<h5>Чтобы создать или написать пост вы должны быть в системе. ";
+                        $_SESSION["message"] = "<h5 class=\"center\">Чтобы создать или написать пост вы должны быть в системе. ";
                         $_SESSION["message"] .= "<a href=\"login.php\">Войти</a></h5>";
                         message();
                     }
