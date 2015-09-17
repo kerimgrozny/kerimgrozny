@@ -44,7 +44,6 @@
                     }	
                 }else{
 					echo "<p>Выберите из меню</p>";
-                    echo "<a style=\"float:right\" href=\"add_subject.php\"><button>Добавить запись</button></a>";
 				}
 
                 // Fetches info for selected user
@@ -61,7 +60,9 @@
                         $output.= "<tr><td> Пол: </td><td>" . $user["Gender"] . "</td></tr>";
                         $output.= "<tr><td> Дата: регистрация </td><td>" . $user["RegDate"] . "</td></tr>";
                         echo $output;
-                }                
+                }
+                    echo "<a style=\"float:right\" href=\"add_subject.php\"><button>Добавить запись</button></a>";
+                
             ?>
             </table><hr>
         </div>
@@ -79,7 +80,7 @@
                         message();
                     }
                     ?>
-            <form class="form-inline" action="blog_form_process.php?id=<?php urlencode($_GET['subject']); ?>" role="form" id="blogAddForm" method="POST">
+            <form class="form-inline" action="blog_form_process.php" role="form" id="blogAddForm" method="POST">
                 <div class="form-group">
                     <div class="col-sm-12">
                         <textarea cols="100" rows="10" class="form-control" name="Message" placeholder="Ваш пост.." required></textarea>
@@ -91,15 +92,6 @@
                     </div>
                 </div>
             </form>
-            <?php
-                if(isset($_GET["submit"])){
-                    $Message = $_GET["Message"];
-                    $CreatedBy = $_SESSION["User"];
-                    $SubjectID = $_GET["subject"];
-
-                    echo $GLOBALS["SubjectID"];
-                }
-            ?>
         </div>
     </div>
 </div>

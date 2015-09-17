@@ -2,7 +2,8 @@
 <?php require("../includes/db_connection.php"); ?>
 <?php require("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
-
+<title>Заказать сайт в Грозном</title>
+<meta name="description" content="KerimGrozny - создание эффективных сайтов в Грозном у нас вы сможете заказать сайт по низкой цене, профессиональный дизайн и расширенная функциональность">
 <div class="container" id="content"><!--content container start-->
     <div class="row"><!--content row start-->
         <h1 class="center">Создание и дизайн сайта</h1>
