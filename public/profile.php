@@ -12,7 +12,7 @@
         <h1>Профиль</h1>  
 
         <div class="col-xs-12 col-lg-3" id="profileNavigation">
-        	<h3>Навигация</h3>
+        	<h3 class="center">Навигация</h3>
             <ul>
                 <li><a href="profile.php?basic">Основные</a></li>
                 <li><a href="profile.php?account">Аккаунт</a></li>
@@ -28,7 +28,7 @@
         </div>
         
         <div class="col-xs-12 col-lg-9" id="profilePage">
-        	<h3>Информация</h3>
+        	<h3 class="center">Информация</h3>
 
         	<table class="profileTable">
 			<?php

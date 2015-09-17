@@ -1,13 +1,21 @@
 <?php
+	
+	function confirm_query($result_set){
+		if (!$result_set) {
+			die("Запрос к базе данных не удалось.");
+		}		
+	}
 
     function find_all_subjects(){
         global $connection;
 
         $query  = "SELECT * ";
-        $query .= "FROM blog_subject ";
-
+        $query .= "FROM blog_subject";
         $subject_set = mysqli_query($connection, $query);
-        return $subject_set;   
+        confirm_query($subject_set);
+        
+        return $subject_set;
+        mysqli_free_result($subject_set);
     }
 
     function blogNavigation($find_all_subjects) {
@@ -31,7 +39,26 @@
         $SubjectID = $_GET["subject"];
         $query = "SELECT * FROM blog_page WHERE SubjectID = $SubjectID";
         $page_set = mysqli_query($connection, $query);
+        confirm_query($page_set);
         return $page_set;
+        mysqli_free_result($page_set);        
+    }
+
+    function find_all_users(){
+    	global $connection;
+
+    	$query = "SELECT * FROM user";
+    	$user_set = mysqli_query($connection, $query);
+    	confirm_query($user_set);
+
+    	while($user = mysqli_fetch_assoc($user_set)){
+    		$output  = "<ul><li>";
+    		$output .= $user["Login"];
+    		$output .= "<li></ul>";
+
+    		return $output;
+    		mysqli_free_result($user_set);
+    	}
     }
 
     function escape_string($string){
@@ -41,9 +68,7 @@
         return $string;
     }
 	
-	function commentsDisplay() { ?> <div class="row">
-
-		<h4 class="center"><i>Оставить комментарию</i></h4>
+	function commentsDisplay() { ?> <div class="row" class="commentDiv">
 		<div class="col-xs-12 col-lg-12">
 			<table class="commonTable">
 			<?php
@@ -64,37 +89,40 @@
 				}
 			?>
 			</table>
-		</div> </div> <?php } 
-		
-	function commentBlock() { ?> <div class="row">
-    	     
-		<div class="col-xs-12 col-lg-12" style="background-color:#99D6EB">
-				<?php if(!isset($_SESSION["User"])){
-					echo "<h5 class=\"center\"><i>Вы еще не в системе, <a href=\"login.php\">войдите</a> чтобы сделать комментарии</i></h5>";
-				}
-				?>
-			<form class="form-group" action="comment.php" method="POST" role="form">
-				<div class="form-inline">
-					<label class="control-label col-sm-3">Тема:</label>
-					<div class="col-sm-9">
-						<input type="text" class="form-control" name="Name" required>
+		</div></div><?php } 
+	
+
+	function commentBlock() { ?> 
+		<div class="row">
+			<div class="col-xs-12 col-lg-12" style="background-color:#99D6EB">
+					<?php if(!isset($_SESSION["User"])){
+						echo "<h5 class=\"center\"><i>Вы еще не в системе, <a href=\"login.php\">войдите</a> чтобы сделать комментарии</i></h5>";
+					}
+					?>
+				<form class="form-group" action="comment.php" method="POST" role="form">
+						<h4 class="center"><i>Оставить комментарию</i></h4>   	     	
+
+					<div class="form-inline">
+						<label class="control-label col-sm-3">Тема:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="Name" required>
+						</div>
 					</div>
-				</div>
-				<div class="form-inline">
-					<label class="control-label col-sm-3">Комментария:</label>
-					<div class="col-sm-9">
-						<textarea cols="50" rows="5" class="form-control" name="Comment" required></textarea>
+					<div class="form-inline">
+						<label class="control-label col-sm-3">Комментария:</label>
+						<div class="col-sm-9">
+							<textarea cols="50" rows="5" class="form-control" name="Comment" required></textarea>
+						</div>
 					</div>
-				</div>
-				<div class="form-inline">
-					<div class="col-sm-12">
-						<input type="submit" class="form-control" name="submit" value="Добавит"><hr>
+					<div class="form-inline">
+						<div class="col-sm-12">
+							<input type="submit" class="form-control" name="submit" value="Добавит"><hr>
+						</div>
 					</div>
-				</div>
-			</form> 
-		</div>	
-			
-    </div> <?php }        
+				</form> 
+			</div>					
+	    </div> 
+	    <?php }        
     
 
 ?>

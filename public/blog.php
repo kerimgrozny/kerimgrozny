@@ -11,6 +11,9 @@
             <?php $subject_set = find_all_subjects();
                 echo blogNavigation($subject_set);
             ?>
+            <hr>
+            <h3 class="center">Пользователи</h3>
+            <?php echo find_all_users(); ?>
         </div>
 
         <div class="col-xs-12 col-lg-10" id="blog_page">

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <title>KerimGrozny</title>
+  <title>Создание сайтов в Грозном</title>
+  <meta name="description" content="KerimGrozny - создание эффективных сайтов в Грозном у нас вы сможете заказать сайт по низкой цене, профессиональный дизайн и расширенная функциональность">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">

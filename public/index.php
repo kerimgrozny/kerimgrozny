@@ -3,9 +3,8 @@
 <?php include("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 
-<div class="container-fluid" id="content"><!-- start: 1 container -->
+<div class="container-fluid"><!-- start: slideshow container -->
 	<div class="row">
-
 	<!-- it works the same with all jquery version from 1.x to 2.x -->
 	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 	<!-- use jssor.slider.mini.js (40KB) instead for release -->
@@ -239,15 +238,16 @@
 	</div>
 	<!-- Jssor Slider End -->
 	</div>
-</div><!-- end: first container -->
+</div><!-- end: slideshow container -->
 
-<div class="container" id="content"><!-- start: 2 container -->
+<div class="container" class="content"><!-- start: 2 container -->
 	<div class="row"><!--content row start-->
 		<h1 class="center">Создание сайта</h1>
 		<div class="col-xs-12 col-md-6">
 			<p>Всего за несколько дней Вы можете стать обладателем собственного сайта в сети Интернет. Создание недорогих и качественных сайтов, а также их последующее обслуживание и продвижение - основной вид нашей деятельности.
 				Наше предложение для тех, кто осознает всю важность своего присутствия в глобальной сети Интернет.
-			<ul class="ulList">
+			</p><hr>
+			<ul>
 				<li>Элегантный дизайн</li>
 				<li>Расширенный функциональность</li>
 				<li>Удобная навигация</li>
@@ -272,7 +272,7 @@
 		</div>
 	</div><!--content row end--><hr>
 	
-	<?php commentsDisplay() ?>
+	<?php commentsDisplay(); ?>
     <?php commentBlock(); ?>
 </div><!-- end: 2 container --> 
 
