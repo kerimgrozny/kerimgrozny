@@ -61,8 +61,9 @@
         return $string;
     }
 	
-	function commentsDisplay() { ?> <div class="row" class="commentDiv">
+	function commentsDisplay() { ?> <div class="row" style="background:#6C91B5;color:#fff">
 		<div class="col-xs-12 col-lg-12">
+			<h4 class="center">Коментарии</h4>
 			<table class="commonTable">
 			<?php
 				global $connection;
@@ -87,13 +88,13 @@
 
 	function commentBlock() { ?> 
 		<div class="row">
-			<div class="col-xs-12 col-lg-12" style="background-color:#99D6EB">
+			<div class="col-xs-12 col-lg-12" style="background-color:#336699;color:#fff">
 					<?php if(!isset($_SESSION["User"])){
 						echo "<h5 class=\"center\"><i>Вы еще не в системе, <a href=\"login.php\">войдите</a> чтобы сделать комментарии</i></h5>";
 					}
 					?>
 				<form class="form-group" action="comment.php" method="POST" role="form">
-						<h4 class="center"><i>Оставить комментарию</i></h4>   	     	
+						<h4 class="center">Оставить комментарию</h4>   	     	
 
 					<div class="form-inline">
 						<label class="control-label col-sm-3">Тема:</label>

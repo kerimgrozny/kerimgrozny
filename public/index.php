@@ -124,12 +124,12 @@
 				</div>
 				<div style="position: absolute; width: 480px; height: 120px; top: 30px; left: 30px; padding: 5px;
 					text-align: left; line-height: 60px; text-transform: uppercase; font-size: 50px;
-						color: #FFFFFF;">Web Development
+						color: #FFFFFF;">Веб Разработка
 				</div>
 				<div style="position: absolute; width: 480px; height: 120px; top: 300px; left: 30px; padding: 5px;
 					text-align: left; line-height: 36px; font-size: 30px;
 						color: #FFFFFF;">
-					Разработка профессиональных сайтов и дизайна
+					Разработка профессиональных и эффективных сайтов и дизайна
 					<!--Build your slider with anything, includes image, content, text, html, photo, picture-->
 				</div>
 			</div>
@@ -137,12 +137,12 @@
 				<img u="image" src="img/1920/purple.jpg" />
 				<div style="position: absolute; width: 480px; height: 120px; top: 30px; left: 30px; padding: 5px;
 					text-align: left; line-height: 60px; text-transform: uppercase; font-size: 50px;
-						color: #FFFFFF;">Фото и Видео услуги
+						color: #FFFFFF;">Видеомонтаж
 				</div>
 				<div style="position: absolute; width: 480px; height: 120px; top: 300px; left: 30px; padding: 5px;
 					text-align: left; line-height: 36px; font-size: 30px;
 						color: #FFFFFF;">
-					Качественный видеомонтаж любого стиля
+					Качественный и профессиональный видеомонтаж
 				</div>
 			</div>
 			<div>
@@ -242,6 +242,7 @@
 
 <div class="container" class="content"><!-- start: 2 container -->
 	<div class="row"><!--content row start-->
+	<hr>
 		<h1 class="center">Создание сайта</h1>
 		<div class="col-xs-12 col-md-6">
 			<p>Всего за несколько дней Вы можете стать обладателем собственного сайта в сети Интернет. Создание недорогих и качественных сайтов, а также их последующее обслуживание и продвижение - основной вид нашей деятельности.
@@ -260,7 +261,7 @@
 	</div><!--content row end--><hr>
 
 	<div class="row"><!--content row start-->
-		<h1 class="center">Профессиональный дизайн</h1>
+		<h2 class="center">Профессиональный дизайн</h2>
 		<div class="col-sm-12 col-md-6">
 			<img class="img-responsive" src="images/serviceImages/web_theme.png" alt="Веб дизайн темы">
 		</div>
@@ -269,6 +270,9 @@
 
 			<p>Сайт Бизнес - оптимальное сочетание возможностей и цены. В стоимость входит полный комплекс работ необходимых для запуска сайта: разработка дизайна, домен сайта, размещение в Интернет и обслуживание, возможность управления сайтом.
 			</p>
+		</div>
+		<div class="col-xs-12 col-md-12">
+			<h2 class="center">Рекомендовано для вас</h2>
 		</div>
 	</div><!--content row end--><hr>
 	

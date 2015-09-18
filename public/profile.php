@@ -35,10 +35,10 @@
 				$login = $_SESSION["User"];
 
             	$query = "SELECT * FROM user WHERE Login = '{$login}'";
-				$result = mysqli_query($connection, $query);
-				
+                $user_set = mysqli_query($connection, $query);
+                				
 				if(isset($_GET["basic"])) {
-                    while($user = mysqli_fetch_assoc($result)) {                  
+                    while($user = mysqli_fetch_assoc($user_set)) {                  
     					echo "<tr><td> Фамилия: </td><td>" . $user["LastName"] . "<td/></tr>";
     					echo "<tr><td> Имя: </td><td>" . $user["FirstName"] . "<td/></tr>";
     					echo "<tr><td> Дата рождение: </td><td>" . $user["DOB"] . "<td/></tr>";
@@ -46,7 +46,7 @@
     					echo "<tr><td> Дата: регистрация </td><td>" . $user["RegDate"] . "<td/></tr>";
 				    }
                 }elseif(isset($_GET["account"])) {
-                    while($user = mysqli_fetch_assoc($result)) {                  
+                    while($user = mysqli_fetch_assoc($user_set)) {                  
                         echo "<tr><td> Мой ID: </td><td>" . $user["ID"] . "<td/></tr>";
                         echo "<tr><td> Логин: </td><td>" . $user["Login"] . "<td/></tr>";
                         echo "<tr><td> Пароль: </td><td>" . $user["Password"] . "<td/></tr>";
@@ -54,6 +54,7 @@
                 }else{
                     echo "<h5>Выберите из меню</h5>";
                 }
+                mysqli_free_result($user_set);
 
             ?>
             </table>  	
