@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta name="description" content="KerimGrozny - создание эффективных сайтов в Грозном у нас вы сможете заказать сайт по низкой цене, профессиональный дизайн и расширенная функциональность">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -39,7 +38,7 @@
         </li>
         <li><a href="downloads.php">Загрузки</a></li>
         <li><a href="contact.php">Контакты</a></li>
-        <li><a href="blog.php">Блог</a></li>
+        <li><a href="blog.php">Форум</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" id="userTab">
       <?php

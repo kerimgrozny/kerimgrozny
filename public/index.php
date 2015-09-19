@@ -3,6 +3,7 @@
 <?php include("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 <title>Создание сайтов в Грозном</title>
+<meta name="description" content="KerimGrozny - создание эффективных сайтов в Грозном у нас вы сможете заказать сайт по низкой цене, профессиональный дизайн и расширенная функциональность">
 <div class="container-fluid"><!-- start: slideshow container -->
 	<div class="row">
 	<!-- it works the same with all jquery version from 1.x to 2.x -->

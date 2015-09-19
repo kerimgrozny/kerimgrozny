@@ -6,7 +6,7 @@
 <meta name="description" content="KerimGrozny - Форум чеченских программистов - здесь вы найдете программистов и всю информацию о програмирование">
 <div class="container"><!--start: 1 container-->
     <div class="row">
-        <h1 class="center">Блог</h1>
+        <h1 class="center">Форум</h1>
         <div class="col-xs-12 col-lg-2" id="blogSideBar">
             <hr>
             <h4>Темы</h4>
@@ -20,7 +20,7 @@
             <?php 
                 // Shows all users on sidebar
                 $user_set = findAllUsers();           
-                userNavigation($user_set);
+                echo userNavigation($user_set);
             ?>
         </div>
         <div class="col-xs-12 col-lg-10">
@@ -30,17 +30,16 @@
 			<?php
                 // Fetches pages for selected subject
                 if(isset($_GET["subject"])){
-                    $page_set = find_pages_for_subject($_GET["subject"]);
-                    while($page = mysqli_fetch_assoc($page_set)) {
-                        echo "<tr><td>Пользователь: </td><td>" . $page["CreatedBy"]."</td></tr>";                       
+                    $page_set = findPagesForSubject($_GET["subject"]);
+                    while($page = mysqli_fetch_assoc($page_set)){
                         echo "<tr><td>Номер поста: </td><td>" . $page["ID"]."</td></tr>";
                         echo "<tr><td>Пост: </td><td>" . $page["Content"]."</td></tr>";
                         echo "<tr><td>Дата: </td><td>" . $page["CreatedDate"]."</td></tr>";
+                        echo "<tr><td>Пользователь: </td><td>" . $page["CreatedBy"]."</td></tr>";                       
                     }	
                 }elseif(isset($_GET["user"])){
                     $query = "SELECT * FROM user WHERE Login = '{$_GET["user"]}'";
                     $userinfo = mysqli_query($connection, $query);
-
                     while($user = mysqli_fetch_assoc($userinfo)) {;                 
                         $output = "<tr><td> ID: </td><td>" . $user["ID"] . "</td></tr>";
                         $output.= "<tr><td> Логин: </td><td>" . $user["Login"] . "</td></tr>";                        
@@ -53,7 +52,6 @@
                     }
 				}else{
                     echo "<p>Выберите из меню</p>";
-                    echo "<a style=\"float:right\" href=\"add_subject.php\"><button>Добавить запись</button></a>";
                 } 
             ?>
             </table><hr>
@@ -65,15 +63,33 @@
                         message();
                     }
                 ?>
-                <form class="form-inline" action="blog_form_process.php?id=<?php urlencode($_GET['subject']); ?>" role="form" id="blogAddForm" method="POST">
+                <form class="form-inline" action="blog_form_process.php" role="form" method="POST">
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <textarea cols="100" rows="10" class="form-control" name="Message" placeholder="Ваш пост.." required></textarea>
+                            <textarea cols="80" rows="10" class="form-control" name="content" placeholder="Ваш пост.." required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <label class="control-label col-sm-2">Тема</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" name="subject" required>
+                                <option value=""></option>
+                                <?php $selectSubject = findAllSubjects(); 
+                                    while($subject = mysqli_fetch_assoc($selectSubject)){
+                                        $output  = "<option value=\"";
+                                        $output .= $subject["Name"];                                        
+                                        $output .= "\">";
+                                        $output .= $subject["Name"];
+                                        $output .= "</option>";
+                                        echo $output;
+                                    }
+                                ?>
+                            </select>                            
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-10">
-                            <button type="submit" name="submit" class="btn btn-primary">Добавит</button>
+                            <button type="submit" name="submit" class="btn btn-default">Добавит</button>
                         </div>
                     </div>
                 </form>
