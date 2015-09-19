@@ -2,6 +2,7 @@
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
+<?php include("../includes/comment_functions.php"); ?>
 
 <div class="container" id="content"><!--content container start-->
     <div class="row" xmlns="http://www.w3.org/1999/html">

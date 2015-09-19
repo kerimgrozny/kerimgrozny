@@ -2,7 +2,9 @@
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
-
+<?php include("../includes/comment_functions.php"); ?>
+<title>Видеомонтаж в Грозном</title>
+<meta name="description" content="KerimGrozny - Мы делам самый качественный видеомонтажо в Республике и принимем заказы а также съемки мы работаем совмество с агенствой ZolotayaNevesta.ru">
 <div class="container" id="content"><!--content container start-->
     <div class="row">
         <hr>

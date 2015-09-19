@@ -14,9 +14,9 @@
     function findPagesForSubject($subject){
         global $connection;
 
-        $query = "SELECT * FROM blog_page WHERE Subject = $subject";
+        $query = "SELECT * FROM blog_page WHERE Subject = '{$subject}'";
         $page_set = mysqli_query($connection, $query);
-        confirm_query($page_set);
+        //confirm_query($page_set);
         return $page_set;
         mysqli_free_result($page_set);        
     }
@@ -31,8 +31,8 @@
         $output = "<ul>";
             $subject_set = $find_all_subjects;
             while($subject = mysqli_fetch_assoc($subject_set)) {
-                $output .= "<li><a href=\"blog.php?subject=";
-                $output .=  $subject["ID"];
+                $output .= "<li><a href=\"forum.php?subject=";
+                $output .=  $subject["Name"];
                 $output .= "\">";
                 $output .=  $subject["Name"];
                 $output .= "</a></li>";
@@ -56,8 +56,8 @@
     	$output = "<ul>";
     	$user_set = $findAllUsers;
         while($user = mysqli_fetch_assoc($user_set)){
-            $output .= "<li style=\"color: green\">";
-            $output .= "<a href=\"blog.php?user=";
+            $output .= "<li>";
+            $output .= "<a href=\"forum.php?user=";
             $output .= $user["Login"];
             $output .= "\"";
             $output .= ">";

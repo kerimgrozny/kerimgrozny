@@ -2,7 +2,9 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php
-	if(isset($_POST["submit"])){
+	if(!isset($_SESSION["User"])) {
+		redirect_to("blog.php");
+	}if(isset($_POST["submit"])){
 	    $content = mysql_prep($_POST["content"]);
 	    $user = $_SESSION["User"];
 	    $subject = $_POST["subject"];

@@ -2,6 +2,7 @@
 <?php require("../includes/db_connection.php"); ?>
 <?php require("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
+<?php include("../includes/comment_functions.php"); ?>
 
 <div class="container" id="contactContainer"><!--start: contactContainer -->
     <div class="row" id="contactPage">

@@ -7,6 +7,9 @@
 <div class="container"><!--start: 1 container-->
     <div class="row">
         <h1 class="center">Форум</h1>
+        <h5 class="center">Добро пожаловать на официальный форум чеченских хаккеров программистов и начинающих.<br/> 
+        Тут вы найдете интересующую для вас информацию, о программистов, разработчиков и дизайнеров.<br/> А также поделиться новой информации, которым вам бы хотелось с другими.
+        </h5>
         <div class="col-xs-12 col-lg-2" id="blogSideBar">
             <hr>
             <h4>Темы</h4>
@@ -32,10 +35,19 @@
                 if(isset($_GET["subject"])){
                     $page_set = findPagesForSubject($_GET["subject"]);
                     while($page = mysqli_fetch_assoc($page_set)){
-                        echo "<tr><td>Номер поста: </td><td>" . $page["ID"]."</td></tr>";
-                        echo "<tr><td>Пост: </td><td>" . $page["Content"]."</td></tr>";
-                        echo "<tr><td>Дата: </td><td>" . $page["CreatedDate"]."</td></tr>";
-                        echo "<tr><td>Пользователь: </td><td>" . $page["CreatedBy"]."</td></tr>";                       
+                        $output  = "<tr><td>Номер поста: </td><td>";
+                        $output .= $page["ID"];
+                        $output .= "</td></tr>";
+                        $output .= "<tr><td>Пост: </td><td>";
+                        $output .= $page["Content"];
+                        $output .= "</td></tr>";
+                        $output .= "<tr><td>Дата: </td><td>";
+                        $output .= $page["CreatedDate"];
+                        $output .= "</td></tr>";
+                        $output .= "<tr><td>Пользователь: </td><td>";
+                        $output .= $page["CreatedBy"];
+                        $output .= "</td></tr>";
+                        echo $output;                       
                     }	
                 }elseif(isset($_GET["user"])){
                     $query = "SELECT * FROM user WHERE Login = '{$_GET["user"]}'";

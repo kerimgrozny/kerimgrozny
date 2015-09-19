@@ -2,7 +2,7 @@
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
-
+<?php include("../includes/comment_functions.php"); ?>
 <div class="container" id="content"><!--content container start-->
     <div class="row"><!--content row start-->
         <h1 class="center">Обновлении ОС</h1>

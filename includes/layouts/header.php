@@ -30,15 +30,15 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Услуги<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="zakazat_sayt.php">Профессиональный сайт</a></li>
-            <li><a href="videoediting.php">Видеомонтаж</a></li>
+            <li><a href="videomontazh.php">Видеомонтаж</a></li>
             <li><a href="logo.php">Логотип</a></li>
             <li><a href="osupdate.php">Прошивка Android И PC</a></li><br>
-            <li><a href="order.php">Заказать услугу</a></li>
+            <li><a href="zakazat.php">Заказать услугу</a></li>
           </ul>
         </li>
         <li><a href="downloads.php">Загрузки</a></li>
         <li><a href="contact.php">Контакты</a></li>
-        <li><a href="blog.php">Форум</a></li>
+        <li><a href="forum.php">Форум</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" id="userTab">
       <?php

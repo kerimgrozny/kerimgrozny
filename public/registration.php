@@ -1,6 +1,7 @@
 <?php include("../includes/session.php"); ?>
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
+<?php include("../includes/comment_functions.php"); ?>
 
 <div class="container" id="content"><!--content container start-->
     <div class="row"><!--content row start-->
@@ -96,5 +97,9 @@
             <hr> 
         </div>
     </div>
+    <?php
+        commentsDisplay();
+        commentBlock();
+    ?>
 </div>
 <?php include("../includes/layouts/footer.php"); ?>

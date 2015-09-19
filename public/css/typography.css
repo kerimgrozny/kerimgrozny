@@ -63,7 +63,9 @@ ul li{
 
 
 #blogTable{
-	border: 1px #DDDDDD solid;
+    background-color: #F0F0F0;
+    border-radius: 25px;
+
 }
 
 #blogTable tr td{

@@ -6,6 +6,7 @@
 ?>
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
+<?php include("../includes/comment_functions.php"); ?>
 
 <div class="container" id="profileContainer">
     <div class="row">
