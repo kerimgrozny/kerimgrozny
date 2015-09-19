@@ -1,5 +1,5 @@
 h1,h2,h3,h4,h5,h6{
-    margin: 25px;
+    margin: 40px;
 }
 
 .center{
@@ -31,6 +31,16 @@ ul li{
     height: 20px;
 }
 
+#contactContainer{
+    background-color: #E6E6E6;
+}
+
+#contactPage{
+    background-color: #ffffff;
+    margin: 20px 5px;
+    border: 1px solid #cccccc;
+}
+
 #footer img{
     margin-top: 10px;
     width: 25px;
@@ -52,29 +62,12 @@ ul li{
 }
 
 
-#blog_page{
-    border: 0px solid black;    
-}
-
 #blogTable{
 	border: 1px #DDDDDD solid;
 }
 
 #blogTable tr td{
 	padding: 10px;
-}
-
-#blogCommentForm{
-    float: right;
-    margin: 25px 0;
-}
-
-#blogCommentRow{
-    background-color: #85A3C2;
-}
-
-.form-inline {
-    padding: 0 10px;
 }
 
 #profileNavigation{

@@ -3,8 +3,8 @@
 <?php require("../includes/functions.php"); ?>
 <?php
     if(isset($_POST["submit"])) {
-        $Login = escape_string($_POST["Login"]);
-        $Password = escape_string($_POST["Password"]);
+        $Login = mysql_prep($_POST["Login"]);
+        $Password = mysql_prep($_POST["Password"]);
 
         $query  = "SELECT * FROM user ";
         $query .= "WHERE Login = '{$Login}' ";

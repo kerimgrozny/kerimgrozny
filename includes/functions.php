@@ -6,14 +6,13 @@
 		}		
 	}
 
-    function find_all_subjects(){
+    function findAllSubjects(){
         global $connection;
 
         $query  = "SELECT * ";
         $query .= "FROM blog_subject";
         $subject_set = mysqli_query($connection, $query);
-        confirm_query($subject_set);
-        
+        confirm_query($subject_set);       
         return $subject_set;
         mysqli_free_result($subject_set);
     }
@@ -44,7 +43,7 @@
         mysqli_free_result($page_set);        
     }
 
-    function find_all_users(){
+    function findAllUsers(){
     	global $connection;
 
     	$query = "SELECT * FROM user";
@@ -54,14 +53,28 @@
     	mysqli_free_result($user_set);
     }
 
-    function escape_string($string){
-        global $connection;
-
-        $string = mysqli_real_escape_string($connection, $string);
-        return $string;
+    function userNavigation($user_set){
+        while($user = mysqli_fetch_assoc($user_set)){
+            $output  = "<ul><li style=\"color: green\">";
+            $output .= "<a href=\"blog.php?user=";
+            $output .= $user["Login"];
+            $output .= "\"";
+            $output .= ">";
+            $output .= $user["Login"];
+            $output .= "<li></ul>";
+            $output .= "</a>";
+            echo $output;
+        }    	
     }
+
+	function mysql_prep($string) {
+		global $connection;
+		
+		$escaped_string = mysqli_real_escape_string($connection, $string);
+		return $escaped_string;
+	}
 	
-	function commentsDisplay() { ?> <div class="row" style="background:#6C91B5;color:#fff">
+	function commentsDisplay() { ?> <hr><div class="row" style="background:#fff;color:#000">
 		<div class="col-xs-12 col-lg-12">
 			<h4 class="center">Коментарии</h4>
 			<table class="commonTable">
@@ -88,7 +101,7 @@
 
 	function commentBlock() { ?> 
 		<div class="row">
-			<div class="col-xs-12 col-lg-12" style="background-color:#336699;color:#fff">
+			<div class="col-xs-12 col-lg-12" style="background-color:#fff;color:#000">
 					<?php if(!isset($_SESSION["User"])){
 						echo "<h5 class=\"center\"><i>Вы еще не в системе, <a href=\"login.php\">войдите</a> чтобы сделать комментарии</i></h5>";
 					}
@@ -97,14 +110,14 @@
 						<h4 class="center">Оставить комментарию</h4>   	     	
 
 					<div class="form-inline">
-						<label class="control-label col-sm-3">Тема:</label>
-						<div class="col-sm-9">
+						<label class="control-label col-sm-2">Тема:</label>
+						<div class="col-sm-10">
 							<input type="text" class="form-control" name="Name" required>
 						</div>
 					</div>
 					<div class="form-inline">
-						<label class="control-label col-sm-3">Комментария:</label>
-						<div class="col-sm-9">
+						<label class="control-label col-sm-2">Комментария:</label>
+						<div class="col-sm-10">
 							<textarea cols="50" rows="5" class="form-control" name="Comment" required></textarea>
 						</div>
 					</div>
@@ -113,7 +126,8 @@
 							<input type="submit" class="form-control" name="submit" value="Добавит"><hr>
 						</div>
 					</div>
-				</form> 
+				</form>
+
 			</div>					
 	    </div> 
 	    <?php }        

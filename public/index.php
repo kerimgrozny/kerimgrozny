@@ -2,7 +2,7 @@
 <?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
-
+<title>Создание сайтов в Грозном</title>
 <div class="container-fluid"><!-- start: slideshow container -->
 	<div class="row">
 	<!-- it works the same with all jquery version from 1.x to 2.x -->
