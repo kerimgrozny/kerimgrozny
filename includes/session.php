@@ -8,8 +8,13 @@
 	}
 	
     function message(){
-		echo $_SESSION["message"];
-		$_SESSION["message"] = null;
-    }
+    	if(isset($_SESSION["message"])) {
+    		$output  = "<h4 class=\"center\" style=\"color:#FF6666\">";
+			$output .= $_SESSION["message"];
+    		$output .= "</h4>";
+    		echo $output;
+			$_SESSION["message"] = null;
+		}
+    }  
 
 ?>

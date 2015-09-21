@@ -6,7 +6,7 @@
 <meta name="description" content="KerimGrozny - Форум чеченских программистов - здесь вы найдете программистов и всю информацию о програмирование">
 <div class="container"><!--start: 1 container-->
     <div class="row">
-        <h1 class="center">Форум</h1>
+        <h1 class="center"><a href="forum.php">Форум</a></h1>
         <h5 class="center">Добро пожаловать на официальный форум чеченских хаккеров программистов и начинающих.<br/> 
         Тут вы найдете интересующую для вас информацию, о программистов, разработчиков и дизайнеров.<br/> А также поделиться новой информации, которым вам бы хотелось с другими.
         </h5>
@@ -28,7 +28,7 @@
         </div>
         <div class="col-xs-12 col-lg-10">
             <hr>
-            <h4 class="center">Содержание</h4>            
+            <h4 class="center">Содержание</h4>
             <table id="blogTable">
 			<?php
                 // Fetches pages for selected subject
@@ -47,7 +47,9 @@
                         $output .= "<tr><td>Пользователь: </td><td>";
                         $output .= $page["CreatedBy"];
                         $output .= "</td></tr>";
-                        echo $output;                       
+                        $output .= "<tr><td><a href=\"edit_delete.php?id=".urlencode($page["ID"])."&user=".urlencode($page["CreatedBy"])."\">Изменить</a></td>";
+                        $output .= "<td><a href=\"delete_post.php?id=".urlencode($page["ID"])."&user=".urlencode($page["CreatedBy"])."\">Удалить</a></td></tr>";
+                        echo $output;
                     }	
                 }elseif(isset($_GET["user"])){
                     $query = "SELECT * FROM user WHERE Login = '{$_GET["user"]}'";
@@ -66,14 +68,11 @@
                     echo "<p>Выберите из меню</p>";
                 } 
             ?>
-            </table><hr>
+            </table>
+            <hr>
             <div class="col-xs-12 col-lg-10">
                 <?php
-                    if(!isset($_SESSION["User"])) {
-                        $_SESSION["message"] = "<h5 class=\"center\">Чтобы создать или написать пост вы должны быть в системе. ";
-                        $_SESSION["message"] .= "<a href=\"login.php\">Войти</a></h5>";
-                        message();
-                    }
+                    message();
                 ?>
                 <form class="form-inline" action="blog_form_process.php" role="form" method="POST">
                     <div class="form-group">

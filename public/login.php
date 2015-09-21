@@ -15,7 +15,7 @@
             $_SESSION["User"] = $Login;
             redirect_to("index.php");
         }else{
-            $_SESSION["message"] = "<span class=\"text-danger\">Ошибка: неверный логин или пароль.</span>";
+            $_SESSION["message"] = "Ошибка: неверный логин или пароль.";
         }
     }
 ?>
