@@ -24,7 +24,7 @@
             <h4>Пользователи</h4>
             <?php 
                 // displays list of all users on sidebar
-                $user_set = findAllUsers();           
+                $user_set = fetchAllUsers();           
                 echo userNavigation($user_set);
             ?>
         </div>

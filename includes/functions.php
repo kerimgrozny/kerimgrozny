@@ -26,7 +26,7 @@
         mysqli_free_result($subject_set);
     }
 
-    function findAllUsers(){
+    function fetchAllUsers(){
     	global $connection;
 
     	$query = "SELECT * FROM user";
@@ -60,11 +60,13 @@
         $query = "SELECT * FROM blog_page WHERE Subject = '{$subject}'";
         $page_set = mysqli_query($connection, $query);
         confirm_query($page_set);
-        return $page_set;      
+        return $page_set;
+        mysqli_free_result($page_set);    
     }
 
-    function pagesForSelectedSubject($subject){                	
-        while($page = mysqli_fetch_assoc($page_set)){
+    function pagesForSelectedSubject($page_set){                	
+        $pages = $page_set;
+        while($page = mysqli_fetch_assoc($pages)){
             $output  = "<tr><td>Номер поста: </td><td>";
             $output .= $page["ID"];
             $output .= "</td></tr>";
@@ -90,6 +92,7 @@
 
         $query = "SELECT * FROM user WHERE Login = '{$selected_user}'";
         $user_set = mysqli_query($connection, $query);
+        confirm_query($user_set);
         while($user = mysqli_fetch_assoc($user_set)) {;                 
             $output = "<tr><td> ID: </td><td>" . $user["ID"] . "</td></tr>";
             $output.= "<tr><td> Логин: </td><td>" . $user["Login"] . "</td></tr>";                        
