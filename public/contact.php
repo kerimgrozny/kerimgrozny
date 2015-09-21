@@ -53,9 +53,9 @@
         <div class="col-xs-12 col-lg-4"><hr>
             <p style="margin: 10px;color:#FF6666">Соц сети</p>
             <p style="margin: 10px"><a href="https://www.facebook.com/kerim.timirbulatov"><img src="images/icons/fb.png" style="width: 25px;float:left;margin:10px 0px;"></a></p>
-            <p style="margin: 10px"><a href="https://www.facebook.com/kerim.timirbulatov"><img src="images/icons/ok.png" style="width: 25px;float:left;margin:10px 10px;"></a></p>
-            <p style="margin: 10px"><a href="https://www.facebook.com/kerim.timirbulatov"><img src="images/icons/youtube.png" style="width: 25px;float:left;margin:10px 0px;"></a></p>
-            <p style="margin: 10px"><a href="https://www.facebook.com/kerim.timirbulatov"><img src="images/icons/google+.png" style="width: 25px;float:left;margin:10px 10px;"></a></p>
+            <p style="margin: 10px"><a href=""><img src="images/icons/ok.png" style="width: 25px;float:left;margin:10px 10px;"></a></p>
+            <p style="margin: 10px"><a href=""><img src="images/icons/youtube.png" style="width: 25px;float:left;margin:10px 0px;"></a></p>
+            <p style="margin: 10px"><a href=""><img src="images/icons/google+.png" style="width: 25px;float:left;margin:10px 10px;"></a></p>
         </div><hr>
 
     </div>

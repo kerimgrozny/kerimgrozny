@@ -2,6 +2,7 @@ h1,h2,h3,h4,h5,h6{
     margin: 40px;
 }
 
+/* centers all elements with class */
 .center{
     margin: 40px 0;
     text-align: center;
@@ -63,7 +64,7 @@ ul li{
 
 
 #blogTable{
-    background-color: #F0F0F0;
+    background-color: #E6F0FA;
     border-radius: 25px;
 
 }
@@ -109,4 +110,8 @@ ul li{
 
 .commentsDisplay{
     background-color: green;
+}
+
+#forum hr{
+    border-top: 1px solid #C0C0C0;
 }

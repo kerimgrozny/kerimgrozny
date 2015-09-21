@@ -13,7 +13,7 @@
 			redirect_to("forum.php");			
 		}
 	}else{
-		$_SESSION["message"] = "Вы не сможете удалять чужие сообщении.";
+		$_SESSION["message"] = "Вы не можете удалять чужие сообщении.";
 		redirect_to("forum.php");		
 	}
 ?>
