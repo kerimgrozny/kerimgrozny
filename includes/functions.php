@@ -60,11 +60,10 @@
         $query = "SELECT * FROM blog_page WHERE Subject = '{$subject}'";
         $page_set = mysqli_query($connection, $query);
         confirm_query($page_set);
-        return $page_set;
-        mysqli_free_result($page_set);        
+        return $page_set;      
     }
 
-    function pagesForSelectedSubject($page_set){
+    function pagesForSelectedSubject($subject){                	
         while($page = mysqli_fetch_assoc($page_set)){
             $output  = "<tr><td>Номер поста: </td><td>";
             $output .= $page["ID"];
@@ -82,6 +81,7 @@
             $output .= "<td><a href=\"delete_post.php?id=".urlencode($page["ID"])."&user=".urlencode($page["CreatedBy"])."\">Удалить</a></td></tr>";
             $output .= "<tr><td><hr></td><td><hr></td></tr>";
             return $output;
+       	 	mysqli_free_result($page_set);        
         }			 	
     }
 
