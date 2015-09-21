@@ -6,7 +6,10 @@
 	$User = $_GET["user"];
 	$query = "DELETE FROM blog_page WHERE ID = {$ID} AND CreatedBy = '{$User}' LIMIT 1";
 
-	if($_SESSION["User"] == $User){
+	if(!isset($_SESSION["User"])){
+		$_SESSION["message"] = "Вы еще не в системе";
+		redirect_to("forum.php");
+	}elseif($_SESSION["User"] == $User){
 		$result = mysqli_query($connection, $query);
 		if($result){
 			$_SESSION["message"] = "Сообщение успешно удалено.";

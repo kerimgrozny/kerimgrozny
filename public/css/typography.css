@@ -1,5 +1,6 @@
-h1,h2,h3,h4,h5,h6{
+h1,h2,h3{
     margin: 40px;
+    font-family: 'Poiret One', cursive;
 }
 
 /* centers all elements with class */
@@ -11,7 +12,9 @@ h1,h2,h3,h4,h5,h6{
 
 p{
     margin: 1em;
-    font-size: 120%
+    font-size: 120%;
+    font-family: 'Raleway', sans-serif;
+
 }
 
 ul li{
@@ -19,8 +22,13 @@ ul li{
     font-family: Arial;
     line-height: 200%;
     color: black;
+    font-family: 'Raleway', sans-serif;
 }
 
+a:hover{
+    text-decoration: none;
+    color: #003366;
+}
 .commentDiv{
     background-color: #336699;
     width: auto;
@@ -114,4 +122,8 @@ ul li{
 
 #forum hr{
     border-top: 1px solid #C0C0C0;
+}
+
+.form-group label, .form-group div{
+    margin: 5px 0px;
 }

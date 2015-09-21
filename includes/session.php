@@ -9,9 +9,9 @@
 	
     function message(){
     	if(isset($_SESSION["message"])) {
-    		$output  = "<h4 class=\"center\" style=\"color:#FF6666\">";
+    		$output  = "<h5 class=\"center\" style=\"color:#FF6666\">";
 			$output .= $_SESSION["message"];
-    		$output .= "</h4>";
+    		$output .= "</h5>";
     		echo $output;
 			$_SESSION["message"] = null;
 		}

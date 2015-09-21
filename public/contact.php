@@ -7,7 +7,7 @@
 <div class="container" id="contactContainer"><!--start: contactContainer -->
     <div class="row" id="contactPage">
         <div class="col-xs-12 col-lg-8"><hr>
-            <h3 style="margin: 25px">Свяжитесь с нами</h3>
+            <h2 class="center">Свяжитесь с нами</h2>
             <p  style="margin: 25px">Мы здесь, чтобы ответить на любые вопросы, которые у вас могут возникнуть о нашем сайте или сервисе. 
             Обратитесь к нам, и мы ответим, как только сможем.</p>
             <form class="form-horizontal" role="form">

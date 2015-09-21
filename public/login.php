@@ -22,16 +22,13 @@
 <?php include("../includes/layouts/header.php"); ?>
 
 <div class="container" id="loginContent"><!--content container start-->
-
     <div class="row"><!--content row start-->
         <h1 class="center">Логин</h1>
         <div class="col-xs-12 col-lg-6">
             <h3 class="center">Войдите в систему.</h3>
 
             <?php 
-                if(isset($_SESSION["message"])){
-                    message();
-                }
+                message();
             ?>
             <form class="form-group" action="login.php" method="POST" role="form">
                 <div class="form-inline">
@@ -54,10 +51,7 @@
                 </div>
             </form>
             <?php 
-                if(isset($_SESSION["message"])){
-                    message();
-                    return; 
-                }
+                message();
             ?>
         </div>
 

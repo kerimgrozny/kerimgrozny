@@ -4,7 +4,7 @@
 <?php include("../includes/layouts/header.php"); ?>
 <?php include("../includes/comment_functions.php"); ?>
 <title>Создание сайтов в Грозном</title>
-<meta name="description" content="KerimGrozny - Создание эффективных сайтов в Грозном у нас вы сможете заказать сайт по низкой цене, профессиональный дизайн и расширенная функциональность">
+<meta name="description" content="Создание эффективных сайтов в Грозном у нас вы сможете заказать сайт по низкой цене, профессиональный дизайн и расширенная функциональность и техподдержка">
 <div class="container-fluid"><!-- start: slideshow container -->
 	<div class="row">
 	<!-- it works the same with all jquery version from 1.x to 2.x -->
@@ -131,7 +131,7 @@
 				<div style="position: absolute; width: 480px; height: 120px; top: 300px; left: 30px; padding: 5px;
 					text-align: left; line-height: 36px; font-size: 30px;
 						color: #FFFFFF;">
-					Разработка профессиональных и эффективных сайтов и дизайна
+					Разработка профессиональных сайтов в Грозном
 					<!--Build your slider with anything, includes image, content, text, html, photo, picture-->
 				</div>
 			</div>
@@ -144,7 +144,7 @@
 				<div style="position: absolute; width: 480px; height: 120px; top: 300px; left: 30px; padding: 5px;
 					text-align: left; line-height: 36px; font-size: 30px;
 						color: #FFFFFF;">
-					Качественный и профессиональный видеомонтаж
+					Качественный и эффективный видеомонтаж
 				</div>
 			</div>
 			<div>
@@ -274,7 +274,7 @@
 			</p>
 		</div>
 		<div class="col-xs-12 col-md-12">
-			<h2 class="center">Рекомендовано для вас</h2>
+			<h2 class="center"></h2>
 		</div>
 	</div><!--content row end--><hr>
 	

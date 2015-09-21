@@ -1,14 +1,13 @@
 <?php include("../includes/session.php"); ?>
 <?php require("../includes/db_connection.php"); ?>
+<?php require("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
-<?php include("../includes/comment_functions.php"); ?>
 
 <div class="container" id="content"><!--content container start-->
     <div class="row"><!--content row start-->
-        <h1>Регистрация</h1>
+        <h1 class="center">Регистрация</h1>
         <div class="col-xs-12 col-lg-6">
-            <form class="form-group" action="registration.php" method="POST" role="form">
-
+            <form class="form-group" action="register_process.php" method="POST" role="form">
                 <div class="form-inline">
                     <label class="control-label col-sm-2">Логин:</label>
                     <div class="col-sm-10">
@@ -73,30 +72,30 @@
         <div class="col-xs-12 col-lg-6">
             <?php
                 if(isset($_POST['submit'])){
-                    $Login     = mysqli_real_escape_string($connection, $_POST['Login']);
-                    $Password  = mysqli_real_escape_string($connection, $_POST['Password']);
-                    $Email     = mysqli_real_escape_string($connection, $_POST['Email']);
-                    $FirstName = mysqli_real_escape_string($connection, $_POST['FirstName']);
-                    $LastName  = mysqli_real_escape_string($connection, $_POST['LastName']);   
-                    $DOB       = $_POST['DOB'];       
+                    $Login     = mysql_prep($_POST['Login']);
+                    $Password  = mysql_prep($_POST['Password']);
+                    $Email     = mysql_prep($_POST['Email']);
+                    $FirstName = mysql_prep($_POST['FirstName']);
+                    $LastName  = mysql_prep($_POST['LastName']); 
+                    $DOB       = (int)$_POST['DOB'];       
                     $Gender    = $_POST['Gender'];
-                    $Telephone = mysqli_real_escape_string($connection, $_POST['Telephone']);
+                    $Telephone = $_POST['Telephone'];
 
                     $query  = "INSERT INTO user (Login, Password, Email, FirstName, LastName, DOB, Gender, Telephone) ";
-                    $query .= "VALUES ('$Login', '$Password', '$Email', '$FirstName', '$LastName', '$DOB', '$Gender', $Telephone)";
+                    $query .= "VALUES ('{$Login}', '{$Password}', '{$Email}', '{$FirstName}', '{$LastName}', {$DOB}, '{$Gender}', '{$Telephone}')";
                     $result = mysqli_query($connection, $query);
+                    confirm_query($result);
 
-                    if(mysqli_affected_rows($connection) > 0){
-                        $alert = "<span class=\"text-success\">Регистрация прошла успешно, войдите ипользуя логин и пароль веденные вами. </span>";
-                        echo $alert;
-                        echo "<a href=\"login.php\"> Войти</a>";
-                        $alert = null;
+                    if($result){
+                        $_SESSION["message"] = "Регистрация прошла успешно, войдите ипользуя логин и пароль веденные вами.";
+                        redirect_to("login.php");
                     }
                 }
             ?>
             <hr> 
         </div>
     </div>
+<?php include("../includes/comment_functions.php"); ?>
     <?php
         commentsDisplay();
         commentBlock();
