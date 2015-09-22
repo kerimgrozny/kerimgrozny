@@ -31,7 +31,6 @@
         <div class="col-xs-12 col-lg-10">
             <hr>
             <h4 class="center">Содержание</h4>
-            <table id="blogTable">
     			<?php
                     // display pages that belong to selected subject.
                     if(isset($_GET["subject"])){
