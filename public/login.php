@@ -26,9 +26,8 @@
         <h1 class="center">Логин</h1>
         <div class="col-xs-12 col-lg-6">
             <h3 class="center">Войдите в систему.</h3>
-
             <?php 
-                message();
+                succMsg();
             ?>
             <form class="form-group" action="login.php" method="POST" role="form">
                 <div class="form-inline">
@@ -51,7 +50,7 @@
                 </div>
             </form>
             <?php 
-                message();
+                succMsg();
             ?>
         </div>
 

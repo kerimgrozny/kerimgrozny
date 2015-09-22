@@ -7,7 +7,17 @@
 		exit;		
 	}
 	
-    function message(){
+    function succMsg(){
+    	if(isset($_SESSION["message"])) {
+    		$output  = "<h5 class=\"center\" style=\"color:#66ff66\">";
+			$output .= $_SESSION["message"];
+    		$output .= "</h5>";
+    		echo $output;
+			$_SESSION["message"] = null;
+		}
+    }
+
+    function failMsg(){
     	if(isset($_SESSION["message"])) {
     		$output  = "<h5 class=\"center\" style=\"color:#FF6666\">";
 			$output .= $_SESSION["message"];
@@ -15,6 +25,6 @@
     		echo $output;
 			$_SESSION["message"] = null;
 		}
-    }  
+    }
 
 ?>

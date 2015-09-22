@@ -44,10 +44,9 @@
                         echo "<p>Выберите из меню</p>";
                     } 
                 ?>
-            </table><hr>
             <div class="col-xs-12 col-lg-10">
                 <?php
-                    message();
+                    succMsg();
                 ?>
                 <form class="form-inline" action="create_post.php" role="form" method="POST">
                     <div class="form-group">
