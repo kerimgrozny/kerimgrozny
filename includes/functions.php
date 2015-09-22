@@ -27,18 +27,18 @@
     }
 
     function fetchAllUsers(){
-    	global $connection;
+        global $connection;
 
-    	$query = "SELECT * FROM user";
-    	$user_set = mysqli_query($connection, $query);
-    	confirm_query($user_set);
-    	return $user_set;
-    	mysqli_free_result($user_set);
+        $query = "SELECT * FROM user";
+        $user_set = mysqli_query($connection, $query);
+        confirm_query($user_set);
+        return $user_set;
+        mysqli_free_result($user_set);
     }
 
     function userNavigation($findAllUsers){
-    	$output = "<ul>";
-    	$user_set = $findAllUsers;
+        $output = "<ul>";
+        $user_set = $findAllUsers;
         while($user = mysqli_fetch_assoc($user_set)){
             $output .= "<li>";
             $output .= "<a href=\"forum.php?user=";
@@ -50,7 +50,7 @@
             $output .= "<li>";
         }
         $output .= "</ul>";
-	    return $output;  	
+        return $output;     
         mysqli_free_result($user_set);
     }
 
@@ -64,7 +64,7 @@
         mysqli_free_result($page_set);    
     }
 
-    function pagesForSelectedSubject($page_set){                	
+    function pagesForSelectedSubject($page_set){                    
         $pages = $page_set;
         while($page = mysqli_fetch_assoc($pages)){
             $output  = "<tr><td>Номер поста: </td><td>";
@@ -83,12 +83,12 @@
             $output .= "<td><a href=\"delete_post.php?id=".urlencode($page["ID"])."&user=".urlencode($page["CreatedBy"])."\">Удалить</a></td></tr>";
             $output .= "<tr><td><hr></td><td><hr></td></tr>";
             return $output;
-       	 	mysqli_free_result($page_set);        
-        }			 	
+            mysqli_free_result($page_set);        
+        }               
     }
 
     function selectedUserInfo($selected_user){
-    	global $connection;
+        global $connection;
 
         $query = "SELECT * FROM user WHERE Login = '{$selected_user}'";
         $user_set = mysqli_query($connection, $query);
@@ -102,20 +102,20 @@
             $output.= "<tr><td> Пол: </td><td>" . $user["Gender"] . "</td></tr>";
             $output.= "<tr><td> Дата: регистрация </td><td>" . $user["RegDate"] . "</td></tr>";
             return $output;
-        }    	
+        }       
     }
-	
-	function confirm_query($result_set){
-		if (!$result_set) {
-			die("Запрос к базе данных не удалось.");
-		}		
-	}
+    
+    function confirm_query($result_set){
+        if (!$result_set) {
+            die("Запрос к базе данных не удалось.");
+        }       
+    }
 
-	function mysql_prep($string) {
-		global $connection;
-		
-		$escaped_string = mysqli_real_escape_string($connection, $string);
-		return $escaped_string;
-	}
+    function mysql_prep($string) {
+        global $connection;
+        
+        $escaped_string = mysqli_real_escape_string($connection, $string);
+        return $escaped_string;
+    }
 
 ?>
