@@ -15,11 +15,17 @@
         $query  = "INSERT INTO user (Login, Password, Email, FirstName, LastName, DOB, Gender, Telephone) ";
         $query .= "VALUES ('{$Login}', '{$Password}', '{$Email}', '{$FirstName}', '{$LastName}', '{$DOB}', '{$Gender}', '{$Telephone}')";
         $result = mysqli_query($connection, $query);
-        confirm_query($result);
+        // checks if login is availble
+        $loginCheck = "SELECT * FROM user WHERE Login = '{$Login}'";
 
         if($result){
-            $_SESSION["message"] = "Регистрация прошла успешно, войдите ипользуя логин и пароль веденные вами.";
+            $_SESSION["succMsg"] = "Регистрация прошла успешно, войдите ипользуя логин и пароль веденные вами.";
             redirect_to("login.php");
+        }elseif($loginCheck){
+            $_SESSION["failMsg"] = "Такой логин уже зарегистрирован, выберите другой.";
+            redirect_to("registration.php");
+        }else{
+            $_SESSION["failMsg"] = "Ошибка регистрации, ведите снова или повторите позже.";
         }
     }else{
     	redirect_to("registration.php");

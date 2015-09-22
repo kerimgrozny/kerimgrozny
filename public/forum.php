@@ -44,6 +44,7 @@
                         echo "<p>Выберите из меню</p>";
                     } 
                 ?>
+                <?php succMsg(); failMsg(); ?>                
             <div class="col-xs-12 col-lg-10">
                 <?php
                     succMsg();

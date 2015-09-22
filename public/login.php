@@ -15,7 +15,7 @@
             $_SESSION["User"] = $Login;
             redirect_to("index.php");
         }else{
-            $_SESSION["message"] = "Ошибка: неверный логин или пароль.";
+            $_SESSION["failMsg"] = "Ошибка: неверный логин или пароль.";
         }
     }
 ?>
@@ -46,11 +46,11 @@
                     <div class="col-sm-12">
                         <input type="submit" class="form-control" name="submit" value="Войти">
                     </div>
-                        <p>Еще не зарегистрированы? <a href="registration.php">Регистрация</a> бесплатная</p>
                 </div>
             </form>
+            <p>Еще не зарегистрированы? <a href="registration.php">Регистрация</a> бесплатная</p>
             <?php 
-                succMsg();
+                failMsg();
             ?>
         </div>
 

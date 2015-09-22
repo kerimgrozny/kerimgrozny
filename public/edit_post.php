@@ -2,25 +2,23 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php
+    // if not logged in
 	if(!isset($_SESSION["User"])){
+        $_SESSION["failMsg"] = "Вы еще не в системе";
 		redirect_to("forum.php");
-	}
-?>
-<?php 
-	$ID      = (int)$_GET["ID"];
-	$Content = $_GET["Content"];
-	$User    = $_GET["User"];
-	$Subject = $_GET["Subject"];	
-?>
-<?php
-	if(isset($submit)){
+    // if tries to edit other's comment 
+    }elseif($_GET["User"] != $_SESSION["User"]) {
+        $_SESSION["failMsg"] = "Вы не можете изменить чужие посты.";
+        redirect_to("forum.php");
+    // perform query
+	}elseif(isset($_POST["submit"])) {   
 		$Content = mysql_prep($_POST["Content"]);
 		$Subject = $_POST["Subject"];
 
 		$query  = "INSERT INTO blog_page ";
 		$query .= "(Content, CreatedBy, Subject) ";
 		$query .= "VALUES ('{$Content}', '{$User}', '{$Subject}')";
-		$query .= "WHERE ID = {$ID}";
+		$query .= "WHERE ID = {$_GET["ID"]}";
 
 		$result = mysqli_query($connection, $query);
 		if(mysqli_affected_rows($connection) == 1){
@@ -28,7 +26,6 @@
 		}
 	}
 ?>
-
 <?php include("../includes/layouts/header.php"); ?>
 <title>Изменить пост</title>
 <meta name="description" content="KerimGrozny - Форум чеченских программистов - здесь вы найдете программистов и всю информацию о програмирование">
@@ -62,17 +59,17 @@
                 <?php
                     succMsg();
                 ?>
-                <form class="form-inline" action="create_post.php" role="form" method="POST">
+                <form class="form-inline" action="edit_post.php" role="form" method="POST">
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required><?php echo $Content ?></textarea>
+                            <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required><?php echo $_GET["Content"] ?></textarea>
                         </div>
                     </div>
                     <div class="form-inline">
                         <label class="control-label col-sm-2">Тема</label>
                         <div class="col-sm-12">
                             <select class="form-control" name="Subject" required>
-                                <option value="<?php echo $Subject ?>" selected><?php echo $Subject ?></option>
+                                <option value="<?php echo $_GET["Subject"] ?>" selected><?php echo $_GET["Subject"] ?></option>
                                 <?php $selectSubject = fetchAllSubjects(); 
                                     while($subject = mysqli_fetch_assoc($selectSubject)){
                                         $output  = "<option value=\"";

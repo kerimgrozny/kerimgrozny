@@ -7,6 +7,7 @@
     <div class="row"><!--content row start-->
         <h1 class="center">Регистрация</h1>
         <div class="col-xs-12 col-lg-6">
+            <?php failMsg() ?>
             <form class="form-group" action="register_process.php" method="POST" role="form">
                 <div class="form-inline">
                     <label class="control-label col-sm-2">Логин:</label>

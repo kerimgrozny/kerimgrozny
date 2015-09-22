@@ -3,11 +3,11 @@
 <?php require_once("../includes/functions.php"); ?>
 <?php
 	if(!isset($_POST["submit"])){
-		redirect_to("forum.php");
+		redirect_to("forum.php"); 
 	}elseif(!isset($_SESSION["User"])) {
 		$_SESSION["message"] = "Вы еще не в системе.";
 		redirect_to("forum.php");
-	}elseif(isset($_POST["submit"])){
+	}else{
 	    $content = mysql_prep($_POST["content"]);
 	    $user = $_SESSION["User"];
 	    $subject = $_POST["subject"];
@@ -18,7 +18,7 @@
     	$result = mysqli_query($connection, $query);
 
     	if($result && mysqli_affected_rows($connection) == 1){
-    		$_SESSION["message"] = "Добавлен успешно.";
+    		$_SESSION["succMsg"] = "Добавлен успешно.";
     		redirect_to("forum.php");
     	}
     }
