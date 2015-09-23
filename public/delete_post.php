@@ -5,7 +5,7 @@
 	if(isset($_GET["ID"], $_GET["User"], $_GET["Subject"])) {
 		$query = "DELETE FROM blog_page WHERE ID = {$_GET["ID"]} AND CreatedBy = '{$_GET["User"]}' LIMIT 1";
 		if(!isset($_SESSION["User"])){
-			$_SESSION["failMsg"] = "Вы еще не в системе";
+        	$_SESSION["failMsg"] = "Вы еще не в системе, войдите чтобы удалить.";
 			redirect_to("forum.php?subject=".$_GET["Subject"]);
 		}elseif($_SESSION["User"] == $_GET["User"]){
 			$result = mysqli_query($connection, $query);
@@ -14,7 +14,7 @@
 				redirect_to("forum.php");			
 			}
 		}else{
-			$_SESSION["failMsg"] = "Вы не можете удалять чужие сообщении.";
+			$_SESSION["failMsg"] = "Вы не можете удалять чужие посты.";
 			redirect_to("forum.php?subject=".$_GET["Subject"]);
 		} 
 	}else{

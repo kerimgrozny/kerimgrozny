@@ -2,28 +2,41 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php
-    // if not logged in
-	if(!isset($_SESSION["User"])){
-        $_SESSION["failMsg"] = "Вы еще не в системе";
-		redirect_to("forum.php");
-    // if tries to edit other's comment 
-    }elseif($_GET["User"] != $_SESSION["User"]) {
-        $_SESSION["failMsg"] = "Вы не можете изменить чужие посты.";
+    if(isset($_GET["ID"], $_GET["User"], $_GET["Content"], $_GET["Subject"])) {
+        $ID = (int)$_GET["ID"];
+        $User = $_GET["User"];
+        $Subject = $_GET["Subject"];
+
+        $prevContent = mysqli_query($connection, "SELECT Content FROM blog_page WHERE ID = {$ID}");
+    }else{
         redirect_to("forum.php");
+    }
+
+    // if not logged in
+	if(!isset($_SESSION["User"])) {
+        $_SESSION["failMsg"] = "Вы еще не в системе, войдите чтобы редактировать.";
+        redirect_to("forum.php?subject=".$Subject);
+    // if tries to edit other's comment 
+    }elseif($_SESSION["User"] != $User) {
+        $_SESSION["failMsg"] = "Вы не можете редактировать чужие посты.";
+        redirect_to("forum.php?subject=".$Subject);
     // perform query
-	}elseif(isset($_POST["submit"])) {   
-		$Content = mysql_prep($_POST["Content"]);
-		$Subject = $_POST["Subject"];
+	}elseif(isset($_POST["submit"]) AND $User == $_SESSION["User"]) {   
+		$newContent = mysql_prep($_POST["Content"]);
+		$newSubject = $_POST["Subject"];
 
-		$query  = "INSERT INTO blog_page ";
-		$query .= "(Content, CreatedBy, Subject) ";
-		$query .= "VALUES ('{$Content}', '{$User}', '{$Subject}')";
-		$query .= "WHERE ID = {$_GET["ID"]}";
-
+		$query  = "UPDATE blog_page ";
+        $query .= "SET Content = '{$newContent}'";
+		$query .= "WHERE ID = {$ID}";
 		$result = mysqli_query($connection, $query);
-		if(mysqli_affected_rows($connection) == 1){
-			redirect_to("forum.php");
-		}
+
+        if(mysqli_query($connection, $query)) {
+            $_SESSION["succMsg"] = "Пост успешно обновлен.";            
+            redirect_to("forum.php?subject=".$Subject);
+        } else {
+            $_SESSION["failMsg"] = "Ощибка редактирование поста.";            
+            redirect_to("forum.php?subject=".$Subject);            
+        }        
 	}
 ?>
 <?php include("../includes/layouts/header.php"); ?>
@@ -62,7 +75,7 @@
                 <form class="form-inline" action="edit_post.php" role="form" method="POST">
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required><?php echo $_GET["Content"] ?></textarea>
+                            <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required><?php while($content = mysqli_fetch_assoc($prevContent)) { echo $content["Content"]; } ?></textarea>
                         </div>
                     </div>
                     <div class="form-inline">
