@@ -25,8 +25,8 @@
 		$newContent = mysql_prep($_POST["Content"]);
 		$newSubject = $_POST["Subject"];
 
-		$query  = "UPDATE blog_page ";
-        $query .= "SET Content = '{$newContent}'";
+		$query  = "UPDATE blog_page SET ";
+        $query .= "Content = '{$newContent}', ";
 		$query .= "WHERE ID = {$ID}";
 		$result = mysqli_query($connection, $query);
 
@@ -75,7 +75,9 @@
                 <form class="form-inline" action="edit_post.php" role="form" method="POST">
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required><?php while($content = mysqli_fetch_assoc($prevContent)) { echo $content["Content"]; } ?></textarea>
+                            <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required>
+                            <?php while($content = mysqli_fetch_assoc($prevContent)) { echo $content["Content"]; } ?>
+                            </textarea>
                         </div>
                     </div>
                     <div class="form-inline">
