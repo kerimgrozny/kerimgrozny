@@ -2,12 +2,10 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php
-    if(isset($_GET["ID"], $_GET["User"], $_GET["Content"], $_GET["Subject"])) {
-        $ID = (int)$_GET["ID"];
-        $User = $_GET["User"];
-        $Subject = $_GET["Subject"];
+    // set variables if there are sent with $_GET or redirect.
+    if(isset($_GET["ID"])) {
+        $query = "SELECT *"
 
-        $prevContent = mysqli_query($connection, "SELECT Content FROM blog_page WHERE ID = {$ID}");
     }else{
         redirect_to("forum.php");
     }
@@ -26,7 +24,7 @@
 		$newSubject = $_POST["Subject"];
 
 		$query  = "UPDATE blog_page SET ";
-        $query .= "Content = '{$newContent}', ";
+        $query .= "Content = '{$newContent}'";
 		$query .= "WHERE ID = {$ID}";
 		$result = mysqli_query($connection, $query);
 
