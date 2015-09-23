@@ -1,7 +1,30 @@
 <?php require_once("../includes/session.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
+<?php
+    // assemble query if ID isset
+    if(isset($_GET["ID"])){
+        $query = "SELECT * from blog_page WHERE ID = {$_GET['ID']}";
+        $result = mysqli_query($connection, $query);
+        while($row = mysqli_fetch_assoc($result)) {
+            $oldContent = $row["Content"];
+            $oldUser    = $row["CreatedBy"];
+            $oldSubject = $row["Subject"];
+        }        
+    }elseif(!isset($_GET["ID"])){
+        redirect_to("forum.php");
+    }elseif(!isset($_SESSION["User"])){
+        $_SESSION["failMsg"] = "Вы еще не в системе.";
+        redirect_to("forum.php".$oldSubject);  
+    }elseif(!isset($_SESSION["User"])){
+        $_SESSION["failMsg"] = "Вы еще не в системе.";
+        redirect_to("forum.php");
+    }
 
+?>
+<?php
+   
+?>
 <?php include("../includes/layouts/header.php"); ?>
 <title>Изменить пост</title>
 <meta name="description" content="KerimGrozny - Форум чеченских программистов - здесь вы найдете программистов и всю информацию о програмирование">
@@ -38,14 +61,14 @@
                 <form class="form-inline" action="edit_post.php" role="form" method="POST">
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required><?php echo $urlContent ?></textarea>
+                            <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required><?php echo $oldContent ?></textarea>
                         </div>
                     </div>
                     <div class="form-inline">
                         <label class="control-label col-sm-2">Тема</label>
                         <div class="col-sm-12">
                             <select class="form-control" name="Subject" required>
-                                <option value="<?php echo $urlSubject ?>" selected><?php echo $urlSubject ?></option>
+                                <option value="<?php echo $oldSubject ?>" selected><?php echo $oldSubject ?></option>
                                 <?php $selectSubject = fetchAllSubjects(); 
                                     while($subject = mysqli_fetch_assoc($selectSubject)){
                                         $output  = "<option value=\"";
