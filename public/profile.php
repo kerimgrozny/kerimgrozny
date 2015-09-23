@@ -18,9 +18,8 @@
                 <li><a href="profile.php?basic">Основные</a></li>
                 <li><a href="profile.php?account">Аккаунт</a></li>
                 <hr>
-                <li><a href="profile.php">Круг</a></li>
                 <li><a href="profile.php">Интересы</a></li>
-                <li><a href="profile.php">Посты</a></li>
+                <li><a href="profile.php?posts">Мои Посты</a></li>
                 <hr>
                 <div class="avatar">
                  
@@ -52,6 +51,14 @@
                         echo "<tr><td> Логин: </td><td>" . $user["Login"] . "<td/></tr>";
                         echo "<tr><td> Пароль: </td><td>" . $user["Password"] . "<td/></tr>";
                     }
+                }elseif(isset($_GET["posts"])){
+                    $query = "SELECT * FROM blog_page WHERE CreatedBy = '{$_SESSION["User"]}'";
+                    $myposts = mysqli_query($connection, $query);
+                    while($post = mysqli_fetch_assoc($myposts)) {                  
+                        echo "<tr><td> ID: </td><td>" . $post["ID"] . "<td/></tr>";
+                        echo "<tr><td> Пост: </td><td>" . $post["Content"] . "<td/></tr>";
+                        echo "<tr><td> Тема: </td><td>" . $post["Subject"] . "<td/></tr>";
+                    }                    
                 }else{
                     echo "<h5>Выберите из меню</h5>";
                 }

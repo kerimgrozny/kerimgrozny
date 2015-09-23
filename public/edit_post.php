@@ -2,6 +2,10 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php
+    if(!isset($_SESSION["User"])){
+        $_SESSION["failMsg"] = "Вы еще не в системе.";
+        redirect_to("forum.php?subject");
+    }  
     // assemble query if ID isset
     if(isset($_GET["ID"])){
         $query = "SELECT * from blog_page WHERE ID = {$_GET['ID']}";
@@ -13,17 +17,10 @@
         }        
     }elseif(!isset($_GET["ID"])){
         redirect_to("forum.php");
-    }elseif(!isset($_SESSION["User"])){
-        $_SESSION["failMsg"] = "Вы еще не в системе.";
+    }elseif($_SESSION["User"] != $oldUser) {
+        $_SESSION["failMsg"] = "Вы не можете редактировать чужие посты.";
         redirect_to("forum.php".$oldSubject);  
-    }elseif(!isset($_SESSION["User"])){
-        $_SESSION["failMsg"] = "Вы еще не в системе.";
-        redirect_to("forum.php");
-    }
-
-?>
-<?php
-   
+    } 
 ?>
 <?php include("../includes/layouts/header.php"); ?>
 <title>Изменить пост</title>
