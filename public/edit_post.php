@@ -2,10 +2,16 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php
-    // set variables if there are sent with $_GET or redirect.
+    // set variables if they are sent with $_GET or redirect.
     if(isset($_GET["ID"])) {
-        $query = "SELECT *"
-
+        $ID = $_GET["ID"];
+        $query = "SELECT * FROM blog_page WHERE ID = {$ID}";
+        $result0 = mysqli_query($connection, $query);
+        while($page = mysqli_fetch_assoc($result0) ) {
+            $urlUser = $page["CreatedBy"];
+            $urlContent = $page["Content"];
+            $urlSubject = $page["Subject"];
+        }
     }else{
         redirect_to("forum.php");
     }
@@ -13,22 +19,24 @@
     // if not logged in
 	if(!isset($_SESSION["User"])) {
         $_SESSION["failMsg"] = "Вы еще не в системе, войдите чтобы редактировать.";
-        redirect_to("forum.php?subject=".$Subject);
+        redirect_to("forum.php?subject=".$urlSubject);
     // if tries to edit other's comment 
-    }elseif($_SESSION["User"] != $User) {
+    }elseif($_SESSION["User"] != $urlUser) {
         $_SESSION["failMsg"] = "Вы не можете редактировать чужие посты.";
-        redirect_to("forum.php?subject=".$Subject);
+        redirect_to("forum.php?subject=".$urlSubject);
     // perform query
-	}elseif(isset($_POST["submit"]) AND $User == $_SESSION["User"]) {   
+	}elseif(isset($_POST["submit"]) AND $urlUser == $_SESSION["User"]) {   
 		$newContent = mysql_prep($_POST["Content"]);
-		$newSubject = $_POST["Subject"];
+		$newSubject = $_POST["urlSubject"];
 
 		$query  = "UPDATE blog_page SET ";
-        $query .= "Content = '{$newContent}'";
-		$query .= "WHERE ID = {$ID}";
+        $query .= "Content = '{$newContent}', ";
+        $query .= "Subject = '{$newSubject}' ";
+        $query .= "WHERE ID = {$ID} ";
+        $query .= "LIMIT 1";
 		$result = mysqli_query($connection, $query);
 
-        if(mysqli_query($connection, $query)) {
+        if($result) {
             $_SESSION["succMsg"] = "Пост успешно обновлен.";            
             redirect_to("forum.php?subject=".$Subject);
         } else {
@@ -73,16 +81,14 @@
                 <form class="form-inline" action="edit_post.php" role="form" method="POST">
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required>
-                            <?php while($content = mysqli_fetch_assoc($prevContent)) { echo $content["Content"]; } ?>
-                            </textarea>
+                            <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required><?php echo $urlContent ?></textarea>
                         </div>
                     </div>
                     <div class="form-inline">
                         <label class="control-label col-sm-2">Тема</label>
                         <div class="col-sm-12">
                             <select class="form-control" name="Subject" required>
-                                <option value="<?php echo $_GET["Subject"] ?>" selected><?php echo $_GET["Subject"] ?></option>
+                                <option value="<?php echo $urlSubject ?>" selected><?php echo $urlSubject ?></option>
                                 <?php $selectSubject = fetchAllSubjects(); 
                                     while($subject = mysqli_fetch_assoc($selectSubject)){
                                         $output  = "<option value=\"";

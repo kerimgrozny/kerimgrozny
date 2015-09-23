@@ -31,7 +31,8 @@
         <div class="col-xs-12 col-lg-10">
             <hr>
             <h4 class="center">Содержание</h4>
-    			<?php
+                <?php succMsg(); failMsg(); ?>                
+                <?php
                     // display pages that belong to selected subject.
                     if(isset($_GET["subject"])){
                         $page_set = fetchPagesForSubject($_GET["subject"]);
@@ -40,11 +41,10 @@
                     // display info for selected user.                
                     elseif(isset($_GET["user"])){
                         echo selectedUserInfo($_GET["user"]);
-    				}else{
+                    }else{
                         echo "<p>Выберите из меню</p>";
                     } 
                 ?>
-                <?php succMsg(); failMsg(); ?>                
             <div class="col-xs-12 col-lg-10">
                 <?php
                     succMsg();
