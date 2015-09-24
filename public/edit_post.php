@@ -11,6 +11,7 @@
         $_SESSION["failMsg"] = "Вы не можете редактировать чужие посты.";
         redirect_to("forum.php");
     } 
+    // Assemble query if all values are valid
     elseif(isset($_GET["ID"], $_GET["User"]) AND $_SESSION["User"] == $_GET["User"]){
         $query = "SELECT * from blog_page WHERE ID = {$_GET['ID']} AND CreatedBy = '{$_GET["User"]}'";
         $result = mysqli_query($connection, $query);
@@ -22,6 +23,17 @@
         $_SESSION["failMsg"] = "Ошибка.";
         redirect_to("forum.php");        
     }   
+?>
+<?php
+    // Assemble query if POST submit is
+    if(isset($_POST["submit"])) {
+        $query = "UPDATE blog_page SET Content = '{$_POST["Content"]}', Subject = '{$_POST["Subject"]}' WHERE ID = {$_GET["ID"]}";
+        $updateResult = mysqli_query($connection, $query);
+        if($updateResult){
+            $_SESSION["failMsg"] = "Успешно обновлен.";
+            redirect_to("forum.php");
+        }
+    }
 ?>
 <?php include("../includes/layouts/header.php"); ?>
 <title>Изменить пост</title>
