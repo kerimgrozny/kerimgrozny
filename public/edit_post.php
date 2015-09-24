@@ -2,25 +2,26 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php
+    // If SESSION User is not set redirect
     if(!isset($_SESSION["User"])){
-        $_SESSION["failMsg"] = "Вы еще не в системе.";
-        redirect_to("forum.php?subject");
-    }  
-    // assemble query if ID isset
-    if(isset($_GET["ID"])){
-        $query = "SELECT * from blog_page WHERE ID = {$_GET['ID']}";
+        $_SESSION["failMsg"] = "Вы еще не в системе, войдите чтобы редактировать.";
+        redirect_to("forum.php?subject"); 
+    // Redirect if SESSION AND GET User don't match
+    }elseif($_SESSION["User"] != $_GET["User"]) {
+        $_SESSION["failMsg"] = "Вы не можете редактировать чужие посты.";
+        redirect_to("forum.php");
+    } 
+    elseif(isset($_GET["ID"], $_GET["User"]) AND $_SESSION["User"] == $_GET["User"]){
+        $query = "SELECT * from blog_page WHERE ID = {$_GET['ID']} AND CreatedBy = '{$_GET["User"]}'";
         $result = mysqli_query($connection, $query);
         while($row = mysqli_fetch_assoc($result)) {
             $oldContent = $row["Content"];
-            $oldUser    = $row["CreatedBy"];
             $oldSubject = $row["Subject"];
-        }        
-    }elseif(!isset($_GET["ID"])){
-        redirect_to("forum.php");
-    }elseif($_SESSION["User"] != $oldUser) {
-        $_SESSION["failMsg"] = "Вы не можете редактировать чужие посты.";
-        redirect_to("forum.php".$oldSubject);  
-    } 
+        }
+    }else{
+        $_SESSION["failMsg"] = "Ошибка.";
+        redirect_to("forum.php");        
+    }   
 ?>
 <?php include("../includes/layouts/header.php"); ?>
 <title>Изменить пост</title>
