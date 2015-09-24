@@ -5,11 +5,11 @@
     // If SESSION User is not set redirect
     if(!isset($_SESSION["User"])){
         $_SESSION["failMsg"] = "Вы еще не в системе, войдите чтобы редактировать.";
-        redirect_to("forum.php?subject"); 
+        redirect_to("forum.php?subject=".$_GET["Subject"]); 
     // Redirect if SESSION AND GET User don't match
     }elseif($_SESSION["User"] != $_GET["User"]) {
         $_SESSION["failMsg"] = "Вы не можете редактировать чужие посты.";
-        redirect_to("forum.php");
+        redirect_to("forum.php?subject=".$_GET["Subject"]); 
     } 
     // Assemble query if all values are valid
     elseif(isset($_GET["ID"], $_GET["User"]) AND $_SESSION["User"] == $_GET["User"]){
@@ -19,12 +19,7 @@
             $oldContent = $row["Content"];
             $oldSubject = $row["Subject"];
         }
-    }else{
-        $_SESSION["failMsg"] = "Ошибка.";
-        redirect_to("forum.php");        
-    }   
-?>
-<?php
+    }
     // Assemble query if POST submit is
     if(isset($_POST["submit"])) {
         $query = "UPDATE blog_page SET Content = '{$_POST["Content"]}', Subject = '{$_POST["Subject"]}' WHERE ID = {$_GET["ID"]}";
@@ -35,6 +30,7 @@
         }
     }
 ?>
+
 <?php include("../includes/layouts/header.php"); ?>
 <title>Изменить пост</title>
 <meta name="description" content="KerimGrozny - Форум чеченских программистов - здесь вы найдете программистов и всю информацию о програмирование">
@@ -68,7 +64,7 @@
                 <?php
                     succMsg();
                 ?>
-                <form class="form-inline" action="edit_post.php" role="form" method="POST">
+                <form class="form-inline" action="edit_post.php?ID=<?php echo $_GET["ID"] ?>" role="form" method="POST">
                     <div class="form-group">
                         <div class="col-sm-12">
                             <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required><?php echo $oldContent ?></textarea>
