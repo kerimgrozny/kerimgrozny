@@ -80,8 +80,8 @@ function pagesForSelectedSubject($pages){
         $output .= "<tr><td>Пользователь: </td><td>";
         $output .= $page["CreatedBy"];
         $output .= "</td></tr>";
+        //$output .= "<td><a href=\"edit_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."\">Изменить</a></td>";
         $output .= "<td><a href=\"edit_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">Изменить</a></td>";
-        //$output .= "<td><a href=\"edit_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">Изменить</a></td>";
         $output .= "<td><a href=\"delete_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">Удалить</a></td></tr>";
         $output .= "<tr><td><hr></td><td><hr></td></tr>";
     }

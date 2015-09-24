@@ -9,28 +9,33 @@
     // Redirect if SESSION AND GET User don't match
     }elseif($_SESSION["User"] != $_GET["User"]) {
         $_SESSION["failMsg"] = "Вы не можете редактировать чужие посты.";
-        redirect_to("forum.php?subject=".$_GET["Subject"]); 
+        redirect_to("forum.php?subject=".$_GET["Subject"]);
     } 
     // Assemble query if all values are valid
-    elseif(isset($_GET["ID"], $_GET["User"]) AND $_SESSION["User"] == $_GET["User"]){
+    elseif(isset($_GET["ID"], $_GET["User"])){
         $query = "SELECT * from blog_page WHERE ID = {$_GET['ID']} AND CreatedBy = '{$_GET["User"]}'";
         $result = mysqli_query($connection, $query);
         while($row = mysqli_fetch_assoc($result)) {
             $oldContent = $row["Content"];
             $oldSubject = $row["Subject"];
         }
-    }
+    }else{
+        $_SESSION["failMsg"] = "Ошибка.";
+        redirect_to("forum.php");        
+    }   
+?>
+<?php
     // Assemble query if POST submit is
+    $ID = (int) $_GET["ID"];
     if(isset($_POST["submit"])) {
-        $query = "UPDATE blog_page SET Content = '{$_POST["Content"]}', Subject = '{$_POST["Subject"]}' WHERE ID = {$_GET["ID"]}";
+        $query = "UPDATE blog_page SET Content = '{$_POST["Content"]}', Subject = '{$_POST["Subject"]}' WHERE ID = {$ID}";
         $updateResult = mysqli_query($connection, $query);
         if($updateResult){
             $_SESSION["failMsg"] = "Успешно обновлен.";
-            redirect_to("forum.php");
+            redirect_to("forum.php?subject=".$_GET["Subject"]);
         }
     }
 ?>
-
 <?php include("../includes/layouts/header.php"); ?>
 <title>Изменить пост</title>
 <meta name="description" content="KerimGrozny - Форум чеченских программистов - здесь вы найдете программистов и всю информацию о програмирование">
@@ -64,7 +69,7 @@
                 <?php
                     succMsg();
                 ?>
-                <form class="form-inline" action="edit_post.php?ID=<?php echo $_GET["ID"] ?>" role="form" method="POST">
+                <form class="form-inline" action="edit_post.php?ID<?php echo $_GET["ID"]; ?>" role="form" method="POST">
                     <div class="form-group">
                         <div class="col-sm-12">
                             <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required><?php echo $oldContent ?></textarea>
