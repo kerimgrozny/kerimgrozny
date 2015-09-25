@@ -85,8 +85,8 @@ a:hover{
 #profileNavigation{
     background-color:#5D7FAD;
     color:#FFFFFF;
-    height: 700px;
     font-size: 1.2em;
+    height: 1000px;
 }
 
 #profileNavigation a, ul{
@@ -95,10 +95,9 @@ a:hover{
     margin: 0 auto;
 }
 
-
 #profilePage{
     background-color: #C2D1E0;
-    height: 700px;
+    height: 1000px;
 }
 
 .commonTable tr td{
@@ -108,7 +107,7 @@ a:hover{
 .profileTable tr td{
     line-height: 200%;
     padding: 5px 25px; 
-    font-size: 1.4em; 
+    font-size: 100%; 
 }
 
 /* selects: main navmenu items */
