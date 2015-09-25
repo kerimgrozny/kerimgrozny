@@ -5,7 +5,7 @@
 	if(!isset($_POST["submit"])){
 		redirect_to("forum.php"); 
 	}elseif(!isset($_SESSION["User"])) {
-		$_SESSION["message"] = "Вы еще не в системе.";
+		$_SESSION["failMsg"] = "Вы еще не в системе.";
 		redirect_to("forum.php");
 	}else{
 	    $content = mysql_prep($_POST["content"]);

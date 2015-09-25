@@ -4,7 +4,6 @@
 <?php include("../includes/layouts/header.php"); ?>
 <title>Чеченские Програмисты</title>
 <meta name="description" content="KerimGrozny - Форум чеченских программистов - здесь вы найдете программистов и всю информацию о програмирование">
-
 <div class="container" id="forum"><!--start: 1 container-->
     <div class="row">
         <h1 class="center"><a href="forum.php">Форум</a></h1>
@@ -14,14 +13,14 @@
         </h5>
         <div class="col-xs-12 col-lg-2" id="blogSideBar">
             <hr>
-            <h4>Темы</h4>
+            <h4 class="center">Темы</h4>
             <?php
                 // displays list of all subjects on sidebar
                 $subject_set = fetchAllSubjects();
                 echo subjectNavigation($subject_set);
             ?>
             <hr>
-            <h4>Пользователи</h4>
+            <h4 class="center">Пользователи</h4>
             <?php 
                 // displays list of all users on sidebar
                 $user_set = fetchAllUsers();           
@@ -31,6 +30,7 @@
         <div class="col-xs-12 col-lg-10">
             <hr>
             <h4 class="center">Содержание</h4>
+            <hr>
                 <?php succMsg(); failMsg(); ?>                
                 <?php
                     // display pages that belong to selected subject.

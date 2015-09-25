@@ -2,38 +2,40 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php
-    // If SESSION User is not set redirect
+    // Redirect if SESSION User is not set
     if(!isset($_SESSION["User"])){
         $_SESSION["failMsg"] = "Вы еще не в системе, войдите чтобы редактировать.";
-        redirect_to("forum.php?subject=".$_GET["Subject"]); 
+        redirect_to("forum.php?subject=".$_GET["Subject"]);
+    // Redirect if GET ID User and Subject is not set
+    }elseif(!isset($_GET["ID"], $_GET["User"], $_GET["Subject"])) {
+        $_SESSION["failMsg"] = "Неверное действие.";
+        redirect_to("forum.php?subject=".$_GET["Subject"]);
     // Redirect if SESSION AND GET User don't match
     }elseif($_SESSION["User"] != $_GET["User"]) {
         $_SESSION["failMsg"] = "Вы не можете редактировать чужие посты.";
-        redirect_to("forum.php?subject=".$_GET["Subject"]);
-    } 
-    // Assemble query if all values are valid
-    elseif(isset($_GET["ID"], $_GET["User"])){
-        $query = "SELECT * from blog_page WHERE ID = {$_GET['ID']} AND CreatedBy = '{$_GET["User"]}'";
-        $result = mysqli_query($connection, $query);
-        while($row = mysqli_fetch_assoc($result)) {
-            $oldContent = $row["Content"];
-            $oldSubject = $row["Subject"];
-        }
+        redirect_to("forum.php?subject=".$_GET["Subject"]);        
     }else{
-        $_SESSION["failMsg"] = "Ошибка.";
-        redirect_to("forum.php");        
-    }   
+        $query = "SELECT Content FROM blog_page WHERE ID = {$_GET['ID']}";
+        $result = mysqli_query($connection, $query);
+        while($row = mysqli_fetch_assoc($result)){
+            $Content = $row["Content"];
+        }
+    }
 ?>
 <?php
-    // Assemble query if POST submit is
-    $ID = (int) $_GET["ID"];
+    // Assemble query if POST submit isset
     if(isset($_POST["submit"])) {
-        $query = "UPDATE blog_page SET Content = '{$_POST["Content"]}', Subject = '{$_POST["Subject"]}' WHERE ID = {$ID}";
-        $updateResult = mysqli_query($connection, $query);
-        if($updateResult){
-            $_SESSION["failMsg"] = "Успешно обновлен.";
-            redirect_to("forum.php?subject=".$_GET["Subject"]);
-        }
+        $Content = mysql_prep($_POST["Content"]);
+        $query  = "UPDATE blog_page SET ";
+        $query .= "Content = '{$Content}', ";
+        $query .= "Subject = '{$_POST["Subject"]}' ";
+        $query .= "WHERE ID = {$_GET["ID"]}";
+
+        $result = mysqli_query($connection, $query);
+        if($result && mysqli_affected_rows($connection) == 1) {
+            $_SESSION["succMsg"] = "Успешно обновлен.";
+            redirect_to("forum.php?subject=".$_GET["Subject"].$_GET["ID"]);
+        }        
     }
 ?>
 <?php include("../includes/layouts/header.php"); ?>
@@ -69,17 +71,17 @@
                 <?php
                     succMsg();
                 ?>
-                <form class="form-inline" action="edit_post.php?ID<?php echo $_GET["ID"]; ?>" role="form" method="POST">
+                <form class="form-inline" action="edit_post.php?ID=<?php echo $_GET["ID"]; ?>&User=<?php echo $_GET["User"]; ?>&Subject=<?php echo $_GET["Subject"]; ?>" role="form" method="POST">
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required><?php echo $oldContent ?></textarea>
+                            <textarea cols="80" rows="10" class="form-control" name="Content" placeholder="" required><?php echo $Content ?></textarea>
                         </div>
                     </div>
                     <div class="form-inline">
                         <label class="control-label col-sm-2">Тема</label>
                         <div class="col-sm-12">
                             <select class="form-control" name="Subject" required>
-                                <option value="<?php echo $oldSubject ?>" selected><?php echo $oldSubject ?></option>
+                                <option value="<?php echo $_GET["Subject"] ?>" selected><?php echo $_GET["Subject"] ?></option>
                                 <?php $selectSubject = fetchAllSubjects(); 
                                     while($subject = mysqli_fetch_assoc($selectSubject)){
                                         $output  = "<option value=\"";
@@ -96,7 +98,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-10">
-                            <button type="submit" name="submit" class="btn btn-default">Потвердить</button>
+                            <input type="submit" name="submit" class="btn btn-default" value="Потвердить">
                         </div>
                     </div>
                 </form>
