@@ -70,14 +70,6 @@ a:hover{
     border: 0px solid black;
 }
 
-
-#blogTable{
-    //background-color: #E6F0FA;
-    //border-radius: 10px;
-    border-left: 1px #ccc solid;
-
-}
-
 #blogTable tr td{
 	padding: 10px;
 }
@@ -118,10 +110,6 @@ a:hover{
 
 .commentsDisplay{
     background-color: green;
-}
-
-#forum hr{
-    border-top: 1px solid #C0C0C0;
 }
 
 .form-group label, .form-group div{

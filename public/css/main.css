@@ -73,3 +73,22 @@ div.container{
 #profileContainer{
 	min-height: 100%;
 }
+
+/* Forum page style */
+#page-content-wrapper {
+    padding: 20px;
+    position: relative;
+    background-color: #fff;
+}
+
+/* Forum page  */
+#sidebar-wrapper {
+    width: 250px;
+    background-color: #00796B;
+    color: #fff;
+}
+
+#sidebar-wrapper a {
+    color: #fff;
+}
+
