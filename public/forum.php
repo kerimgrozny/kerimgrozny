@@ -81,7 +81,7 @@
                                 <button type="submit" name="submit" class="btn btn-default">Добавит</button>
                             </div>
                         </div>
-                    </form>
+                    </form><hr>
                 </div>
             </div>
                 <a href="#menu-toggle" class="btn btn-default " id="menu-toggle">Меню</a>            
