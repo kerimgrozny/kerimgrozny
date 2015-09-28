@@ -61,11 +61,11 @@
 			    <form action="edit_user2.php?ID=<?php echo $_GET["ID"]; ?>" method="POST">
                     <tr>
                         <td>ИД:</td>
-                        <td><input type="text" name="ID" value="<?php echo $_GET["ID"]; ?>"disabled></td><td><abbr title="ИД не может быть изменен.">?</abbr></td>
+                        <td><input type="text" name="ID" value="<?php echo $_GET["ID"]; ?>" disabled><abbr title="ИД не может быть изменен.">?</abbr></td>
                     </tr>
                     <tr>
                         <td>Логин:</td>
-                        <td><input type="text" name="Login" value="<?php echo $_GET["Login"]; ?>"disabled></td><td><abbr title="Логин не может быть изменен.">?</abbr></td>
+                        <td><input type="text" name="Login" value="<?php echo $_GET["Login"]; ?>"disabled><abbr title="Логин не может быть изменен.">?</abbr></td>
                     </tr>
                     <tr>
                         <td>Новый пароль:</td>

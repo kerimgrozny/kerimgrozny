@@ -1,7 +1,7 @@
 <?php
 	function commentsDisplay() { ?> <hr><div class="row" style="background:#fff;color:#000">
 		<div class="col-xs-12 col-lg-12">
-			<h4 class="center">Коментарии</h4>
+			<p class="center">Коментарии</hp>
 			<table class="commonTable">
 			<?php
 				global $connection;
@@ -17,7 +17,7 @@
 					echo "<tr><td><i> Дата </i><hr></td><td>" . $comment["Date"] . "<hr></td></tr>";
 				}
 				if(mysqli_num_rows($result) == 0){
-					echo "<h5>Комментарий еще никто не сделал, будь первым.</h5>";
+					echo "<h5 class=\"center\">Комментарий еще никто не сделал, будь первым.</h5>";
 				}
 			?>
 			</table>
@@ -28,11 +28,11 @@
 		<div class="row">
 			<div class="col-xs-12 col-lg-12" style="background-color:#fff;color:#000">
 					<?php if(!isset($_SESSION["User"])){
-						echo "<h5 class=\"center\"><i>Вы еще не в системе, <a href=\"login.php\">войдите</a> чтобы сделать комментарии</i></h5>";
+						echo "<h5 class=\"center\"><i>Вы еще не в системе, <a href=\"login.php\">войдите</a> чтобы сделать комментарие</i></h5>";
 					}
 					?>
 				<form class="form-group" action="comment.php" method="POST" role="form">
-						<h4 class="center">Оставить комментарию</h4>   	     	
+						<p class="center">Оставить комментарию</p>   	     	
 
 					<div class="form-inline">
 						<label class="control-label col-sm-2">Тема:</label>

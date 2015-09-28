@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -12,9 +13,9 @@
   <link rel="stylesheet" href="css/typography.css">
   <link rel="stylesheet" href="css/slideshow.css">
   <link rel="stylesheet" href="css/simple-sidebar.css"> 
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
 <nav class="navbar-default navbar-inverse" id="navigation">
   <div class="container-fluid">
     <div class="navbar-header">

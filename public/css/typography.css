@@ -1,29 +1,50 @@
-h1,h2,h3{
+@media all and (max-width: 1200px) { /* screen size until 1200px */
+    body {
+        font-size: 1.8em; /* 1.5x default size */
+    }
+}
+@media all and (max-width: 1000px) { /* screen size until 1000px */
+    body {
+        font-size: 1.8em; /* 1.2x default size */
+        }
+    }
+@media all and (max-width: 500px) { /* screen size until 500px */
+    body {
+        font-size: 1.4em; /* 0.8x default size */
+        }
+}
+
+h1,h2,h3,h4{
     margin: 40px;
     font-family: 'Poiret One', cursive;
 }
 
 /* centers all elements with class */
 .center{
-    margin: 40px 0;
+    margin: 20px 0;
     text-align: center;
     float: none;
 }
 
 p{
-    margin: 1em;
-    font-size: 120%;
+    margin:  1em 0;
+    font-size: 100%;
     font-family: 'Raleway', sans-serif;
 
 }
 
 ul li{
-    font-size: 100%;
     font-family: Arial;
-    line-height: 200%;
     color: black;
     font-family: 'Raleway', sans-serif;
 }
+
+.contentList{
+    line-height: 250%;
+    color: black;
+    font-family: 'Poiret One', cursive;
+}
+
 
 a:hover{
     text-decoration: none;
@@ -115,3 +136,26 @@ a:hover{
 .form-group label, .form-group div{
     margin: 5px 0px;
 }
+
+/* All form labels */
+label{
+    font-weight: normal;
+}
+
+#page-content-wrapper{
+    background-color: #F5F5F5;
+}
+
+/* Targes attributes from form */
+.postForm input[name="name"]{
+    width: 500px;
+}
+.postForm textarea[name="content"]{
+    width: 500px;
+    height: 200px;
+}
+.postForm select[name="subject"]{
+    width: 100px;
+}
+
+

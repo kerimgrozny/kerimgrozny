@@ -1,10 +1,11 @@
 <?php include("../includes/session.php"); ?>
+<?php require("../includes/db_connection.php"); ?>
+<?php require("../includes/functions.php"); ?>
 <?php
     if(!isset($_SESSION["User"])){
         redirect_to("login.php");
     }
 ?>
-<?php require("../includes/db_connection.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 <?php include("../includes/comment_functions.php"); ?>
 
@@ -55,9 +56,11 @@
                         echo "<tr><td><a href=\"edit_user2.php?ID=".$user["ID"]."&Login=".$user["Login"]."&Password=".$user["Password"]."\">Редартировать"."</a><td/></tr>";
                     }
                 }elseif(isset($_GET["posts"])){
-                    $query = "SELECT * FROM blog_page WHERE CreatedBy = '{$_SESSION["User"]}'";
-                    $myposts = mysqli_query($connection, $query);
-                    while($post = mysqli_fetch_assoc($myposts)) {                  
+                    echo "<p>Здесь вы сможете увидеть все посты которые вы сделали, в том числе приватные посты которые
+                    вы указали (приватный) во время создания.</p><hr>";
+                    $visible = "private";
+                    $posts = fetchPagesForSubject($subject=null, $visible);
+                    while($post = mysqli_fetch_assoc($posts)) {                  
                         echo "<tr><td><i> ID: </i></td><td>" . $post["ID"] . "<td/></tr>";
                         echo "<tr><td><i> Пост: </i></td><td>" . $post["Content"] . "<td/></tr>";
                         echo "<tr><td><i> Тема: </i></td><td>" . $post["Subject"] . "<td/></tr>";

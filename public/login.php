@@ -56,7 +56,7 @@
 
         <div class="col-xs-12 col-lg-6">
             <h3 class="center">Когда в системе вы сможете:</h3>
-            <ul>
+            <ul class="contentList">
                 <li>Коментировать в страницах</li>
                 <li>Найти пользователей</li>
                 <li>Общаться с друзьями</li>

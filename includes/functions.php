@@ -12,8 +12,8 @@ function fetchAllSubjects(){
 }
 
 function subjectNavigation($find_all_subjects) {
-    $output = "<ul>";
         $subject_set = $find_all_subjects;
+        $output = "<ul>";
         while($subject = mysqli_fetch_assoc($subject_set)) {
             $output .= "<li><a href=\"forum.php?subject=";
             $output .=  $subject["Name"];
@@ -21,9 +21,9 @@ function subjectNavigation($find_all_subjects) {
             $output .=  $subject["Name"];
             $output .= "</a></li>";
         }
-    $output .= "</ul>";
-    return $output;
-    mysqli_free_result($subject_set);
+        $output .= "</ul>";
+        return $output;
+        mysqli_free_result($subject_set);
 }
 
 function fetchAllUsers(){
@@ -37,8 +37,8 @@ function fetchAllUsers(){
 }
 
 function userNavigation($findAllUsers){
-    $output = "<ul>";
     $user_set = $findAllUsers;
+    $output  = "<ul>";
     while($user = mysqli_fetch_assoc($user_set)){
         $output .= "<li>";
         $output .= "<a href=\"forum.php?user=";
@@ -54,10 +54,16 @@ function userNavigation($findAllUsers){
     mysqli_free_result($user_set);
 }
 
-function fetchPagesForSubject($subject){
+function fetchPagesForSubject($subject, $visible){
     global $connection;
-
-    $query = "SELECT * FROM blog_page WHERE Subject = '{$subject}'";
+    
+    $query  = "SELECT * FROM blog_page ";    
+    if(isset($subject)) {
+        $query .= "WHERE Subject = '{$subject}' ";
+    }
+    if(isset($visible) && $visible == "public"){
+        $query .= "AND Visible = 1";
+    }
     $page_set = mysqli_query($connection, $query);
     confirm_query($page_set);
     return $page_set;
