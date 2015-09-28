@@ -65,7 +65,7 @@
                                 <textarea required class="form-control" name="content" placeholder="Ваш пост"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputFile">Тема</label>
+                                <label>Тема</label>
                                 <select required name="subject" class="form-control">
                                         <option value="">Тема</option>
                                         <?php $selectSubject = fetchAllSubjects(); 
@@ -84,13 +84,13 @@
                             <label>Видимость</label>
                             <div class="radio">
                               <label>
-                                <input required type="radio" name="visible" value="0" checked>
+                                <input required type="radio" name="visible" value="0">
                                 Приватный
                               </label>
                             </div>
                             <div class="radio">
                               <label>
-                                <input required type="radio" name="visible" value="1">
+                                <input required type="radio" name="visible" value="1" checked>
                                 Публичный
                               </label>
                             </div><hr>
@@ -113,11 +113,5 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
+<?php include("../includes/layouts/footer.php"); ?>
 
-<nav class="navbar-default navbar-inverse" id="navigation">
-    <div class="container-fluid">
-        <div class="col-xs-12 col-lg-12">
-            <p class="text-center">Создание и разработка сайтов в Грозном: +79298883327 & kerimgrozny@gmail.com | 2014 - <?php echo date('Y') ?></p>
-        </div>
-    </div>
-</nav>

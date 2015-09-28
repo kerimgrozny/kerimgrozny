@@ -18,7 +18,7 @@
     	$query .= "(Name, Content, CreatedBy, Subject, Visible) ";	    
     	$query .= "VALUES ('{$name}', '{$content}', '{$user}', '{$subject}', {$visible}) ";
     	$result = mysqli_query($connection, $query);
-    	confirm_query($result);
+    	//confirm_query($result);
 
     	if($result && mysqli_affected_rows($connection) == 1){
     		$_SESSION["succMsg"] = "Добавлен успешно.";
