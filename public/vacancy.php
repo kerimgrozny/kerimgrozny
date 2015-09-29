@@ -32,6 +32,27 @@
                         Тут вы найдете интересующую для вас информацию, о программистов, разработчиков и дизайнеров.
                         А также поделиться новой информации, которым вам бы хотелось с другими.</p>  
                         <hr>
+                        <form>
+                          <div class="form-group">
+                            <label>Имя</label>
+                            <input type="name" class="form-control" placeholder="Имя">
+                          </div>
+                          <div class="form-group">
+                            <label>Позиция</label>
+                            <input type="text" class="form-control" placeholder="Позиция">
+                          </div>
+                          <div class="form-group">
+                            <label>File input</label>
+                            <input type="file">
+                            <p class="help-block">Example block-level help text here.</p>
+                          </div>
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox"> Check me out
+                            </label>
+                          </div>
+                          <button type="submit" class="btn btn-default">Submit</button>
+                        </form>                        
                     </div>
                 </div>
                 <div class="row">

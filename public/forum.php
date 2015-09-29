@@ -29,7 +29,7 @@
                 <div>
                   <ul class="nav navbar-nav">
                     <li><a href="news.php">Новости</a></li>
-                    <li><a href="#">Вакансии</a></li>
+                    <li><a href="vacance.php">Вакансии</a></li>
                     <li><a href="#"></a></li>
                   </ul>
                 </div>
