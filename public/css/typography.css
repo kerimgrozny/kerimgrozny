@@ -161,3 +161,14 @@ label{
 #blogTable tr {
     background-color: #fff;
 }
+
+/* forum upper nav back color, border */
+#forum_upper_nav{
+    background-color: #F5F5F5;
+    border-top-color: #F5F5F5;
+    color: black;
+}
+
+#forumNewsPage{
+    background-color: #fff;
+}

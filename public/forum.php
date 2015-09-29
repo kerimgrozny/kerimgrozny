@@ -24,19 +24,39 @@
         </div><!-- /#sidebar-wrapper -->
 
         <div id="page-content-wrapper"><!-- Page Content -->
+            <nav class="navbar navbar-default" id="forum_upper_nav">
+              <div class="container-fluid">
+                <div>
+                  <ul class="nav navbar-nav">
+                    <li><a href="news.php">Новости</a></li>
+                    <li><a href="#">Вакансии</a></li>
+                    <li><a href="#"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav> 
          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Меню</a>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="center">Форум</h1>
+                    <h1 class="center">Форум</h1>
+                    <div class="col-xs-12 col-lg-8" class="">
                         <p>Добро пожаловать на официальный форум чеченских хаккеров программистов и начинающих.
                         Тут вы найдете интересующую для вас информацию, о программистов, разработчиков и дизайнеров.
                         А также поделиться новой информации, которым вам бы хотелось с другими.</p>  
                         <hr>
+                    </div> 
+                    <div class="col-xs-12 col-lg-4">
+                        <p>Если у вас будут вопросы касающиеся веб програмированию, свяжитесь со мной прямо через email:</p>  
+                        <p>If you have any questions related to web programming, send me an email.</p>
+                        <code>kerimgrozny@gmail.com</code>
+                        <hr>
+                    </div>                   
+                    <div class="col-xs-12 col-lg-6">
+                    <!-- Div for some content -->
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">                      
+                    <div class="col-lg-8">                      
                         <?php succMsg(); failMsg(); ?>                
                         <?php
                             $visible = "public";
@@ -78,7 +98,6 @@
                                                 echo $output;
                                             }
                                         ?>
-                                    </select>
                                 </select>
                             </div>
                             <label>Видимость</label>
@@ -97,6 +116,9 @@
                             <button type="submit" name="submit" class="btn btn-default">Добавит</button>
                             <hr>                        
                         </form>                      
+                    </div><!--/ public forum page -->
+                    <div class="col-lg-4" id="forumNewsPage"><!--/ public forum page -->
+                        <h3 class="center">Новости</h3>
                     </div>
                 </div>
             </div>
