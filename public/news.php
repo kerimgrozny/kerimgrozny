@@ -8,7 +8,18 @@
         <div id="sidebar-wrapper"><!-- Sidebar -->
             <ul class="sidebar-nav">
                 <h3 class="center">Темы</h3>
-                <li><a href="forum.php">Назад</a></li>
+                <?php
+                    // displays list of all subjects on sidebar
+                    $subject_set = fetchAllSubjects();
+                    echo subjectNavigation($subject_set);
+                ?>
+                <hr>
+                <h3 class="center">Пользователи</h3>
+                <?php 
+                    // displays list of all users on sidebar
+                    $user_set = fetchAllUsers();           
+                    echo userNavigation($user_set);
+                ?>                
             </ul>
         </div><!-- /#sidebar-wrapper -->
         <div id="page-content-wrapper"><!-- Page Content -->
