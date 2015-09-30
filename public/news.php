@@ -38,21 +38,13 @@
          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Меню</a>
             <div class="container-fluid">
                 <div class="row">
-                    <h1 class="center">Форум</h1>
-                    <div class="col-xs-12 col-lg-12" class="">
-                        <p>Добро пожаловать на официальный форум чеченских хаккеров программистов и начинающих.
-                        Тут вы найдете интересующую для вас информацию, о программистов, разработчиков и дизайнеров.
-                        А также поделиться новой информации, которым вам бы хотелось с другими.</p> 
-
-                        <hr>
-                    </div>
+                    <p><cite>От</cite> Администраторов.</p>
                     <h3 class="center">Сублайм Текст 3</h3>
                     <p>Пользовался уже почти со всеми IDE и текстовыми редакторами но Sublime Text на мой взляд самый
                     лучший и простой но, использование редактора как Sublime Text требует определенные знании
                     в программирование и понимание синтаксиса.  
                     </p><img src="images/news/sublime.png" class="img-responsive"><br/>
                     <a href="http://www.sublimetext.com/">Скачайте</a><span> бесплатно с официального сайта</span>
-                    <blockquote><a href="forum.php?user=kerim">Администратор</blockquote>
                     </div><br/>
                 <div class="row">
                     <div class="col-lg-8">                      
