@@ -5,19 +5,21 @@
     // Assemble query if POST submit isset
     if(isset($_POST["submit"])) {
         $name       = mysql_prep($_POST["name"]);
-        $technology = $_POST["technology"];
+        $technology = implode($_POST["technology"]);
         $job        = $_POST["job"];
         $details    = mysql_prep($_POST["details"]);
 
         $query  = "INSERT INTO vacancy (";
         $query .= "Name, Technology, Job, Details) ";
-        $query .= "VALUES ('{$name}', '{$technology}', '{$job}', '{$details}'";
+        $query .= "VALUES ('{$name}', '{$technology}', '{$job}', '{$details}')";
+        
         $result = mysqli_query($connection, $query);
 
         if($result && mysqli_affected_rows($connection) == 1) {
-            $_SESSION["succMsg"] = "Успешно добавлен.";
+            $_SESSION["succMsg"] = "Ваш резюме успешно добавлено.";
             redirect_to("forum.php");
-        }        
+        } 
+               
     }
 ?>
 <?php include("../includes/layouts/header.php"); ?>
@@ -37,6 +39,7 @@
                   <ul class="nav navbar-nav">
                     <li><a href="news.php">Новости</a></li>
                     <li><a href="vacancy.php">Вакансии</a></li>
+                    <li><a href="resume.php">Доступные резюме</a></li>
                     <li><a href="#"></a></li>
                   </ul>
                 </div>
@@ -56,7 +59,7 @@
                         </p>  
                         <hr>
                         <?php succMsg(); failMsg(); ?>
-                        <form>
+                        <form action="vacancy.php" method="POST" class="postForm">
                           <div class="form-group">
                             <label>ФИО</label>
                             <input type="name" name="name" required class="form-control" placeholder="Ведите полное имя">
@@ -69,33 +72,33 @@
                           <!-- checkbox HTML CSS JavaScript -->
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="technology">HTML
+                              <input type="checkbox" name="technology[]" value="HTML">HTML 
                             </label>
                           </div>
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="technology">CSS
+                              <input type="checkbox" name="technology[]" value="CSS">CSS 
                             </label>
                           </div>
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="technology">JavaScript
+                              <input type="checkbox" name="technology[]" value="JavaScript">JavaScript 
                             </label>
                           </div>
                           <!-- checkbox PHP SQL ASP -->
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="technology">PHP
+                              <input type="checkbox" name="technology[]" value="PHP">PHP 
                             </label>
                           </div>
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="technology">SQL
+                              <input type="checkbox" name="technology[]" value="SQL">SQL 
                             </label>
                           </div>
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="technology">Ruby
+                              <input type="checkbox" name="technology[]" value="Ruby">Ruby 
                             </label>
                           </div>
                             <p class="help-block">Выберите вашу позицию.</p>
@@ -128,7 +131,7 @@
                             <label>Подробно</label>
                             <textarea name="details" class="form-control"></textarea>
                           </div>
-                          <button type="submit" name="submit" class="btn btn-default">Потвердить</button>
+                          <button type="submit" name="submit" class="btn btn-default">Потвердить</button><hr>
                         </form>                        
                     </div>
                 </div>

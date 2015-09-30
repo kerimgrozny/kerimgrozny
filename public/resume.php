@@ -7,10 +7,22 @@
     <div id="wrapper">
         <div id="sidebar-wrapper"><!-- Sidebar -->
             <ul class="sidebar-nav">
-                <h3 class="center">Темы</h3>
-                <li><a href="forum.php">Назад</a></li>
+            <h3 class="center">Темы</h3>
+                <?php
+                    // displays list of all subjects on sidebar
+                    $subject_set = fetchAllSubjects();
+                    echo subjectNavigation($subject_set);
+                ?>
+                <hr>
+                <h3 class="center">Пользователи</h3>
+                <?php 
+                    // displays list of all users on sidebar
+                    $user_set = fetchAllUsers();           
+                    echo userNavigation($user_set);
+                ?>  
             </ul>
         </div><!-- /#sidebar-wrapper -->
+        
         <div id="page-content-wrapper"><!-- Page Content -->
             <nav class="navbar navbar-default" id="forum_upper_nav">
               <div class="container-fluid">
@@ -23,7 +35,7 @@
                   </ul>
                 </div>
               </div>
-            </nav>  
+            </nav> 
          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Меню</a>
             <div class="container-fluid">
                 <div class="row">
@@ -31,27 +43,37 @@
                     <div class="col-xs-12 col-lg-12" class="">
                         <p>Добро пожаловать на официальный форум чеченских хаккеров программистов и начинающих.
                         Тут вы найдете интересующую для вас информацию, о программистов, разработчиков и дизайнеров.
-                        А также поделиться новой информации, которым вам бы хотелось с другими.</p> 
-
+                        А также поделиться новой информации, которым вам бы хотелось с другими.</p>  
                         <hr>
+                        <?php
+                            $resume_set = fetchResumes();
+                            echo resumeNavigation($resume_set);
+                        ?>                       
                     </div>
-                    <h3 class="center">Сублайм Текст 3</h3>
-                    <p>Пользовался уже почти со всеми IDE и текстовыми редакторами но Sublime Text на мой взляд самый
-                    лучший и простой но, использование редактора как Sublime Text требует определенные знании
-                    в программирование и понимание синтаксиса.  
-                    </p><img src="images/news/sublime.png" class="img-responsive"><br/>
-                    <a href="http://www.sublimetext.com/">Скачайте</a><span> бесплатно с официального сайта</span>
-                    <blockquote><a href="forum.php?user=kerim">Администратор</blockquote>
-                    </div><br/>
+                </div>
                 <div class="row">
                     <div class="col-lg-8">                      
                         <?php succMsg(); failMsg(); ?>                
                         <?php
+                            $visible = "public";
+                            // display pages that belong to selected subject.
+                            if(isset($_GET["subject"])){
+                                $page_set = fetchPagesForSubject($_GET["subject"], $visible);
+                                echo pagesForSelectedSubject($page_set);
+                            }
+                            // display info for selected user.                
+                            elseif(isset($_GET["user"])){
+                                echo selectedUserInfo($_GET["user"]);
+                            }else{
+                                echo "<p>Выберите из меню</p>";
+                            } 
+                        ?>
+                        <?php
                             succMsg();
-                        ?>                     
+                        ?>                            
                     </div><!--/ public forum page -->
                 </div>
-            </div>
+            </div><hr>
             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Меню</a>
         </div><!-- /#page-content-wrapper -->
     </div><!-- /#wrapper -->              

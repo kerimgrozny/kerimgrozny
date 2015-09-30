@@ -154,6 +154,11 @@ label{
     width: 500px;
     height: 200px;
 }
+.postForm textarea[name="details"]{
+    width: 500px;
+    height: 200px;
+}
+
 .postForm select[name="subject"]{
     width: 100px;
 }
@@ -165,7 +170,7 @@ label{
 /* forum upper nav back color, border */
 #forum_upper_nav{
     background-color: #F5F5F5;
-    border-top-color: #F5F5F5;
+    border-color: #F5F5F5;
     color: black;
 }
 

@@ -22,7 +22,7 @@
                 ?>  
             </ul>
         </div><!-- /#sidebar-wrapper -->
-
+        
         <div id="page-content-wrapper"><!-- Page Content -->
             <nav class="navbar navbar-default" id="forum_upper_nav">
               <div class="container-fluid">
@@ -30,6 +30,7 @@
                   <ul class="nav navbar-nav">
                     <li><a href="news.php">Новости</a></li>
                     <li><a href="vacancy.php">Вакансии</a></li>
+                    <li><a href="resume.php">Доступные резюме</a></li>
                     <li><a href="#"></a></li>
                   </ul>
                 </div>

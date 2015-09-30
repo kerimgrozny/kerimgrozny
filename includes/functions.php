@@ -116,6 +116,35 @@ function selectedUserInfo($selected_user){
     return $output;     
 }
 
+function fetchResumes(){
+    global $connection;
+
+    $query = "SELECT * FROM vacancy ";
+    $resume_set = mysqli_query($connection, $query);
+    return $resume_set;
+}
+
+function resumeNavigation($resume_set){
+    global $connection;
+
+    $output = "<table class=\"table\"><thead></thead><tbody>";
+    $resume_set = $resume_set;
+    while($resume = mysqli_fetch_assoc($resume_set)){
+        $output .= "<tr><th>Номер резюме</th><td>";
+        $output .= $resume["ID"]."</td></tr>";
+        $output .= "<tr><th>Имя</th><td>";
+        $output .= $resume["Name"]."</td></tr>";
+        $output .= "<tr><th>Веб Технологии</th><td>";
+        $output .= $resume["Technology"]."</td></tr>";
+        $output .= "<tr><th>Позиция</th><td>";
+        $output .= $resume["Job"]."</td></tr>";
+        $output .= "<tr><th>Подробнее</th><td>";
+        $output .= $resume["Details"]."</td></tr>";
+    }
+    $output .= "</tbody></table>";
+    return $output;
+}
+
 function confirm_query($result_set){
     if (!$result_set) {
         die("Запрос к базе данных не удалось.");
