@@ -1,6 +1,14 @@
 <?php
 
-function fetchAllSubjects(){
+function mysql_prep($string) {
+    // funtions escapes string and returns
+    global $connection;
+    
+    $escaped_string = mysqli_real_escape_string($connection, $string);
+    return $escaped_string;
+}
+
+function fetch_all_subjects(){
     global $connection;
 
     $query  = "SELECT * ";
@@ -11,7 +19,7 @@ function fetchAllSubjects(){
     mysqli_free_result($subject_set);
 }
 
-function subjectNavigation($find_all_subjects) {
+function display_all_subjects($find_all_subjects) {
         $subject_set = $find_all_subjects;
         $output = "<ul>";
         while($subject = mysqli_fetch_assoc($subject_set)) {
@@ -26,7 +34,7 @@ function subjectNavigation($find_all_subjects) {
         mysqli_free_result($subject_set);
 }
 
-function fetchAllUsers(){
+function find_all_users(){
     global $connection;
 
     $query = "SELECT * FROM user";
@@ -36,8 +44,8 @@ function fetchAllUsers(){
     mysqli_free_result($user_set);
 }
 
-function userNavigation($findAllUsers){
-    $user_set = $findAllUsers;
+function display_all_users($find_all_users){
+    $user_set = $find_all_users;
     $output  = "<ul>";
     while($user = mysqli_fetch_assoc($user_set)){
         $output .= "<li>";
@@ -54,7 +62,7 @@ function userNavigation($findAllUsers){
     mysqli_free_result($user_set);
 }
 
-function fetchPagesForSubject($subject, $visible){
+function find_pages_for_subject($subject, $visible){
     global $connection;
     
     $query  = "SELECT * FROM blog_page ";    
@@ -70,7 +78,7 @@ function fetchPagesForSubject($subject, $visible){
     mysqli_free_result($page_set);    
 }
 
-function pagesForSelectedSubject($pages){                   
+function display_pages_for_subject($pages){                   
     $output = "<table id=\"blogTable\">";
     $page_set = $pages;
     while($page = mysqli_fetch_assoc($page_set)){
@@ -96,7 +104,7 @@ function pagesForSelectedSubject($pages){
     mysqli_free_result($page_set);        
 }
 
-function selectedUserInfo($selected_user){
+function diplay_user_info($selected_user){
     global $connection;
 
     $query = "SELECT * FROM user WHERE Login = '{$selected_user}'";
@@ -151,11 +159,5 @@ function confirm_query($result_set){
     }       
 }
 
-function mysql_prep($string) {
-    global $connection;
-    
-    $escaped_string = mysqli_real_escape_string($connection, $string);
-    return $escaped_string;
-}
 
 ?>

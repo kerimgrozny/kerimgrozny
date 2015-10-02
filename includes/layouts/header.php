@@ -35,7 +35,7 @@
             <li><a href="zakazat_sayt.php">Профессиональный сайт</a></li>
             <li><a href="videomontazh.php">Видеомонтаж</a></li>
             <li><a href="logo.php">Логотип</a></li>
-            <li><a href="osupdate.php">Прошивка Android И PC</a></li><br>
+            <li><a href="osupdate.php">Прошивка Android И PC</a></li>
             <li><a href="zakazat.php">Заказать услугу</a></li>
           </ul>
         </li>
@@ -51,7 +51,7 @@
       <?php 
 		  }else{ ?>
         	<li><a href="profile.php"><span class="glyphicon glyphicon-user"></span> Профиль</a></li>
-        	<li><a href="logout.php"><span class="glyphicon glyphicon-log-out onclick="confirm("Вы уверены?")"></span> Выйти</a></li>
+        	<li><a href="logout.php"><span class="glyphicon glyphicon-log-out" onclick="confirm("Вы уверены?")"></span> Выйти</a></li>
       <?php } ?>				
         
       </ul>

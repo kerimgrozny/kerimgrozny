@@ -1,17 +1,13 @@
-@media all and (max-width: 1200px) { /* screen size until 1200px */
-    body {
-        font-size: 1.8em; /* 1.5x default size */
+@media only screen and (max-width: 1920px) {
+    p,li {
+        font-size: 120%;
     }
 }
-@media all and (max-width: 1000px) { /* screen size until 1000px */
-    body {
-        font-size: 1.8em; /* 1.2x default size */
-        }
+
+@media only screen and (max-width: 500px) {
+    p,li {
+        font-size: 100%;
     }
-@media all and (max-width: 500px) { /* screen size until 500px */
-    body {
-        font-size: 1.4em; /* 0.8x default size */
-        }
 }
 
 h1,h2,h3,h4{
@@ -23,12 +19,11 @@ h1,h2,h3,h4{
 .center{
     margin: 20px 0;
     text-align: center;
-    float: none;
 }
+
 
 p{
     margin:  1em 0;
-    font-size: 100%;
     font-family: 'Raleway', sans-serif;
 
 }
@@ -167,13 +162,31 @@ label{
     background-color: #fff;
 }
 
-/* forum upper nav back color, border */
+/* forum upper nav */
 #forum_upper_nav{
-    background-color: #F5F5F5;
+    background-color: #3F51B5;
     border-color: #F5F5F5;
-    color: black;
 }
+
+#forum_upper_nav * {
+    color: #fff;
+}
+
+
 
 #forumNewsPage{
     background-color: #fff;
+}
+
+.form-inline .form-control, .form-horizontal .form-control {
+    border-radius: 0px;
+}
+
+#registerForm label {
+    font-size: 90%
+}
+
+#designOrderForm{
+    background-color: #D6E0EB;
+    padding: 25px;
 }

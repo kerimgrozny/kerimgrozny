@@ -3,7 +3,7 @@ html, body{
 }
 
 body{
-	background-color: lightgray;
+	background-color: //lightgray;
 }
 
 /* selects: logo kerimgrozny */
@@ -65,9 +65,9 @@ body{
 
 /* selects: left/right shadows for general containers */
 div.container{
-	-webkit-box-shadow: 0px 0px 15px 1px rgba(107,107,107,0.68);
-	-moz-box-shadow: 0px 0px 15px 1px rgba(107,107,107,0.68);
-	box-shadow: 0px 0px 15px 1px rgba(107,107,107,0.68);
+	//-webkit-box-shadow: 0px 0px 15px 1px rgba(107,107,107,0.68);
+	//-moz-box-shadow: 0px 0px 15px 1px rgba(107,107,107,0.68);
+	//box-shadow: 0px 0px 15px 1px rgba(107,107,107,0.68);
 }
 
 #profileContainer{

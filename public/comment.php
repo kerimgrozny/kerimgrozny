@@ -6,14 +6,13 @@
 		if(!isset($_SESSION["User"])){
 			redirect_to("login.php");
 		}else{
-			$Name = prep_string($_POST["Name"]);
-			$Comment = prep_string($_POST["Comment"]);
-			$User = $_SESSION["User"];
+			$name    = mysql_prep($_POST["Name"]);
+			$comment = mysql_prep($_POST["Comment"]);
+			$user    = $_SESSION["User"];
 
 			$query  = "INSERT INTO comment (";
 			$query .= "Name, Comment, User) VALUES ";
-			$query .= "('$Name', '$Comment', '$User')";
-
+			$query .= "('{$name}', '{$comment}', '{$user}')";
 			$result = mysqli_query($connection, $query);
 
 			if($result && mysqli_affected_rows($connection) == 1){

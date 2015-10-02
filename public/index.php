@@ -245,7 +245,7 @@
 <div class="container" class="content"><!-- start: 2 container -->
 	<div class="row"><!--content row start-->
 	<hr>
-		<h1 class="center">Создание сайта</h1>
+		<h2 class="center">Создание сайта</h2>
 		<div class="col-xs-12 col-md-6">
 			<p>Всего за несколько дней Вы можете стать обладателем собственного сайта в сети Интернет. Создание недорогих и качественных сайтов, а также их последующее обслуживание и продвижение - основной вид нашей деятельности.
 				Наше предложение для тех, кто осознает всю важность своего присутствия в глобальной сети Интернет.
@@ -260,8 +260,14 @@
 		<div class="col-xs-12 col-md-6">
 			<img class="img-responsive" src="images/serviceImages/webdesign2.jpg" alt="Веб Дизайн">
 		</div>
-	</div><!--content row end--><hr>
-
+	</div><!--content row end-->
+	
+	<div class="row">
+		<div class="col-xs-12 col-md-12" style="background:#0091EA;height:200px;width:100%">
+			
+		</div>		
+	</div>
+	
 	<div class="row"><!--content row start-->
 		<h2 class="center">Профессиональный дизайн</h2>
 		<div class="col-sm-12 col-md-6">
@@ -276,7 +282,7 @@
 		<div class="col-xs-12 col-md-12">
 			<h2 class="center"></h2>
 		</div>
-	</div><!--content row end--><hr>
+	</div><!--content row end-->
 	
 	<?php commentsDisplay(); ?>
     <?php commentBlock(); ?>

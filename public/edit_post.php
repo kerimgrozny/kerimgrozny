@@ -3,7 +3,7 @@
 <?php require_once("../includes/functions.php"); ?>
 <?php
     // Redirect if SESSION User is not set
-    if(!isset($_SESSION["User"])){
+    if (!isset($_SESSION["User"])) {
         $_SESSION["failMsg"] = "Вы еще не в системе, войдите чтобы редактировать.";
         redirect_to("forum.php?subject=".$_GET["Subject"]);
     // Redirect if GET ID User and Subject is not set
@@ -22,7 +22,7 @@
         }
     }
 
-    // Assemble query if POST submit isset
+    // Update post if submits
     if(isset($_POST["submit"])) {
         $Content = mysql_prep($_POST["Content"]);
         $query  = "UPDATE blog_page SET ";
@@ -44,16 +44,16 @@
             <h3 class="center">Темы</h3>
                 <?php
                     // displays list of all subjects on sidebar
-                    $subject_set = fetchAllSubjects();
-                    echo subjectNavigation($subject_set);
+                    $subject_set = fetch_all_subjects();
+                    echo display_all_subjects($subject_set);
                 ?>
                 <hr>
-                <h4>Пользователи</h4>
+                <h3 class="center">Пользователи</h3>
                 <?php 
                     // displays list of all users on sidebar
-                    $user_set = fetchAllUsers();           
-                    echo userNavigation($user_set);
-                ?>  
+                    $user_set = find_all_users();           
+                    echo display_all_users($user_set);
+                ?>   
             </ul>
         </div><!-- /#sidebar-wrapper -->
 
@@ -75,18 +75,19 @@
                         <?php
                             $visible = "public";
                             // display pages that belong to selected subject.
-                            if(isset($_GET["subject"])){
-                                $page_set = fetchPagesForSubject($_GET["subject"], $visible);
-                                echo pagesForSelectedSubject($page_set);
+                            if (isset($_GET["subject"])) {
+                                $page_set = find_pages_for_subject($_GET["subject"], $visible);
+                                echo display_pages_for_subject($page_set);
                             }
-                            // display info for selected user.                
-                            elseif(isset($_GET["user"])){
-                                echo selectedUserInfo($_GET["user"]);
-                            }else{
+                            // display info for selected user .                
+                            elseif (isset($_GET["user"])) {
+                                echo diplay_user_info($_GET["user"]);
+                            } else {
                                 echo "<p>Выберите из меню</p>";
                             } 
-                     
-                            succMsg(); failMsg(); 
+                        ?>
+                        <?php
+                            succMsg();
                         ?>
                         <form class="form-inline" action="edit_post.php?ID=<?php echo $_GET["ID"]; ?>&User=<?php echo $_GET["User"]; ?>&Subject=<?php echo $_GET["Subject"]; ?>" role="form" method="POST">
                             <div class="form-group">
@@ -99,11 +100,11 @@
                                 <div class="col-sm-12">
                                     <select class="form-control" name="Subject" required>
                                         <option value="<?php echo $_GET["Subject"] ?>" selected><?php echo $_GET["Subject"] ?></option>
-                                        <?php $selectSubject = fetchAllSubjects(); 
-                                            while($subject = mysqli_fetch_assoc($selectSubject)){
+                                        <?php 
+                                            $selected_subject = fetch_all_subjects(); 
+                                            while ($subject = mysqli_fetch_assoc($selected_subject)) {
                                                 $output  = "<option value=\"";
-                                                $output .= $subject["Name"];                                                                                
-                                                //$output .= $subject["Name"];                                        
+                                                $output .= $subject["Name"];                                        
                                                 $output .= "\">";
                                                 $output .= $subject["Name"];
                                                 $output .= "</option>";
@@ -121,7 +122,7 @@
                         </form>                     
                     </div>
                 </div>
-            </div>
+            </div><hr>
             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Меню</a>
         </div><!-- /#page-content-wrapper -->
     </div><!-- /#wrapper -->              

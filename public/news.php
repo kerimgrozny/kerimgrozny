@@ -7,8 +7,19 @@
     <div id="wrapper">
         <div id="sidebar-wrapper"><!-- Sidebar -->
             <ul class="sidebar-nav">
-                <h3 class="center">Темы</h3>
-                <li><a href="forum.php">Назад</a></li>
+            <h3 class="center">Темы</h3>
+                <?php
+                    // displays list of all subjects on sidebar
+                    $subject_set = fetch_all_subjects();
+                    echo display_all_subjects($subject_set);
+                ?>
+                <hr>
+                <h3 class="center">Пользователи</h3>
+                <?php 
+                    // displays list of all users on sidebar
+                    $user_set = find_all_users();           
+                    echo display_all_users($user_set);
+                ?>  
             </ul>
         </div><!-- /#sidebar-wrapper -->
         <div id="page-content-wrapper"><!-- Page Content -->

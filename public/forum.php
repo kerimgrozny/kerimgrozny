@@ -10,20 +10,21 @@
             <h3 class="center">Темы</h3>
                 <?php
                     // displays list of all subjects on sidebar
-                    $subject_set = fetchAllSubjects();
-                    echo subjectNavigation($subject_set);
+                    $subject_set = fetch_all_subjects();
+                    echo display_all_subjects($subject_set);
                 ?>
                 <hr>
                 <h3 class="center">Пользователи</h3>
                 <?php 
                     // displays list of all users on sidebar
-                    $user_set = fetchAllUsers();           
-                    echo userNavigation($user_set);
+                    $user_set = find_all_users();           
+                    echo display_all_users($user_set);
                 ?>  
             </ul>
         </div><!-- /#sidebar-wrapper -->
         
         <div id="page-content-wrapper"><!-- Page Content -->
+         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Меню</a>
             <nav class="navbar navbar-default" id="forum_upper_nav">
               <div class="container-fluid">
                 <div>
@@ -36,7 +37,6 @@
                 </div>
               </div>
             </nav> 
-         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Меню</a>
             <div class="container-fluid">
                 <div class="row">
                     <h1 class="center">Форум</h1>
@@ -58,18 +58,18 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8">                      
-                        <?php succMsg(); failMsg(); ?>                
+                        <?php succMsg(); failMsg(); ?>
                         <?php
                             $visible = "public";
                             // display pages that belong to selected subject.
-                            if(isset($_GET["subject"])){
-                                $page_set = fetchPagesForSubject($_GET["subject"], $visible);
-                                echo pagesForSelectedSubject($page_set);
+                            if (isset($_GET["subject"])) {
+                                $page_set = find_pages_for_subject($_GET["subject"], $visible);
+                                echo display_pages_for_subject($page_set);
                             }
-                            // display info for selected user.                
-                            elseif(isset($_GET["user"])){
-                                echo selectedUserInfo($_GET["user"]);
-                            }else{
+                            // display info for selected user .                
+                            elseif (isset($_GET["user"])) {
+                                echo diplay_user_info($_GET["user"]);
+                            } else {
                                 echo "<p>Выберите из меню</p>";
                             } 
                         ?>
@@ -88,9 +88,11 @@
                             <div class="form-group">
                                 <label>Тема</label>
                                 <select required name="subject" class="form-control">
-                                        <option value="">Тема</option>
-                                        <?php $selectSubject = fetchAllSubjects(); 
-                                            while($subject = mysqli_fetch_assoc($selectSubject)){
+                                        <!-- displays all subjects in form list to choose from -->
+                                        <option value=""></option>
+                                        <?php 
+                                            $selected_subject = fetch_all_subjects(); 
+                                            while ($subject = mysqli_fetch_assoc($selected_subject)) {
                                                 $output  = "<option value=\"";
                                                 $output .= $subject["Name"];                                        
                                                 $output .= "\">";
@@ -114,7 +116,7 @@
                                 Публичный
                               </label>
                             </div><hr>
-                            <button type="submit" name="submit" class="btn btn-default">Добавит</button>
+                            <button type="submit" name="submit" class="btn btn-default">Добавить</button>
                             <hr>                        
                         </form>                      
                     </div><!--/ public forum page -->
