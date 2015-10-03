@@ -1,6 +1,35 @@
 <?php require_once("../includes/session.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
+<?php
+    if (!isset($_SESSION["User"])) {
+        $_SESSION["failMsg"] = "Вы еще не в системе.";
+    }
+    if (isset($_POST["submit"])){
+        if (!isset($_SESSION["User"])) {
+            redirect_to("login.php");    
+        }        
+        $name    = mysql_prep($_POST["name"]);
+        $content = mysql_prep($_POST["content"]);
+        $user    = $_SESSION["User"];
+        $subject = $_POST["subject"];
+        $visible = (int) $_POST["visible"];
+
+        $query  = "INSERT INTO blog_page ";
+        $query .= "(Name, Content, CreatedBy, Subject, Visible) ";      
+        $query .= "VALUES ('{$name}', '{$content}', '{$user}', '{$subject}', {$visible}) ";
+        $result = mysqli_query($connection, $query);
+        //confirm_query($result);
+
+        if($result && mysqli_affected_rows($connection) == 1){
+            $_SESSION["succMsg"] = "Добавлен успешно.";
+            redirect_to("forum.php?subject=".$subject);         
+        }else{
+            $_SESSION["failMsg"] = "Ошибка.";
+            redirect_to("forum.php?subject=".$subject);         
+        }
+    }
+?>
 <?php include("../includes/layouts/header.php"); ?>
 <title>Чеченские Програмисты</title>
 <meta name="description" content="KerimGrozny - Форум чеченских программистов - здесь вы найдете программистов и всю информацию о програмирование">
@@ -76,7 +105,7 @@
                         <?php
                             succMsg();
                         ?>                       
-                        <form action="create_post.php" role="form" method="POST" class="postForm">
+                        <form action="forum.php" role="form" method="POST" class="postForm">
                             <div class="form-group">
                                 <label>Название</label>
                                 <input required type="text" name="name" class="form-control" placeholder="Название">
