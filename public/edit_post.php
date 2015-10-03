@@ -76,7 +76,7 @@
                             $visible = "public";
                             // display pages that belong to selected subject.
                             if (isset($_GET["subject"])) {
-                                $page_set = find_pages_for_subject($_GET["subject"], $visible);
+                                $page_set = fetch_pages_for_subject($_GET["subject"], $visible);
                                 echo display_pages_for_subject($page_set);
                             }
                             // display info for selected user .                

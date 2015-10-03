@@ -1,11 +1,22 @@
 <?php
 
+function redirect_to($new_page){
+    header("Location:" . $new_page);
+    exit;       
+}
+
 function mysql_prep($string) {
-    // funtions escapes string and returns
+    // escapes string and returns it
     global $connection;
     
     $escaped_string = mysqli_real_escape_string($connection, $string);
     return $escaped_string;
+}
+
+function confirm_query($result_set){
+    if (!$result_set) {
+        die("Запрос к базе данных не удалось.");
+    }       
 }
 
 function fetch_all_subjects(){
@@ -17,6 +28,32 @@ function fetch_all_subjects(){
     confirm_query($subject_set);       
     return $subject_set;
     mysqli_free_result($subject_set);
+}
+
+function fetch_pages_for_subject($subject, $visible=0){
+    global $connection;
+    
+    $query  = "SELECT * FROM blog_page ";    
+    if (isset($subject)) {
+        $query .= "WHERE Subject = '{$subject}' ";
+    }
+    if ($visible == 1){
+        $query .= "AND Visible = 0";
+    }
+    $page_set = mysqli_query($connection, $query);
+    confirm_query($page_set);
+    return $page_set;
+    mysqli_free_result($page_set);    
+}
+
+function find_all_users(){
+    global $connection;
+
+    $query = "SELECT * FROM user";
+    $user_set = mysqli_query($connection, $query);
+    confirm_query($user_set);
+    return $user_set;
+    mysqli_free_result($user_set);
 }
 
 function display_all_subjects($find_all_subjects) {
@@ -32,16 +69,6 @@ function display_all_subjects($find_all_subjects) {
         $output .= "</ul>";
         return $output;
         mysqli_free_result($subject_set);
-}
-
-function find_all_users(){
-    global $connection;
-
-    $query = "SELECT * FROM user";
-    $user_set = mysqli_query($connection, $query);
-    confirm_query($user_set);
-    return $user_set;
-    mysqli_free_result($user_set);
 }
 
 function display_all_users($find_all_users){
@@ -62,44 +89,15 @@ function display_all_users($find_all_users){
     mysqli_free_result($user_set);
 }
 
-function find_pages_for_subject($subject, $visible){
-    global $connection;
-    
-    $query  = "SELECT * FROM blog_page ";    
-    if(isset($subject)) {
-        $query .= "WHERE Subject = '{$subject}' ";
-    }
-    if(isset($visible) && $visible == "public"){
-        $query .= "AND Visible = 1";
-    }
-    $page_set = mysqli_query($connection, $query);
-    confirm_query($page_set);
-    return $page_set;
-    mysqli_free_result($page_set);    
-}
-
 function display_pages_for_subject($pages){                   
-    $output = "<table id=\"blogTable\">";
     $page_set = $pages;
     while($page = mysqli_fetch_assoc($page_set)){
-        $output .= "<tr><td>Номер поста: </td><td>";
-        $output .= $page["ID"];
-        $output .= "</td></tr>";
-        $output .= "<tr><td>Пост: </td><td>";
-        $output .= $page["Content"];
-        $output .= "</td></tr>";
-        $output .= "<tr><td>Дата: </td><td>";
-        $output .= $page["CreatedDate"];
-        $output .= "</td></tr>";
-        $output .= "<tr><td>Пользователь: </td><td>";
-        $output .= $page["CreatedBy"];
-        $output .= "</td></tr>";
-        //$output .= "<td><a href=\"edit_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."\">Изменить</a></td>";
-        $output .= "<td><a href=\"edit_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">Изменить</a></td>";
-        $output .= "<td><a href=\"delete_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">Удалить</a></td></tr>";
-        $output .= "<tr><td><hr></td><td><hr></td></tr>";
+        $output  = "<p> {$page["Name"]} </p>";
+        $output .= "<p> {$page["Content"]} <i>ид {$page["ID"]}</i> </p>"; 
+        $output .= "<p> от {$page["CreatedBy"]} в {$page["CreatedDate"]} </p>"; 
+        $output .= "<p> <a href=\"edit_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">Изменить </a>";
+        $output .= "<a href=\"delete_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">   Удалить</a></p>";
     }
-    $output .= "</table>";
     return $output;
     mysqli_free_result($page_set);        
 }
@@ -152,12 +150,5 @@ function resumeNavigation($resume_set){
     $output .= "</tbody></table>";
     return $output;
 }
-
-function confirm_query($result_set){
-    if (!$result_set) {
-        die("Запрос к базе данных не удалось.");
-    }       
-}
-
 
 ?>

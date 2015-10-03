@@ -122,7 +122,11 @@ a:hover{
 /* selects: main navmenu items */
 .navbar-inverse .navbar-nav>li>a {
     color: #FFFFFF;
-	background-color:#00796B
+    background-color:#00796B;
+}
+
+#middleNav li:hover {
+    background-color: #006156;
 }
 
 .commentsDisplay{

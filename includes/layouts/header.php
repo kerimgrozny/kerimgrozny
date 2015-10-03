@@ -27,7 +27,7 @@
       <a class="navbar-brand" href="index.php" id="logoText">KerimGrozny</a>
     </div>
     <div class="collapse navbar-collapse" style="text-align: center" id="myNavbar">
-      <ul class="nav navbar-nav" style="display: inline-block; float: none; vertical-align: top;">
+      <ul class="nav navbar-nav" style="display: inline-block; float: none; vertical-align: top" id="middleNav">
         <li><a href="index.php">Главная</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="">Услуги<span class="caret"></span></a>

@@ -2,11 +2,6 @@
 
     session_start();
 
-    function redirect_to($new_page){
-    	header("Location:" . $new_page);
-    	exit;		
-    }
-
     function succMsg(){
         if(isset($_SESSION["succMsg"])) {
             $output  = "<h5 class=\"center\" style=\"color:#009933\">";
@@ -24,7 +19,7 @@
             $output .= "</h5>";
             echo $output;
             $_SESSION["failMsg"] = null;
+        }
     }
-}
-
+    
 ?>
