@@ -9,15 +9,19 @@
         if (!isset($_SESSION["User"])) { 
             redirect_to("login.php");
         }
-        $company  = mysql_prep($_POST["company"]);
-        $category = $_POST["category"];
-        $layout   = $_POST["layout"];
-        $navbar   = $_POST["navbar"];
-        $details  = mysql_prep($_POST["details"]);
-        $user     = $_SESSION["User"];
+        $company        = mysql_prep($_POST["company"]);
+        $category       = $_POST["category"];
+        $layout         = $_POST["layout"];
+        $navbar         = $_POST["navbar"];
+        $responsiveness = $_POST["responsiveness"];
+        $functionality  = $_POST["functionality"];
+        $details        = mysql_prep($_POST["details"]);
+        $user           = $_SESSION["User"];
 
-        $query  = "INSERT INTO orders (Company, Category, Layout, Navbar, Details, User) "; 
-        $query .= "VALUES ('{$company}', '{$category}', '{$layout}', '{$navbar}', '{$details}', '{$user}')";
+        echo $query;
+
+        $query  = "INSERT INTO orders (Company, Category, Layout, Navbar, Responsiveness, Functionality, Details, User) "; 
+        $query .= "VALUES ('{$company}', '{$category}', '{$layout}', '{$navbar}', '{$responsiveness}', '{$functionality}', '{$details}', '{$user}')";
         $result = mysqli_query($connection, $query);
 
         if ($result && mysqli_affected_rows($connection) == 1) {
@@ -84,15 +88,50 @@
                     <input required type="radio" name="navbar" value="Горизонтальная">
                     Горизонтальная
                   </label>
+                </div><hr>
+                <!-- Responsive ? -->
+                <label class="control-label">Адаптивный для</label>
+                <div class="radio">
+                  <label>
+                    <input required type="radio" name="responsiveness" value="Больших экранов только">
+                    Больших экранов только
+                  </label>
                 </div>
+                <!-- Horizontal -->
+                <div class="radio">
+                  <label>
+                    <input required type="radio" name="responsiveness" value="Любого экрана">
+                    Любого экрана
+                  </label>
+                </div><hr>
+                <!-- Need functionality? -->
+                <label class="control-label">Функциональность для</label>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name="functionality" value="Регистрации пользователей">
+                    Регистрации пользователей
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name="functionality" value="Возможности комментарии">
+                    Возможности комментарии
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name="functionality" value="Онлайн дискуссии">
+                    Онлайн дискуссии
+                  </label>
+                </div><hr>
                 <!-- Details -->
+                <label>Подробнее</label>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Название компании</label>
                     <div class="col-sm-10">
-                        <textarea rows="5" name="details" class="form-control">Подробнее</textarea>
+                        <textarea name="details" class="form-control"></textarea>
                     </div>
                 </div>
-
+                <!-- Submit -->
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" name="submit" class="btn btn-default">Потвердить</button>

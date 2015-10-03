@@ -169,11 +169,16 @@ label{
 
 /* forum upper nav */
 #forum_upper_nav{
-    background-color: #3F51B5;
+    background-color: #E6E6E6;
     border-color: #F5F5F5;
 }
-
+/* forum upper menu when hover */
 #forum_upper_nav * {
+    color: #336699;
+}
+
+#forum_upper_nav li:hover a {
+    background-color: #3366CC;
     color: #fff;
 }
 
@@ -187,4 +192,13 @@ label{
 
 #registerForm label {
     font-size: 90%
+}
+
+/* all (p) inside forum post area */
+#forumPost {
+    background-color: #ffffff;
+    line-height: 35px;
+    padding: 2%;
+    color: #003366;
+    border: 1px solid lightgrey;
 }

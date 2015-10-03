@@ -2,6 +2,7 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php
+    // If create form submits perform insert
     if (!isset($_SESSION["User"])) {
         $_SESSION["failMsg"] = "Вы еще не в системе.";
     }
@@ -53,7 +54,6 @@
         </div><!-- /#sidebar-wrapper -->
         
         <div id="page-content-wrapper"><!-- Page Content -->
-         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Меню</a>
             <nav class="navbar navbar-default" id="forum_upper_nav">
               <div class="container-fluid">
                 <div>
@@ -66,33 +66,30 @@
                 </div>
               </div>
             </nav> 
+            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Меню</a>
             <div class="container-fluid">
                 <div class="row">
                     <h1 class="center">Форум</h1>
                     <div class="col-xs-12 col-lg-8" class="">
                         <p>Добро пожаловать на официальный форум чеченских хаккеров программистов и начинающих.
                         Тут вы найдете интересующую для вас информацию, о программистов, разработчиков и дизайнеров.
-                        А также поделиться новой информации, которым вам бы хотелось с другими.</p>  
-                        <hr>
+                        А также поделиться новой информации, которым вам бы хотелось с другими.</p><hr>
+                        <h3 class="center">Новые обсуждении</h3>
                     </div> 
                     <div class="col-xs-12 col-lg-4">
                         <p>Если у вас будут вопросы касающиеся веб програмированию, свяжитесь со мной прямо через email:</p>  
                         <p>If you have any questions related to web programming, send me an email.</p>
                         <code>kerimgrozny@gmail.com</code>
-                        <hr>
                     </div>                   
-                    <div class="col-xs-12 col-lg-6">
-                    <!-- Div for some content -->
-                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8">                      
+                    <div class="col-lg-8" id="postArea">                      
                         <?php succMsg(); failMsg(); ?>
                         <?php
-                            $visible = 0;
                             // display pages that belong to selected subject.
+                            $visible = 0;
                             if (isset($_GET["subject"])) {
-                                $page_set = fetch_pages_for_subject($_GET["subject"], $visible);
+                                $page_set = fetch_pages_for_subject($_GET["subject"]);
                                 echo display_pages_for_subject($page_set);
                             }
                             // display info for selected user .                
@@ -150,7 +147,7 @@
                         </form>                      
                     </div><!--/ public forum page -->
                     <div class="col-lg-4" id="forumNewsPage"><!--/ public forum page -->
-                        <h3 class="center">Новости</h3>
+                        <img class="img-responsive" src="images/programmer.jpeg" alt="Чеченский программист">
                     </div>
                 </div>
             </div>

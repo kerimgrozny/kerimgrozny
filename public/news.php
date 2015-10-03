@@ -7,33 +7,19 @@
     <div id="wrapper">
         <div id="sidebar-wrapper"><!-- Sidebar -->
             <ul class="sidebar-nav">
-<<<<<<< HEAD
             <h3 class="center">Темы</h3>
                 <?php
                     // displays list of all subjects on sidebar
                     $subject_set = fetch_all_subjects();
                     echo display_all_subjects($subject_set);
-=======
-                <h3 class="center">Темы</h3>
-                <?php
-                    // displays list of all subjects on sidebar
-                    $subject_set = fetchAllSubjects();
-                    echo subjectNavigation($subject_set);
->>>>>>> 5b6ec8b51e67b93cc3f7157a0e20a6acc15ab673
                 ?>
                 <hr>
                 <h3 class="center">Пользователи</h3>
                 <?php 
                     // displays list of all users on sidebar
-<<<<<<< HEAD
                     $user_set = find_all_users();           
                     echo display_all_users($user_set);
                 ?>  
-=======
-                    $user_set = fetchAllUsers();           
-                    echo userNavigation($user_set);
-                ?>                
->>>>>>> 5b6ec8b51e67b93cc3f7157a0e20a6acc15ab673
             </ul>
         </div><!-- /#sidebar-wrapper -->
         <div id="page-content-wrapper"><!-- Page Content -->

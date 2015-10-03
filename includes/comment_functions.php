@@ -11,8 +11,8 @@
 				while($comment = mysqli_fetch_assoc($result)){
 					$output  = "<p> {$comment["Name"]} </p>";
 					$output .= "<p><i> {$comment["ID"]} </i>&nbsp; {$comment["Comment"]} </p>"; 
-					$output .= "<p><i>от:</i> <a href=\"forum.php?user={$comment["User"]}\">{$comment["User"]}. </a>";
-					$output .= "<i>{$comment["Date"]}</i></p><hr>";
+					$output .= "<p><i>от:</i> <a href=\"forum.php?user={$comment["User"]}\">{$comment["User"]} </a>";
+					$output .= "<i>в:</i> {$comment["Date"]}</i></p><hr>";
 					echo $output;
 				}
 

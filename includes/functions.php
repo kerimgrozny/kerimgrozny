@@ -30,16 +30,11 @@ function fetch_all_subjects(){
     mysqli_free_result($subject_set);
 }
 
-function fetch_pages_for_subject($subject, $visible=0){
+function fetch_pages_for_subject($subject){
     global $connection;
     
     $query  = "SELECT * FROM blog_page ";    
-    if (isset($subject)) {
-        $query .= "WHERE Subject = '{$subject}' ";
-    }
-    if ($visible == 1){
-        $query .= "AND Visible = 0";
-    }
+    $query .= "WHERE Subject = '{$subject}' ";
     $page_set = mysqli_query($connection, $query);
     confirm_query($page_set);
     return $page_set;
@@ -56,8 +51,8 @@ function find_all_users(){
     mysqli_free_result($user_set);
 }
 
-function display_all_subjects($find_all_subjects) {
-        $subject_set = $find_all_subjects;
+function display_all_subjects($fetch_all_subjects) {
+        $subject_set = $fetch_all_subjects;
         $output = "<ul>";
         while($subject = mysqli_fetch_assoc($subject_set)) {
             $output .= "<li><a href=\"forum.php?subject=";
@@ -89,16 +84,21 @@ function display_all_users($find_all_users){
     mysqli_free_result($user_set);
 }
 
-function display_pages_for_subject($pages){                   
+function display_pages_for_subject($pages){
+    $output = "<p id=\"forumPost\">";                 
     $page_set = $pages;
     while($page = mysqli_fetch_assoc($page_set)){
-        $output  = "<p> {$page["Name"]} </p>";
-        $output .= "<p> {$page["Content"]} <i>ид {$page["ID"]}</i> </p>"; 
-        $output .= "<p> от {$page["CreatedBy"]} в {$page["CreatedDate"]} </p>"; 
-        $output .= "<p> <a href=\"edit_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">Изменить </a>";
-        $output .= "<a href=\"delete_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">   Удалить</a></p>";
+        $output .= "{$page["Name"]} <br/>";
+        $output .= "{$page["Content"]} <br/>"; 
+        $output .= "от {$page["CreatedBy"]} в {$page["CreatedDate"]} <i>ид {$page["ID"]}</i><br/>";     
+        $output .= "<a href=\"edit_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">Изменить </a>";
+        $output .= "<a href=\"delete_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">Удалить </a>";
+        $output .= "</p><p id=\"forumPost\">";
     }
-    return $output;
+    $output .= "</p>";
+    if (isset($output)) {
+        return $output;
+    }
     mysqli_free_result($page_set);        
 }
 

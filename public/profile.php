@@ -59,7 +59,7 @@
                     echo "<p>Здесь вы сможете увидеть все посты которые вы сделали, в том числе приватные посты которые
                     вы указали (приватный) во время создания.</p><hr>";
                     $visible = "private";
-                    $posts = fetchPagesForSubject($subject=null, $visible);
+                    $posts = fetch_pages_for_subject($subject=null, $visible);
                     while($post = mysqli_fetch_assoc($posts)) {                  
                         echo "<tr><td><i> ID: </i></td><td>" . $post["ID"] . "<td/></tr>";
                         echo "<tr><td><i> Пост: </i></td><td>" . $post["Content"] . "<td/></tr>";

@@ -1,60 +1,25 @@
 <?php require_once("../includes/session.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
-<?php
-    // Assemble query if POST submit isset
-    if(isset($_POST["submit"])) {
-        $name       = mysql_prep($_POST["name"]);
-        $technology = implode($_POST["technology"]);
-        $job        = $_POST["job"];
-        $details    = mysql_prep($_POST["details"]);
-
-        $query  = "INSERT INTO vacancy (";
-        $query .= "Name, Technology, Job, Details) ";
-        $query .= "VALUES ('{$name}', '{$technology}', '{$job}', '{$details}')";
-        
-        $result = mysqli_query($connection, $query);
-
-        if($result && mysqli_affected_rows($connection) == 1) {
-            $_SESSION["succMsg"] = "Ваш резюме успешно добавлено.";
-            redirect_to("forum.php");
-        } 
-               
-    }
-?>
 <?php include("../includes/layouts/header.php"); ?>
 <title>Чеченские Програмисты</title>
-<meta name="description" content="Вакансии для программистов в Грозном, ведется набор программистов разработчиков и дизайнеров в Чечне, мы ищем программистов для работы с онлайн проектом">
+<meta name="description" content="KerimGrozny - Форум чеченских программистов - здесь вы найдете программистов и всю информацию о програмирование">
     <div id="wrapper">
         <div id="sidebar-wrapper"><!-- Sidebar -->
             <ul class="sidebar-nav">
-<<<<<<< HEAD
             <h3 class="center">Темы</h3>
                 <?php
                     // displays list of all subjects on sidebar
                     $subject_set = fetch_all_subjects();
                     echo display_all_subjects($subject_set);
-=======
-                <h3 class="center">Темы</h3>
-                <?php
-                    // displays list of all subjects on sidebar
-                    $subject_set = fetchAllSubjects();
-                    echo subjectNavigation($subject_set);
->>>>>>> 5b6ec8b51e67b93cc3f7157a0e20a6acc15ab673
                 ?>
                 <hr>
                 <h3 class="center">Пользователи</h3>
                 <?php 
                     // displays list of all users on sidebar
-<<<<<<< HEAD
                     $user_set = find_all_users();           
                     echo display_all_users($user_set);
                 ?>  
-=======
-                    $user_set = fetchAllUsers();           
-                    echo userNavigation($user_set);
-                ?>            
->>>>>>> 5b6ec8b51e67b93cc3f7157a0e20a6acc15ab673
             </ul>
         </div><!-- /#sidebar-wrapper -->
         <div id="page-content-wrapper"><!-- Page Content -->
