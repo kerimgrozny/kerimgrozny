@@ -7,19 +7,33 @@
     <div id="wrapper">
         <div id="sidebar-wrapper"><!-- Sidebar -->
             <ul class="sidebar-nav">
+<<<<<<< HEAD
             <h3 class="center">Темы</h3>
                 <?php
                     // displays list of all subjects on sidebar
                     $subject_set = fetch_all_subjects();
                     echo display_all_subjects($subject_set);
+=======
+                <h3 class="center">Темы</h3>
+                <?php
+                    // displays list of all subjects on sidebar
+                    $subject_set = fetchAllSubjects();
+                    echo subjectNavigation($subject_set);
+>>>>>>> 5b6ec8b51e67b93cc3f7157a0e20a6acc15ab673
                 ?>
                 <hr>
                 <h3 class="center">Пользователи</h3>
                 <?php 
                     // displays list of all users on sidebar
+<<<<<<< HEAD
                     $user_set = find_all_users();           
                     echo display_all_users($user_set);
                 ?>  
+=======
+                    $user_set = fetchAllUsers();           
+                    echo userNavigation($user_set);
+                ?>                
+>>>>>>> 5b6ec8b51e67b93cc3f7157a0e20a6acc15ab673
             </ul>
         </div><!-- /#sidebar-wrapper -->
         <div id="page-content-wrapper"><!-- Page Content -->
@@ -38,21 +52,13 @@
          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Меню</a>
             <div class="container-fluid">
                 <div class="row">
-                    <h1 class="center">Форум</h1>
-                    <div class="col-xs-12 col-lg-12" class="">
-                        <p>Добро пожаловать на официальный форум чеченских хаккеров программистов и начинающих.
-                        Тут вы найдете интересующую для вас информацию, о программистов, разработчиков и дизайнеров.
-                        А также поделиться новой информации, которым вам бы хотелось с другими.</p> 
-
-                        <hr>
-                    </div>
+                    <p><cite>От</cite> Администраторов.</p>
                     <h3 class="center">Сублайм Текст 3</h3>
                     <p>Пользовался уже почти со всеми IDE и текстовыми редакторами но Sublime Text на мой взляд самый
                     лучший и простой но, использование редактора как Sublime Text требует определенные знании
                     в программирование и понимание синтаксиса.  
                     </p><img src="images/news/sublime.png" class="img-responsive"><br/>
                     <a href="http://www.sublimetext.com/">Скачайте</a><span> бесплатно с официального сайта</span>
-                    <blockquote><a href="forum.php?user=kerim">Администратор</blockquote>
                     </div><br/>
                 <div class="row">
                     <div class="col-lg-8">                      
