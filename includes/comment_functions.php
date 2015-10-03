@@ -1,29 +1,28 @@
 <?php
-	function commentsDisplay() { ?> <hr><div class="row" style="background:#fff;color:#000">
+	function commentsDisplay() { ?>
+	<div class="row"><hr>
 		<div class="col-xs-12 col-lg-12">
-			<p class="center">Коментарии</hp>
-			<table class="commonTable">
+			<p class="center">Коментарии</p>
 			<?php
 				global $connection;
 				
 				$query = "SELECT * FROM comment";
-				$result = mysqli_query($connection, $query);
-				
+				$result = mysqli_query($connection, $query);			
 				while($comment = mysqli_fetch_assoc($result)){
-					echo "<tr><td><i> ИД </i></td><td>" . $comment["ID"] . "</td></tr>";
-					echo "<tr><td><i> Тема </i></td><td>" . $comment["Name"] . "</td></tr>";
-					echo "<tr><td><i> Комментария </i> </td><td>" . $comment["Comment"] . "</td></tr>";
-					echo "<tr><td><i> Пользователь </i> </td><td>" . $comment["User"] . "</td></tr>";
-					echo "<tr><td><i> Дата </i><hr></td><td>" . $comment["Date"] . "<hr></td></tr>";
+					$output  = "<p> {$comment["Name"]} </p>";
+					$output .= "<p><i> {$comment["ID"]} </i>&nbsp; {$comment["Comment"]} </p>"; 
+					$output .= "<p><i>от:</i> <a href=\"forum.php?user={$comment["User"]}\">{$comment["User"]}. </a>";
+					$output .= "<i>{$comment["Date"]}</i></p><hr>";
+					echo $output;
 				}
+
 				if(mysqli_num_rows($result) == 0){
 					echo "<h5 class=\"center\">Комментарий еще никто не сделал, будь первым.</h5>";
 				}
 			?>
-			</table>
-		</div></div>
+		</div>
+	</div>
 	<?php } 
-
 	function commentBlock() { ?> 
 		<div class="row">
 			<div class="col-xs-12 col-lg-12" style="background-color:#fff;color:#000">

@@ -10,9 +10,10 @@
     }
 }
 
-h1,h2,h3,h4{
+h1, h2, h3{
     margin: 40px;
     font-family: 'Poiret One', cursive;
+    font-weight: bold;
 }
 
 /* centers all elements with class */
@@ -142,7 +143,7 @@ label{
 }
 
 /* Targes attributes from form */
-.postForm input[name="name"]{
+.postForm input[name="name"] {
     width: 500px;
 }
 .postForm textarea[name="content"]{
@@ -172,8 +173,6 @@ label{
     color: #fff;
 }
 
-
-
 #forumNewsPage{
     background-color: #fff;
 }
@@ -184,9 +183,4 @@ label{
 
 #registerForm label {
     font-size: 90%
-}
-
-#designOrderForm{
-    background-color: #D6E0EB;
-    padding: 25px;
 }

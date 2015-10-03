@@ -6,6 +6,9 @@
         $_SESSION["failMsg"] = "Вы еще не в системе, <a href=\"login.php\">войдите</a>"; 
     }
     if (isset($_POST["submit"])) {
+        if (!isset($_SESSION["User"])) { 
+            redirect_to("login.php");
+        }
         $company  = mysql_prep($_POST["company"]);
         $category = $_POST["category"];
         $layout   = $_POST["layout"];
@@ -13,7 +16,7 @@
         $details  = mysql_prep($_POST["details"]);
         $user     = $_SESSION["User"];
 
-        $query  = "INSERT INTO order (Company, Category, Layout, Navbar, Details, User) "; 
+        $query  = "INSERT INTO orders (Company, Category, Layout, Navbar, Details, User) "; 
         $query .= "VALUES ('{$company}', '{$category}', '{$layout}', '{$navbar}', '{$details}', '{$user}')";
         $result = mysqli_query($connection, $query);
 
@@ -34,10 +37,10 @@
         <?php succMsg(); failMsg(); ?>
         <div class="col-xs-12 col-md-6">
             <!-- webdesign order form -->
-            <p>Заполнение некоторых данных помогает мне более детально определить ваши задачи
+            <p>Заполнение некоторых данных помогает мне более детально определить ваши задачи.
             Опишите как можно подробнее, все описать необъязательно, можно будет уточнить в любое время</p>
             <hr/>
-            <form action="zakazat.php" class="form-horizontal" method="POST" id="designOrderForm">
+            <form action="zakazat.php" class="form-horizontal" method="POST" class="postForm">
                 <!-- Тип сайта -->
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Название компании</label>

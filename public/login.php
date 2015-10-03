@@ -59,15 +59,14 @@
             <ul class="contentList">
                 <li>Коментировать в страницах</li>
                 <li>Найти пользователей</li>
-                <li>Общаться с друзьями</li>
+                <li>Общаться с другими</li>
                 <li>Заказывать услуги</li>
-                <li>Общаться в блогах</li>
                 <li>Создать посты, и многое др</li>
-            </ul><hr>
+            </ul>
         </div>
-
-        <div class="col-xs-12 col-lg-12">
-            <h3></h3>
+        
+        <div class="col-xs-12 col-lg-12"><hr>
+            <h3 class="center">Сайт номер 1 по программирование в Грозном и в Чечне</h3>
             <img class="img-responsive" src="images/serviceImages/groznylogin.jpg"> <hr>
         </div>
 

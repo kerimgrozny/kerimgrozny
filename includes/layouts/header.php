@@ -30,7 +30,7 @@
       <ul class="nav navbar-nav" style="display: inline-block; float: none; vertical-align: top;">
         <li><a href="index.php">Главная</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Услуги<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="">Услуги<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="zakazat_sayt.php">Профессиональный сайт</a></li>
             <li><a href="videomontazh.php">Видеомонтаж</a></li>
