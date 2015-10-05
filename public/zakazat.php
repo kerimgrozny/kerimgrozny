@@ -6,6 +6,7 @@
         $_SESSION["failMsg"] = "Вы еще не в системе, <a href=\"login.php\">войдите</a>"; 
     }
     if (isset($_POST["submit"])) {
+        
         if (!isset($_SESSION["User"])) { 
             redirect_to("login.php");
         }
@@ -14,14 +15,22 @@
         $layout         = $_POST["layout"];
         $navbar         = $_POST["navbar"];
         $responsiveness = $_POST["responsiveness"];
-        $functionality  = $_POST["functionality"];
+        // Append user-selected checkboxes to $functionalitis if selected
+            if (isset($_POST["funcsA"])) {
+              $functionalitis = $_POST["funcsA"]; 
+            }
+            if (isset($_POST["funcsB"])) {
+              $functionalitis .= $_POST["funcsB"]; 
+            }
+            if (isset($_POST["funcsC"])) {
+              $functionalitis .= $_POST["funcsC"]; 
+            }
+        $functionalitis = $_POST["funcsA"] .= $_POST["funcsB"] .= $_POST["funcsC"];
         $details        = mysql_prep($_POST["details"]);
         $user           = $_SESSION["User"];
 
-        echo $query;
-
         $query  = "INSERT INTO orders (Company, Category, Layout, Navbar, Responsiveness, Functionality, Details, User) "; 
-        $query .= "VALUES ('{$company}', '{$category}', '{$layout}', '{$navbar}', '{$responsiveness}', '{$functionality}', '{$details}', '{$user}')";
+        $query .= "VALUES ('{$company}', '{$category}', '{$layout}', '{$navbar}', '{$responsiveness}', '{$functionalitis}', '{$details}', '{$user}')";
         $result = mysqli_query($connection, $query);
 
         if ($result && mysqli_affected_rows($connection) == 1) {
@@ -55,7 +64,8 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Тип сайта</label>
                     <div class="col-sm-10">
-                        <select name="category" type="text" class="form-control">
+                        <select required name="category" type="text" class="form-control">
+                            <option class="form-control" value=""></option>
                             <option class="form-control" value="Информационный портал">Информационный портал</option>
                             <option class="form-control" value="Сайт-визитка">Сайт-визитка</option>
                             <option class="form-control" value="Сайт-портфолио">Сайт-портфолио</option>
@@ -63,13 +73,15 @@
                         </select>
                     </div>
                 </div>
-                <!-- Цена сайта -->
+                <!-- Макет сайта -->
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Макет</label>
                     <div class="col-sm-10">
-                        <select type="text" name="layout" class="form-control">
+                        <select required type="text" name="layout" class="form-control">
+                            <option class="form-control" value=""></option>
                             <option class="form-control" value="На весь экран">На весь экран</option>
                             <option class="form-control" value="Компактый">Компактный</option>
+                            <option class="form-control" value="Неважно">Неважно</option>
                         </select>
                     </div>
                 </div>
@@ -108,19 +120,19 @@
                 <label class="control-label">Функциональность для</label>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="functionality" value="Регистрации пользователей">
+                    <input type="checkbox" name="funcsA" value="Регистрации пользователей ">
                     Регистрации пользователей
                   </label>
                 </div>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="functionality" value="Возможности комментарии">
+                    <input type="checkbox" name="funcsB" value="Возможности комментарии ">
                     Возможности комментарии
                   </label>
                 </div>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="functionality" value="Онлайн дискуссии">
+                    <input type="checkbox" name="funcsC" value="Онлайн дискуссии ">
                     Онлайн дискуссии
                   </label>
                 </div><hr>

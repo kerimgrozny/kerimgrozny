@@ -2,7 +2,7 @@
 	function commentsDisplay() { ?>
 	<div class="row"><hr>
 		<div class="col-xs-12 col-lg-12">
-			<p class="center">Коментарии</p>
+			<h3 class="center">Коментарии</h3>
 			<?php
 				global $connection;
 				

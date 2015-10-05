@@ -30,16 +30,34 @@ function fetch_all_subjects(){
     mysqli_free_result($subject_set);
 }
 
-function fetch_pages_for_subject($subject){
+function fetch_pages_for_subject($subject, $visible){
     global $connection;
     
     $query  = "SELECT * FROM blog_page ";    
     $query .= "WHERE Subject = '{$subject}' ";
+    if ($visible == 0) {
+        $query .= "AND Visible = 1";   
+    }   
     $page_set = mysqli_query($connection, $query);
     confirm_query($page_set);
     return $page_set;
     mysqli_free_result($page_set);    
 }
+
+function fetch_all_pages($visible){
+    global $connection;
+    
+    $query  = "SELECT * FROM blog_page ";    
+    if ($visible == 0) {
+        $query .= "AND Visible = 1";   
+    }   
+    $page_set = mysqli_query($connection, $query);
+    confirm_query($page_set);
+    return $page_set;
+    mysqli_free_result($page_set);    
+}
+
+
 
 function find_all_users(){
     global $connection;

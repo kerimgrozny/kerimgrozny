@@ -89,7 +89,7 @@
                             // display pages that belong to selected subject.
                             $visible = 0;
                             if (isset($_GET["subject"])) {
-                                $page_set = fetch_pages_for_subject($_GET["subject"]);
+                                $page_set = fetch_pages_for_subject($_GET["subject"], $visible);
                                 echo display_pages_for_subject($page_set);
                             }
                             // display info for selected user .                
