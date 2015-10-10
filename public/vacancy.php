@@ -1,6 +1,53 @@
 <?php require_once("../includes/session.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
+<?php
+    if (!isset($_SESSION["User"])) { 
+        $_SESSION["warnMsg"] = "Вы еще не в системе, <a href=\"login.php\">войдите</a>"; 
+    }
+    if (isset($_POST["submit"])) {       
+        if (!isset($_SESSION["User"])) { 
+            redirect_to("login.php");
+        }
+        $fullname = mysql_prep($_POST["fullname"]);
+        // Append selected choices to $technologies
+            if (isset($_POST["HTML"])) {
+              $technologies = $_POST["HTML"]; 
+            }
+            if (isset($_POST["CSS"])) {
+              $technologies .= $_POST["CSS"]; 
+            }
+            if (isset($_POST["JavaScript"])) {
+              $technologies .= $_POST["JavaScript"]; 
+            }           
+            if (isset($_POST["PHP"])) {
+              $technologies .= $_POST["PHP"]; 
+            }
+            if (isset($_POST["SQL"])) {
+              $technologies .= $_POST["SQL"]; 
+            }
+            if (isset($_POST["Ruby"])) {
+              $technologies .= $_POST["Ruby"]; 
+            }
+        // $technologies = $_POST["HTML"] .= $_POST["CSS"] .= $_POST["JavaScript"] .= $_POST["PHP"] .= $_POST["SQL"] .= $_POST["Ruby "] ;
+        $job          = $_POST["job"];
+        $details      = mysql_prep($_POST["details"]);
+        $user         = $_SESSION["User"];
+
+        $query  = "INSERT INTO vacancy (FullName, Technology, Job, Details, User) "; 
+        $query .= "VALUES ('{$fullname}', '{$technologies}', '{$job}', '{$details}', '{$user}')";      
+        $result = mysqli_query($connection, $query);
+
+        if ($result && mysqli_affected_rows($connection) == 1) {
+            $_SESSION["succMsg"] = "Спасибо {$_SESSION["User"]}. Ваши данные успешно были отправлены.";
+            redirect_to("forum.php");
+        } else {
+            $_SESSION["failMsg"] = "Ошибка при отправке.";
+            
+        }
+        
+    }
+?>
 <?php include("../includes/layouts/header.php"); ?>
 <title>Чеченские Програмисты</title>
 <meta name="description" content="KerimGrozny - Форум чеченских программистов - здесь вы найдете программистов и всю информацию о програмирование">
@@ -48,49 +95,58 @@
                         Желаю удачи.
                         </p>  
                         <hr>
-                        <?php succMsg(); failMsg(); ?>
+                        <?php succMsg(); warnMsg(); failMsg() ?>
                         <form action="vacancy.php" method="POST" class="postForm">
                           <div class="form-group">
                             <label>ФИО</label>
-                            <input type="name" name="name" required class="form-control" placeholder="Ведите полное имя">
+                            <input type="text" name="fullname" required class="form-control" placeholder="Ведите полное имя">
                           </div>
+
                           <div class="form-group">
                             <label>Ваш резюме</label>
                             <input type="file">
                           </div>
-                            <p class="help-block">Выберите языки которыми вы владете.</p>
-                          <!-- checkbox HTML CSS JavaScript -->
+                          
+                          <label class="control-label">Выберите языки которыми вы владеете:</label>
+                          <!-- HTML CSS JavaScript -->
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="technology[]" value="HTML">HTML 
+                              <input type="checkbox" name="HTML" value="HTML " >
+                              HTML
                             </label>
-                          </div>
+                          </div> 
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="technology[]" value="CSS">CSS 
+                              <input type="checkbox" name="CSS" value="CSS " >
+                              CSS
                             </label>
-                          </div>
+                          </div> 
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="technology[]" value="JavaScript">JavaScript 
+                              <input type="checkbox" name="JavaScript" value="JavaScript " >
+                              JavaScript
                             </label>
                           </div>
-                          <!-- checkbox PHP SQL ASP -->
+                          <!-- PHP SQL Ruby -->
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="technology[]" value="PHP">PHP 
+                              <input type="checkbox" name="PHP" value="PHP " >
+                              PHP
                             </label>
-                          </div>
+                          </div> 
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="technology[]" value="SQL">SQL 
+                              <input type="checkbox" name="SQL" value="SQL " >
+                              SQL
                             </label>
-                          </div>
+                          </div> 
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="technology[]" value="Ruby">Ruby 
+                              <input type="checkbox" name="Ruby" value="Ruby " >
+                              Ruby
                             </label>
-                          </div>
+                          </div>                           
+                          
                             <p class="help-block">Выберите вашу позицию.</p>
                             <div class="radio">
                               <label>
@@ -117,6 +173,7 @@
                               </label>
                             </div>
                           <!-- More info -->
+                          
                           <div class="form-group">
                             <label>Подробно</label>
                             <textarea name="details" class="form-control"></textarea>

@@ -201,6 +201,21 @@ label{
     background-color: #ffffff;
     line-height: 35px;
     padding: 2%;
-    color: #003366;
+    color: #313131;
     border: 1px solid lightgrey;
+}
+
+/* post name in forums */
+.postName {
+    font-weight: bold;
+    color: #794040;
+}
+
+td:first-child { 
+    background-color: #C2D1E0; 
+}
+
+
+.small {
+    margin: 0 25px;
 }

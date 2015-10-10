@@ -57,8 +57,6 @@ function fetch_all_pages($visible){
     mysqli_free_result($page_set);    
 }
 
-
-
 function find_all_users(){
     global $connection;
 
@@ -85,6 +83,7 @@ function display_all_subjects($fetch_all_subjects) {
 }
 
 function display_all_users($find_all_users){
+	// display list of users if logged
     $user_set = $find_all_users;
     $output  = "<ul>";
     while($user = mysqli_fetch_assoc($user_set)){
@@ -96,22 +95,28 @@ function display_all_users($find_all_users){
         $output .= $user["Login"];
         $output .= "</a>";
         $output .= "<li>";
-    }
-    $output .= "</ul>";
-    return $output;     
-    mysqli_free_result($user_set);
+    }	
+	if (!isset($_SESSION["User"])) {
+		$output = null;           
+		$output = "<p class=\"small\">Войдите чтобы увидеть другие пользователи.</p>";
+		return $output;
+		mysqli_free_result($user_set);
+	} else {
+		$output .= "</ul>";
+		return $output;     
+		mysqli_free_result($user_set);
+	}	
 }
-
+	
 function display_pages_for_subject($pages){
     $output = "<p id=\"forumPost\">";                 
     $page_set = $pages;
     while($page = mysqli_fetch_assoc($page_set)){
-        $output .= "{$page["Name"]} <br/>";
+        $output .= "<span class=\"postName\"> {$page["Name"]} </span><br/>";
         $output .= "{$page["Content"]} <br/>"; 
         $output .= "от {$page["CreatedBy"]} в {$page["CreatedDate"]} <i>ид {$page["ID"]}</i><br/>";     
         $output .= "<a href=\"edit_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">Изменить </a>";
         $output .= "<a href=\"delete_post.php?ID=".urlencode($page["ID"])."&User=".urlencode($page["CreatedBy"])."&Subject=".urlencode($page["Subject"])."\">Удалить </a>";
-        $output .= "</p><p id=\"forumPost\">";
     }
     $output .= "</p>";
     if (isset($output)) {
@@ -124,7 +129,7 @@ function diplay_user_info($selected_user){
     global $connection;
 
     $query = "SELECT * FROM user WHERE Login = '{$selected_user}'";
-    $output = "<table id=\"blogTable\">";
+    $output = "<table class=\"table\">";
     $user_set = mysqli_query($connection, $query);
     confirm_query($user_set);
     while($user = mysqli_fetch_assoc($user_set)) {;                 
@@ -156,17 +161,60 @@ function resumeNavigation($resume_set){
     while($resume = mysqli_fetch_assoc($resume_set)){
         $output .= "<tr><th>Номер резюме</th><td>";
         $output .= $resume["ID"]."</td></tr>";
+        $output .= "<tr><th>Юзер</th><td>";
+        $output .= "<a href=\"forum.php?user=" .$resume["User"] . "\">" . $resume["User"]."</td></tr>";
         $output .= "<tr><th>Имя</th><td>";
-        $output .= $resume["Name"]."</td></tr>";
+        $output .= $resume["FullName"]."</td></tr>";
         $output .= "<tr><th>Веб Технологии</th><td>";
         $output .= $resume["Technology"]."</td></tr>";
         $output .= "<tr><th>Позиция</th><td>";
         $output .= $resume["Job"]."</td></tr>";
         $output .= "<tr><th>Подробнее</th><td>";
         $output .= $resume["Details"]."</td></tr>";
+		// linebreak after each record
+        $output .= "<tr><th><hr></th><td>";
+        $output .= "<hr></td></tr>";
     }
     $output .= "</tbody></table>";
     return $output;
+}
+
+function password_encrypt($password) {
+	$hash_format = "2y$10$";
+	
+	$salt_lenght = 22;
+	
+	$salt = generate_salt($salt_lenght);
+	$format_and_salt = $hash_format . $salt;
+	$hash = crypt($password, $format_and_salt);
+	return $hash;
+}
+
+function generate_salt($length) {
+  // Not 100% unique, not 100% random, but good enough for a salt
+  // MD5 returns 32 characters
+  $unique_random_string = md5(uniqid(mt_rand(), true));
+  
+	// Valid characters for a salt are [a-zA-Z0-9./]
+  $base64_string = base64_encode($unique_random_string);
+  
+	// But not '+' which is valid in base64 encoding
+  $modified_base64_string = str_replace('+', '.', $base64_string);
+  
+	// Truncate string to the correct length
+  $salt = substr($modified_base64_string, 0, $length);
+  
+	return $salt;
+}
+
+function password_check($password, $existing_hash) {
+	// existing hash contains format and salt at start
+  $hash = crypt($password, $existing_hash);
+  if ($hash === $existing_hash) {
+	return true;
+  } else {
+	return false;
+  }
 }
 
 ?>

@@ -241,7 +241,6 @@
 	<!-- Jssor Slider End -->
 	</div>
 </div><!-- end: slideshow container -->
-
 <div class="container" class="content"><!-- start: 2 container -->
 	<div class="row"><!--content row start-->
 	<hr>

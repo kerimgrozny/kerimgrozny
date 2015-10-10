@@ -1,4 +1,4 @@
-<nav class="navbar-default navbar-inverse navbar-bottom" id="navigation">
+<nav class="navbar-default navbar-inverse navbar-bottom" id="footer">
 	<div class="container-fluid">
 		<div class="col-xs-12 col-lg-12">
 			<p class="text-center">Создание и разработка сайтов в Грозном: +79298883327 & kerimgrozny@gmail.com | 2014 - <?php echo date('Y') ?></p>

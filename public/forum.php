@@ -4,7 +4,7 @@
 <?php
     // If create form submits perform insert
     if (!isset($_SESSION["User"])) {
-        $_SESSION["failMsg"] = "Вы еще не в системе.";
+        $_SESSION["warnMsg"] = "Вы еще не в системе.";
     }
     if (isset($_POST["submit"])){
         if (!isset($_SESSION["User"])) {
@@ -47,7 +47,7 @@
                 <h3 class="center">Пользователи</h3>
                 <?php 
                     // displays list of all users on sidebar
-                    $user_set = find_all_users();           
+                    $user_set = find_all_users();
                     echo display_all_users($user_set);
                 ?>  
             </ul>
@@ -84,12 +84,13 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8" id="postArea">                      
-                        <?php succMsg(); failMsg(); ?>
+                        <?php succMsg(); warnMsg(); failMsg() ?>
                         <?php
                             // display pages that belong to selected subject.
                             $visible = 0;
                             if (isset($_GET["subject"])) {
-                                $page_set = fetch_pages_for_subject($_GET["subject"], $visible);
+                                $selected_subject = $_GET["subject"];
+                                $page_set = fetch_pages_for_subject($selected_subject, $visible);
                                 echo display_pages_for_subject($page_set);
                             }
                             // display info for selected user .                

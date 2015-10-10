@@ -34,6 +34,9 @@ body{
 	height: 50px;
 	background-color: #00796B;
 	color: #ffffff;
+    position: relative;
+    bottom: 0;
+    margin: 0 auto;
 }
 
 /* selects: logo */

@@ -3,7 +3,7 @@
 <?php include("../includes/functions.php"); ?>
 <?php
     if (!isset($_SESSION["User"])) { 
-        $_SESSION["failMsg"] = "Вы еще не в системе, <a href=\"login.php\">войдите</a>"; 
+        $_SESSION["warnMsg"] = "Вы еще не в системе, <a href=\"login.php\">войдите</a>"; 
     }
     if (isset($_POST["submit"])) {
         
@@ -47,7 +47,7 @@
 <div class="container" id="content"><!--content container start-->
     <div class="row">
         <h1 class="center">Оформите свой заказ</h1>
-        <?php succMsg(); failMsg(); ?>
+        <?php succMsg(); warnMsg(); failMsg(); ?>
         <div class="col-xs-12 col-md-6">
             <!-- webdesign order form -->
             <p>Заполнение некоторых данных помогает мне более детально определить ваши задачи.

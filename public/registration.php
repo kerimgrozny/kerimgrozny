@@ -4,7 +4,7 @@
 <?php
     if (isset($_POST['submit'])) {
         $login     = mysql_prep($_POST['login']);
-        $password  = mysql_prep($_POST['password']);
+        $hashedPas = crypt($_POST['password']);
         $email     = mysql_prep($_POST['email']);
         $firstName = mysql_prep($_POST['firstName']);
         $lastName  = mysql_prep($_POST['lastName']); 
@@ -13,13 +13,13 @@
         $telephone = $_POST['telephone'];
 
         $query  = "INSERT INTO user (Login, Password, Email, FirstName, LastName, DOB, Gender, Telephone) ";
-        $query .= "VALUES ('{$login}', '{$password}', '{$email}', '{$firstName}', '{$lastName}', '{$DOB}', '{$gender}', '{$telephone}')";
+        $query .= "VALUES ('{$login}', '{$hashedPas}', '{$email}', '{$firstName}', '{$lastName}', '{$DOB}', '{$gender}', '{$telephone}')";
         $result = mysqli_query($connection, $query);
         // checks if login is availble
         $loginCheck = "SELECT * FROM user WHERE Login = '{$login}'";
 
         if ($result) {
-            $_SESSION["succMsg"] = "Регистрация прошла успешно, войдите ипользуя логин и пароль веденные вами.";
+            $_SESSION["succMsg"] = "Регистрация прошла успешно, войдите ипользуя логин и пароль.";
             redirect_to("login.php");            
         } elseif ($loginCheck) {
             $_SESSION["failMsg"] = "Такой логин уже зарегистрирован, выберите другой.";
